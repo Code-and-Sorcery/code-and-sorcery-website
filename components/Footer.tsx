@@ -22,7 +22,7 @@ export const Footer = () => {
           <div>
             <a
               rel="noreferrer noopener"
-              href="#"
+              href="https://github.com/Code-and-Sorcery"
               className="opacity-60 hover:opacity-100"
             >
               Github
@@ -35,7 +35,7 @@ export const Footer = () => {
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              Twitter
+              LinkedIn
             </a>
           </div>
 
@@ -148,6 +148,10 @@ export const Footer = () => {
             </a>
           </div>
         </div>
+      </section>
+
+      <section className="container pb-5 text-center text-gray-500">
+        "Did you put your name into the Goblet of Fire, Harry?", Dumbledore asked calmly.
       </section>
 
       <section className="container pb-14 text-center">
