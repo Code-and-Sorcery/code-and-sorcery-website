@@ -27,8 +27,8 @@ export default function Home() {
       <Apps />
       {/* <HowItWorks /> */}
       {/* <Features /> */}
-      <Cta />
       <Services />
+      <Cta />
       <Team />
       {/* <Testimonials /> */}
       {/* <Pricing /> */}

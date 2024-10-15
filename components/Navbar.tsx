@@ -60,7 +60,11 @@ export const Navbar = () => {
               href="/"
               className="ml-2 font-bold text-xl flex"
             >
-              <LogoIcon />
+              <img
+                src="/images/code-and-sorcery-logo.webp"
+                alt="Code and Sorcery Logo"
+                className="w-[28px] object-contain rounded-lg mr-2"
+              />
               Code and Sorcery
             </a>
           </NavigationMenuItem>
