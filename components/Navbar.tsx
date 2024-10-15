@@ -18,7 +18,6 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "@/components/ModeToggle";
-import { LogoIcon } from "@/components/Icons";
 
 interface RouteProps {
   href: string;
@@ -65,7 +64,7 @@ export const Navbar = () => {
                 alt="Code and Sorcery Logo"
                 className="w-[28px] object-contain rounded-lg mr-2"
               />
-              Code and Sorcery
+              <span className="md:hidden sm:block lg:block">Code and Sorcery</span>
             </a>
           </NavigationMenuItem>
 
@@ -89,7 +88,7 @@ export const Navbar = () => {
               <SheetContent side={"left"}>
                 <SheetHeader>
                   <SheetTitle className="font-bold text-xl">
-                    Shadcn/React
+                    Code and Sorcery
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
