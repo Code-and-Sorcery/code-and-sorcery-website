@@ -1,36 +1,103 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MedalIcon, MapIcon, PlaneIcon, GiftIcon } from "@/components/Icons";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import Image from "next/image";
 
 interface TechStackProps {
-  icon: JSX.Element;
+  icon: string;
   title: string;
-  description: string;
 }
 
 const techStacks: TechStackProps[] = [
   {
-    icon: <MedalIcon />,
-    title: "Accessibility",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    icon: "/svg/eslint.svg",
+    title: "EsLint",
   },
   {
-    icon: <MapIcon />,
-    title: "Community",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    icon: "/svg/git.svg",
+    title: "Git",
   },
   {
-    icon: <PlaneIcon />,
-    title: "Scalability",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    icon: "/svg/github.svg",
+    title: "Github",
   },
   {
-    icon: <GiftIcon />,
-    title: "Gamification",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+    icon: "/svg/graphql.svg",
+    title: "GraphQL",
+  },
+  {
+    icon: "/svg/mongodb.svg",
+    title: "MongoDB",
+  },
+  {
+    icon: "/svg/nextjs.svg",
+    title: "NextJS",
+  },
+  {
+    icon: "/svg/nodejs.svg",
+    title: "NodeJS",
+  },
+  {
+    icon: "/svg/npm.svg",
+    title: "NPM",
+  },
+  {
+    icon: "/svg/playwright.svg",
+    title: "Playwright",
+  },
+  {
+    icon: "/svg/postgresql.svg",
+    title: "PostgreSQL",
+  },
+  {
+    icon: "/svg/python.svg",
+    title: "Python",
+  },
+  {
+    icon: "/svg/radixui.svg",
+    title: "RadixUI",
+  },
+  {
+    icon: "/svg/reactjs.svg",
+    title: "ReactJS",
+  },
+  {
+    icon: "/svg/shadcn.svg",
+    title: "shadcn-ui",
+  },
+  {
+    icon: "/svg/solidity.svg",
+    title: "Solidity",
+  },
+  {
+    icon: "/svg/storybook.svg",
+    title: "Storybook",
+  },
+  {
+    icon: "/svg/supabase.svg",
+    title: "Supabase",
+  },
+  {
+    icon: "/svg/tailwindcss.svg",
+    title: "TailwindCSS",
+  },
+  {
+    icon: "/svg/typescript.svg",
+    title: "Typescript",
+  },
+  {
+    icon: "/svg/vitest.svg",
+    title: "Vitest",
+  },
+  {
+    icon: "/svg/vscode.svg",
+    title: "VSCode",
+  },
+  {
+    icon: "/svg/zod.svg",
+    title: "Zod",
+  },
+  {
+    icon: "",
+    title: "And more...",
   },
 ];
 
@@ -52,18 +119,19 @@ export const TechStack = () => {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {techStacks.map(({ icon, title, description }: TechStackProps) => (
+        {techStacks.map(({ icon, title }: TechStackProps) => (
           <Card
             key={title}
             className="bg-muted/50"
           >
-            <CardHeader>
-              <CardTitle className="grid gap-4 place-items-center">
-                {icon}
+            <CardHeader className="h-full">
+              <CardTitle className="grid gap-4 place-items-center h-full">
+                {icon !== "" && (
+                  <Image src={icon} alt={title} width={60} height={60} />
+                )}
                 {title}
               </CardTitle>
             </CardHeader>
-            <CardContent>{description}</CardContent>
           </Card>
         ))}
       </div>
