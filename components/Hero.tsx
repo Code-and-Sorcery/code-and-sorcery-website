@@ -5,7 +5,7 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export const Hero = () => {
   return (
-    <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
+    <section className="container py-20 md:py-32">
       <div className="text-center lg:text-start space-y-6">
         <main className="text-5xl md:text-6xl font-bold">
           <div>
@@ -48,9 +48,9 @@ export const Hero = () => {
       </div>
 
       {/* Hero cards sections */}
-      <div className="z-10">
-        {/* <HeroCards /> */}
-      </div>
+      {/* <div className="z-10">
+        <HeroCards />
+      </div> */}
 
       {/* Shadow effect */}
       <div className="shadow"></div>

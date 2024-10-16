@@ -71,7 +71,7 @@ export const Footer = () => {
       </section>
 
       <section className="container pb-5 text-center text-gray-500">
-        "Did you put your name into the Goblet of Fire, Harry?", Dumbledore asked calmly.
+        &quot;Did you put your name into the Goblet of Fire, Harry?&quot;, Dumbledore asked calmly.
       </section>
 
       <section className="container pb-14 text-center">
