@@ -13,7 +13,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "@/components/ui/button";
 import { Menu } from "lucide-react";
@@ -80,9 +79,7 @@ export const Navbar = () => {
                 <Menu
                   className="flex md:hidden h-5 w-5"
                   onClick={() => setIsOpen(true)}
-                >
-                  <span className="sr-only">Menu Icon</span>
-                </Menu>
+                />
               </SheetTrigger>
 
               <SheetContent side={"left"}>
