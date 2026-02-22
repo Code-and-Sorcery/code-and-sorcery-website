@@ -1,4 +1,5 @@
 import { Statistics } from "@/components/Statistics";
+import Image from "next/image";
 
 export const About = () => {
   return (
@@ -8,10 +9,12 @@ export const About = () => {
     >
       <div className="bg-muted/50 border rounded-lg py-12">
         <div className="px-6 flex flex-col-reverse md:flex-row gap-8 md:gap-12">
-          <img
+          <Image
             src="/images/code-and-sorcery-logo.webp"
             alt="Code and Sorcery Logo"
-            className="w-[300px] object-contain rounded-lg"
+            width={300}
+            height={300}
+            className="object-contain rounded-lg"
           />
           <div className="bg-green-0 flex flex-col justify-between">
             <div className="pb-6">

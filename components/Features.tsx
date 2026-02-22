@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface FeatureProps {
   title: string;
@@ -82,13 +82,17 @@ export const Features = () => {
 
             <CardContent>{description}</CardContent>
 
-            <CardFooter>
-              <img
-                src={image as string}
-                alt="About feature"
-                className="w-[200px] lg:w-[300px] mx-auto"
-              />
-            </CardFooter>
+            {image && (
+              <CardFooter>
+                <Image
+                  src={image}
+                  alt="About feature"
+                  width={300}
+                  height={200}
+                  className="w-[200px] lg:w-[300px] mx-auto"
+                />
+              </CardFooter>
+            )}
           </Card>
         ))}
       </div>

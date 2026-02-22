@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 export const Footer = () => {
   return (
     <footer id="footer">
@@ -5,18 +8,19 @@ export const Footer = () => {
 
       <section className="container py-20 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-x-12 gap-y-8">
         <div className="col-span-full xl:col-span-3">
-          <a
-            rel="noreferrer noopener"
+          <Link
             href="/"
             className="font-bold text-xl flex"
           >
-            <img
+            <Image
               src="/images/code-and-sorcery-logo.webp"
               alt="Code and Sorcery Logo"
-              className="w-[28px] object-contain rounded-lg mr-2"
+              width={28}
+              height={28}
+              className="object-contain rounded-lg mr-2"
             />
             Code and Sorcery
-          </a>
+          </Link>
         </div>
 
         <div className="flex flex-col gap-2">

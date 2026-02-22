@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Linkedin, Github } from "lucide-react";
+import Image from "next/image";
 
 interface TeamProps {
   imageUrl: string;
@@ -77,9 +78,11 @@ export const Team = () => {
               className="bg-muted/50 relative mt-8 flex flex-col justify-center items-center"
             >
               <CardHeader className="mt-8 flex justify-center items-center pb-2">
-                <img
+                <Image
                   src={imageUrl}
                   alt={`${name} ${position}`}
+                  width={96}
+                  height={96}
                   className="absolute -top-12 rounded-full w-24 h-24 aspect-square object-cover"
                 />
                 <CardTitle className="text-center">{name}</CardTitle>

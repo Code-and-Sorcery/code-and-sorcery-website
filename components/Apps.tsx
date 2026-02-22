@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface AppProps {
   title: string;
@@ -84,9 +84,11 @@ export const Apps = () => {
 
             <CardFooter>
               {image ? (
-                <img
-                  src={image as string}
+                <Image
+                  src={image}
                   alt="About feature"
+                  width={300}
+                  height={200}
                   className="w-[200px] lg:w-[300px] mx-auto"
                 />
               ) : null}

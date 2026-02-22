@@ -17,6 +17,8 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "@/components/ModeToggle";
+import Image from "next/image";
+import Link from "next/link";
 
 interface RouteProps {
   href: string;
@@ -53,18 +55,19 @@ export const Navbar = () => {
       <NavigationMenu className="mx-auto">
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
           <NavigationMenuItem className="font-bold flex">
-            <a
-              rel="noreferrer noopener"
+            <Link
               href="/"
               className="ml-2 font-bold text-xl flex"
             >
-              <img
+              <Image
                 src="/images/code-and-sorcery-logo.webp"
                 alt="Code and Sorcery Logo"
-                className="w-[28px] object-contain rounded-lg mr-2"
+                width={28}
+                height={28}
+                className="object-contain rounded-lg mr-2"
               />
               <span className="md:hidden sm:block lg:block">Code and Sorcery</span>
-            </a>
+            </Link>
           </NavigationMenuItem>
 
           {/* mobile */}
