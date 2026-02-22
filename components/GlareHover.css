@@ -33,10 +33,6 @@
     0 0;
 }
 
-.glare-hover:hover {
-  cursor: pointer;
-}
-
 .glare-hover:hover::before {
   background-position:
     100% 100%,
