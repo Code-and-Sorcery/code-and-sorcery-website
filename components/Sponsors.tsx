@@ -1,7 +1,8 @@
+import type { ReactNode } from "react";
 import { Radar } from "lucide-react";
 
 interface SponsorProps {
-  icon: JSX.Element;
+  icon: ReactNode;
   name: string;
 }
 

@@ -1,10 +1,11 @@
+import type { ReactNode } from "react";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MagnifierIcon, WalletIcon, ChartIcon } from "@/components/Icons";
 
 interface ServiceProps {
   title: string;
   description: string;
-  icon: JSX.Element;
+  icon: ReactNode;
 }
 
 const serviceList: ServiceProps[] = [
@@ -64,11 +65,7 @@ export const Services = () => {
           </div>
         </div>
 
-        <img
-          src={""} // TODO
-          className="w-[300px] md:w-[500px] lg:w-[600px] object-contain"
-          alt="About services"
-        />
+        {/* TODO: add image src */}
       </div>
     </section>
   );

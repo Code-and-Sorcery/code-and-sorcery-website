@@ -83,11 +83,13 @@ export const Apps = () => {
             <CardContent>{description}</CardContent>
 
             <CardFooter>
-              <img
-                src={image as string}
-                alt="About feature"
-                className="w-[200px] lg:w-[300px] mx-auto"
-              />
+              {image ? (
+                <img
+                  src={image as string}
+                  alt="About feature"
+                  className="w-[200px] lg:w-[300px] mx-auto"
+                />
+              ) : null}
             </CardFooter>
           </Card>
         ))}
