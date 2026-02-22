@@ -8,24 +8,22 @@ import CircularText from "@/components/CircularText";
 import LogoLoop from "@/components/LogoLoop";
 import type { LogoItem } from "@/components/LogoLoop";
 
-const basePath = "/code-and-sorcery-website";
-
 const techLogos: LogoItem[] = [
-  { src: `${basePath}/svg/reactjs.svg`, alt: "React" },
-  { src: `${basePath}/svg/nextjs.svg`, alt: "Next.js" },
-  { src: `${basePath}/svg/typescript.svg`, alt: "TypeScript" },
-  { src: `${basePath}/svg/nodejs.svg`, alt: "Node.js" },
-  { src: `${basePath}/svg/python.svg`, alt: "Python" },
-  { src: `${basePath}/svg/tailwindcss.svg`, alt: "Tailwind CSS" },
-  { src: `${basePath}/svg/postgresql.svg`, alt: "PostgreSQL" },
-  { src: `${basePath}/svg/mongodb.svg`, alt: "MongoDB" },
-  { src: `${basePath}/svg/graphql.svg`, alt: "GraphQL" },
-  { src: `${basePath}/svg/solidity.svg`, alt: "Solidity" },
-  { src: `${basePath}/svg/playwright.svg`, alt: "Playwright" },
-  { src: `${basePath}/svg/vitest.svg`, alt: "Vitest" },
-  { src: `${basePath}/svg/storybook.svg`, alt: "Storybook" },
-  { src: `${basePath}/svg/eslint.svg`, alt: "ESLint" },
-  { src: `${basePath}/svg/zod.svg`, alt: "Zod" },
+  { src: "/svg/reactjs.svg", alt: "React" },
+  { src: "/svg/nextjs.svg", alt: "Next.js" },
+  { src: "/svg/typescript.svg", alt: "TypeScript" },
+  { src: "/svg/nodejs.svg", alt: "Node.js" },
+  { src: "/svg/python.svg", alt: "Python" },
+  { src: "/svg/tailwindcss.svg", alt: "Tailwind CSS" },
+  { src: "/svg/postgresql.svg", alt: "PostgreSQL" },
+  { src: "/svg/mongodb.svg", alt: "MongoDB" },
+  { src: "/svg/graphql.svg", alt: "GraphQL" },
+  { src: "/svg/solidity.svg", alt: "Solidity" },
+  { src: "/svg/playwright.svg", alt: "Playwright" },
+  { src: "/svg/vitest.svg", alt: "Vitest" },
+  { src: "/svg/storybook.svg", alt: "Storybook" },
+  { src: "/svg/eslint.svg", alt: "ESLint" },
+  { src: "/svg/zod.svg", alt: "Zod" },
 ];
 
 export default function Landing() {
