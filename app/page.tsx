@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import LightPillar from "@/components/LightPillar";
 import GlareHover from "@/components/GlareHover";
+import CircularText from "@/components/CircularText";
 
 export default function Landing() {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -25,28 +26,38 @@ export default function Landing() {
 
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
         <div
-          className={`transition-opacity duration-1000 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+          className={`relative transition-opacity duration-1000 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+          style={{ width: 450, height: 450 }}
         >
-          <GlareHover
-            width="300px"
-            height="300px"
-            background="transparent"
-            borderRadius="50%"
-            borderColor="rgba(255,255,255,0.08)"
-            glareOpacity={0.1}
-            glareAngle={-45}
-            glareSize={300}
-            transitionDuration={1000}
-          >
-            <Image
-              src="/images/code-and-sorcery-logo.webp"
-              alt="Code and Sorcery"
-              width={300}
-              height={300}
-              priority
-              onLoad={() => setImageLoaded(true)}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <CircularText
+              text="CODE AND SORCERY "
+              spinDuration={60}
+              size={420}
             />
-          </GlareHover>
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <GlareHover
+              width="300px"
+              height="300px"
+              background="transparent"
+              borderRadius="50%"
+              borderColor="rgba(255,255,255,0.08)"
+              glareOpacity={0.1}
+              glareAngle={-45}
+              glareSize={300}
+              transitionDuration={1000}
+            >
+              <Image
+                src="/images/code-and-sorcery-logo.webp"
+                alt="Code and Sorcery"
+                width={300}
+                height={300}
+                priority
+                onLoad={() => setImageLoaded(true)}
+              />
+            </GlareHover>
+          </div>
         </div>
       </div>
     </div>
