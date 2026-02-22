@@ -32,7 +32,8 @@ export default function Landing() {
           <div className="absolute inset-0 flex items-center justify-center">
             <CircularText
               text="CODE AND SORCERY "
-              spinDuration={60}
+              spinDuration={120}
+              onHover="slowDown"
               size={420}
             />
           </div>
