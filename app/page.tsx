@@ -1,41 +1,42 @@
-import { About } from "@/components/About";
-import { Apps } from "@/components/Apps";
-import { Cta } from "@/components/Cta";
-// import { FAQ } from "@/components/FAQ";
-// import { Features } from "@/components/Features";
-import { Hero } from "@/components/Hero";
-// import { HowItWorks } from "@/components/HowItWorks";
-import { Navbar } from "@/components/Navbar";
-// import { Newsletter } from "@/components/Newsletter";
-// import { Pricing } from "@/components/Pricing";
-import { ScrollToTop } from "@/components/ScrollToTop";
-import { Services } from "@/components/Services";
-// import { Sponsors } from "@/components/Sponsors";
-import { Team } from "@/components/Team";
-// import { Testimonials } from "@/components/Testimonials";
-import { Footer } from "@/components/Footer";
-import { TechStack } from "@/components/TechStack";
+"use client";
 
-export default function Home() {
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import LightPillar from "@/components/LightPillar";
+
+export default function Landing() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
-    <>
-      <Navbar />
-      <Hero />
-      {/* <Sponsors /> */}
-      <About />
-      <TechStack />
-      <Apps />
-      {/* <HowItWorks /> */}
-      {/* <Features /> */}
-      <Services />
-      <Cta />
-      <Team />
-      {/* <Testimonials /> */}
-      {/* <Pricing /> */}
-      {/* <Newsletter /> */}
-      {/* <FAQ /> */}
-      <Footer />
-      <ScrollToTop />
-    </>
+    <div className="relative h-screen w-screen overflow-hidden bg-black">
+      <LightPillar
+        topColor="#ea5b2d"
+        bottomColor="#60a7c5"
+        intensity={1.2}
+        rotationSpeed={0.2}
+        glowAmount={0.001}
+        pillarWidth={8}
+        noiseIntensity={0}
+        pillarRotation={42}
+        quality="high"
+      />
+
+      <div className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center">
+        <div
+          className={`transition-opacity duration-1000 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+        >
+          <Image
+            src="/images/code-and-sorcery-logo.webp"
+            alt="Code and Sorcery"
+            width={320}
+            height={320}
+            priority
+            onLoad={() => setImageLoaded(true)}
+            className="drop-shadow-[0_0_40px_rgba(234,91,45,0.3)]"
+          />
+        </div>
+      </div>
+    </div>
   );
 }
