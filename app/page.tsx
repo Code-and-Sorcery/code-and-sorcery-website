@@ -84,7 +84,7 @@ export default function Landing() {
         </div>
       </div>
       <div
-        className="absolute bottom-6 left-0 right-0 z-10 opacity-50 flex justify-center max-w-[1000px] mx-auto"
+        className="absolute bottom-6 left-0 right-0 z-10 flex justify-center max-w-[1000px] mx-auto"
         style={{
           maskImage: "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)",
           WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)",
