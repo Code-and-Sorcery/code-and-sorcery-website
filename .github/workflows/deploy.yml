@@ -31,6 +31,8 @@ jobs:
 
       - run: pnpm build
 
+      - run: touch out/.nojekyll
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
