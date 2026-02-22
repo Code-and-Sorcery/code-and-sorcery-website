@@ -44,7 +44,6 @@ export default function Landing() {
               height={300}
               priority
               onLoad={() => setImageLoaded(true)}
-              className="block h-full w-full drop-shadow-[0_0_40px_rgba(234,91,45,0.3)]"
             />
           </GlareHover>
         </div>
