@@ -17,6 +17,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Code and Sorcery",
   description: "Code and Sorcery - Developing apps, with a bit of Magic",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
