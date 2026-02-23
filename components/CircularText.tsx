@@ -29,7 +29,7 @@ interface CircularTextProps {
   spinDuration?: number;
   onHover?: OnHover;
   className?: string;
-  size?: number;
+  size?: number | string;
 }
 
 export default function CircularText({

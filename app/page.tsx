@@ -46,21 +46,21 @@ export default function Landing() {
 
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
         <div
-          className={`relative transition-opacity duration-1000 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
-          style={{ width: 450, height: 450 }}
+          className={`relative aspect-square transition-opacity duration-1000 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+          style={{ width: "min(450px, 66vw)", height: "min(450px, 66vw)" }}
         >
           <div className="absolute inset-0 flex items-center justify-center">
             <CircularText
               text="CODE AND SORCERY "
               spinDuration={120}
               onHover="slowDown"
-              size={420}
+              size="93.33%"
             />
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
             <GlareHover
-              width="300px"
-              height="300px"
+              width="66.67%"
+              height="66.67%"
               background="transparent"
               borderRadius="50%"
               borderColor="rgba(255,255,255,0.08)"
@@ -72,10 +72,11 @@ export default function Landing() {
               <Image
                 src="/images/code-and-sorcery-logo.webp"
                 alt="Code and Sorcery"
-                width={300}
-                height={300}
+                fill
+                sizes="min(300px, 44vw)"
                 priority
                 onLoad={() => setImageLoaded(true)}
+                style={{ objectFit: "contain" }}
               />
             </GlareHover>
           </div>
