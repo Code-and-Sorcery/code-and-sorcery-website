@@ -47,7 +47,7 @@ export default function Landing() {
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
         <div
           className={`relative aspect-square transition-opacity duration-1000 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
-          style={{ width: "min(450px, 66vw)", height: "min(450px, 66vw)" }}
+          style={{ width: "min(450px, 66vw, 80vh)", height: "min(450px, 66vw, 70vh)" }}
         >
           <div className="absolute inset-0 flex items-center justify-center">
             <CircularText
