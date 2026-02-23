@@ -44,7 +44,7 @@ export default function Landing() {
         quality="high"
       />
 
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center -mt-[25px]">
         <div
           className={`relative transition-opacity duration-1000 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
           style={{ width: "min(450px, 66vw, 80vh)", aspectRatio: "1 / 1" }}
