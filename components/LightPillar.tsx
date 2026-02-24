@@ -16,7 +16,7 @@ interface LightPillarProps {
   noiseIntensity?: number;
   mixBlendMode?: string;
   pillarRotation?: number;
-  quality?: "low" | "medium" | "high";
+  quality?: "low" | "medium";
 }
 
 const LightPillar = ({
@@ -32,7 +32,7 @@ const LightPillar = ({
   noiseIntensity = 0.5,
   mixBlendMode = "screen",
   pillarRotation = 0,
-  quality = "high",
+  quality = "medium",
 }: LightPillarProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
@@ -75,7 +75,6 @@ const LightPillar = ({
       (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
 
     let effectiveQuality = quality;
-    if (isLowEndDevice && quality === "high") effectiveQuality = "medium";
     if (isMobile && quality !== "low") effectiveQuality = "low";
 
     const qualitySettings = {
@@ -93,13 +92,6 @@ const LightPillar = ({
         precision: "mediump",
         stepMultiplier: 1.2,
       },
-      high: {
-        iterations: 80,
-        waveIterations: 4,
-        pixelRatio: Math.min(window.devicePixelRatio, 2),
-        precision: "highp",
-        stepMultiplier: 1.0,
-      },
     };
 
     const settings =
@@ -110,8 +102,7 @@ const LightPillar = ({
       renderer = new THREE.WebGLRenderer({
         antialias: false,
         alpha: true,
-        powerPreference:
-          effectiveQuality === "high" ? "high-performance" : "low-power",
+        powerPreference: "low-power",
         precision: settings.precision as "highp" | "mediump" | "lowp",
         stencil: false,
         depth: false,

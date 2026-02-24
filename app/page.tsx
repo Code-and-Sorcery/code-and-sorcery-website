@@ -38,16 +38,15 @@ export default function Landing() {
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-black">
       <LightPillar
-        topColor="#ff5b2d"
-        bottomColor="#60a7ff"
-        intensity={1.2}
+        topColor="#EB5B2C"
+        bottomColor="#5FA0BC"
+        intensity={1}
         rotationSpeed={0.25}
-        glowAmount={0.0015}
-        pillarWidth={10}
-        noiseIntensity={0.8}
+        glowAmount={0.0025}
+        pillarWidth={7}
+        noiseIntensity={0.5}
         pillarRotation={45}
-        pillarHeight={0.03}
-        quality="high"
+        pillarHeight={0.5}
       />
 
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center -mt-[25px]">
