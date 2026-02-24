@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,7 +35,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          {children}
+          <TooltipProvider delayDuration={0}>
+            {children}
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>
