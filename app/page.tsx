@@ -52,7 +52,7 @@ export default function Landing() {
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center -mt-[25px]">
         <div
           className={`relative transition-opacity duration-1000 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
-          style={{ width: "min(450px, 66vw, 80vh)", aspectRatio: "1 / 1" }}
+          style={{ width: "min(66vw, 80vh, clamp(450px, 20vw, 600px))", aspectRatio: "1 / 1" }}
         >
           <div className="absolute inset-0 flex items-center justify-center">
             <CircularText
@@ -78,7 +78,7 @@ export default function Landing() {
                 src="/images/code-and-sorcery-logo.webp"
                 alt="Code and Sorcery"
                 fill
-                sizes="min(300px, 44vw)"
+                sizes="min(400px, 44vw, 13vw)"
                 priority
                 onLoad={() => setImageLoaded(true)}
                 style={{ objectFit: "contain" }}
