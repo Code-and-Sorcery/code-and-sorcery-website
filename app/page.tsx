@@ -44,7 +44,7 @@ export default function Landing() {
         rotationSpeed={0.1}
         glowAmount={0.002}
         pillarWidth={7}
-        noiseIntensity={0.5}
+        noiseIntensity={0.1}
         pillarRotation={45}
         pillarHeight={0.75}
       />
