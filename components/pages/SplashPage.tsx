@@ -60,10 +60,16 @@ export function SplashPage({ locale }: { locale: Locale }) {
               size="93.33%"
             />
           </div>
+          {/* The artwork carries a transparent margin: its disc is 93.769% of
+              the 666px square, so object-fit painted it well inside the ring.
+              The ring is pulled in to the disc (66.67 x 0.93769) and the image
+              scaled back out by the reciprocal, which leaves the logo at the
+              size it always rendered — the overflowing margin is transparent
+              and clipped by the circle anyway. */}
           <div className="absolute inset-0 flex items-center justify-center">
             <GlareHover
-              width="66.67%"
-              height="66.67%"
+              width="62.513%"
+              height="62.513%"
               background="transparent"
               borderRadius="50%"
               borderColor="rgba(255,255,255,0.08)"
@@ -78,7 +84,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
                 fill
                 sizes="(max-width: 640px) 45vw, 300px"
                 priority
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "contain", transform: "scale(1.06645)" }}
               />
             </GlareHover>
           </div>
