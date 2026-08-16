@@ -17,8 +17,10 @@
     --fg-dim: 240 8% 81%;
     --fg-faint: 240 6% 63%;
 
-    --ember: 13 100% 59%;
-    --arcane: 213 100% 69%;
+    /* Straight off the logo: #ff8a3c and #61a6c3. LightPillar takes the same
+       two as hex, since a shader uniform cannot read a CSS variable. */
+    --ember: 24 100% 62%;
+    --arcane: 198 45% 57%;
 
     --line: 240 8% 18%;
     --line-strong: 240 8% 30%;
@@ -221,7 +223,6 @@
     background: linear-gradient(
       100deg,
       hsl(var(--ember)) 0%,
-      hsl(28 100% 68%) 30%,
       hsl(var(--arcane)) 100%
     );
     -webkit-background-clip: text;
