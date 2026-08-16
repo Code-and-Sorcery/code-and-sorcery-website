@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+
+import { MailIcon } from "@/components/Icons";
 import CircularText from "@/components/CircularText";
 import GlareHover from "@/components/GlareHover";
 import LightPillar from "@/components/LightPillar";
@@ -103,6 +105,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
               href={`mailto:${CONTACT_EMAIL}`}
               variant="outline"
               icon="none"
+              leadingIcon={<MailIcon className="h-4 w-4" />}
               className="border-white/20 text-white/90 hover:border-white/35 hover:text-white"
             >
               {dict.splash.contact}

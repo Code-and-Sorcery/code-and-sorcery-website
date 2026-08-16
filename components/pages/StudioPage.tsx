@@ -2,6 +2,7 @@ import {
   ArrowUpRightIcon,
   GitHubIcon,
   LinkedInIcon,
+  MailIcon,
   ResumeIcon,
 } from "@/components/Icons";
 import { FeatureGrid } from "@/components/site/FeatureGrid";
@@ -45,7 +46,11 @@ export function StudioPage({ locale }: { locale: Locale }) {
           <div className="space-y-5">
             <MetaList items={dict.studio.facts} />
             <div className="flex flex-wrap gap-2">
-              <LinkButton href={`mailto:${CONTACT_EMAIL}`} icon="none">
+              <LinkButton
+                href={`mailto:${CONTACT_EMAIL}`}
+                icon="none"
+                leadingIcon={<MailIcon className="h-4 w-4" />}
+              >
                 {dict.studio.ctaAction}
               </LinkButton>
               <LinkButton href={SOCIALS.resume} variant="ghost">

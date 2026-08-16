@@ -17,12 +17,15 @@ export function LinkButton({
   variant = "outline",
   className,
   icon = "auto",
+  /** Sits before the label — a mail glyph on the contact buttons. */
+  leadingIcon,
 }: {
   href: string;
   children: React.ReactNode;
   variant?: keyof typeof variants;
   className?: string;
   icon?: "auto" | "none";
+  leadingIcon?: React.ReactNode;
 }) {
   const external = /^https?:/.test(href);
   const classes = cn(
@@ -33,6 +36,7 @@ export function LinkButton({
 
   const label = (
     <>
+      {leadingIcon}
       {children}
       {icon === "auto" ? (
         external ? (
