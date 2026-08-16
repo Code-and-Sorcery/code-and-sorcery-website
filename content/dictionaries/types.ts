@@ -26,3 +26,26 @@ export type LegalDocument = {
   translationNote?: string;
   sections: LegalSection[];
 };
+
+/**
+ * A row in the legal index: either a document the reader can open, or a
+ * standing note about an app that has no separate document.
+ */
+export type LegalIndexEntry = {
+  title: string;
+  body: string;
+  /** Internal document; localised at render time. */
+  path?: string;
+  /** External document; used as-is. */
+  href?: string;
+};
+
+/** One app — or the publisher — in the legal index. */
+export type LegalIndexGroup = {
+  /** Catalogue slug, so the group can head itself with the app's icon.
+   *  Omitted for the publisher, which uses the studio mark. */
+  slug?: string;
+  name: string;
+  note: string;
+  entries: LegalIndexEntry[];
+};

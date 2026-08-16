@@ -1,4 +1,4 @@
-import type { LegalDocument } from "./types";
+import type { LegalDocument, LegalIndexGroup } from "./types";
 
 const primzPrivacy: LegalDocument = {
   eyebrow: "Primz",
@@ -435,6 +435,52 @@ const primzTerms: LegalDocument = {
   ],
 };
 
+const legalIndexGroups: LegalIndexGroup[] = [
+      {
+        slug: "primz",
+        name: "Primz",
+        note: "iOS & Android · in development",
+        entries: [
+          {
+            title: "Privacy Policy",
+            body: "What Primz stores, what it asks permission for, and why almost nothing reaches us.",
+            path: "/primz/privacy",
+          },
+          {
+            title: "Terms of Use",
+            body: "Licence, responsibilities, liability and governing law.",
+            path: "/primz/terms",
+          },
+        ],
+      },
+      {
+        slug: "env-checker",
+        name: "Env Checker",
+        note: "VS Code · MIT",
+        entries: [
+          {
+            title: "No separate policy",
+            body: "The extension runs entirely inside your editor, with no account, no telemetry and no network call. There is nothing for a privacy policy to describe, and no terms to accept beyond the licence.",
+          },
+          {
+            title: "MIT licence",
+            body: "The source is public and the licence text sits in the repository.",
+            href: "https://github.com/Code-and-Sorcery/vscode-env-checker/blob/main/LICENSE",
+          },
+        ],
+      },
+      {
+        name: "Code and Sorcery",
+        note: "SASU · France",
+        entries: [
+          {
+            title: "Publisher",
+            body: "Code and Sorcery, SASU registered in France, publishes the apps listed above. Written enquiries and legal notices: [contact@codeandsorcery.fr](mailto:contact@codeandsorcery.fr).",
+          },
+        ],
+      },
+    ];
+
 export const en = {
   htmlLang: "en",
   localeName: "English",
@@ -667,32 +713,8 @@ export const en = {
   legalIndex: {
     eyebrow: "Legal",
     title: "App documents",
-    lead: "Terms of use and privacy policies for the apps published by Code and Sorcery.",
-    groups: [
-      {
-        slug: "primz",
-        app: "Primz",
-        note: "iOS & Android · in development",
-        docs: [
-          {
-            title: "Privacy Policy",
-            body: "What Primz stores, what it asks permission for, and why almost nothing reaches us.",
-            path: "/primz/privacy",
-          },
-          {
-            title: "Terms of Use",
-            body: "Licence, responsibilities, liability and governing law.",
-            path: "/primz/terms",
-          },
-        ],
-      },
-    ],
-    envCheckerTitle: "Env Checker",
-    envCheckerBody:
-      "The extension runs entirely inside your editor, with no account, no telemetry and no network call, so it has no separate policy. It is distributed under the MIT licence.",
-    companyTitle: "Publisher",
-    companyBody:
-      "Code and Sorcery, SASU registered in France. Written enquiries and legal notices: [contact@codeandsorcery.fr](mailto:contact@codeandsorcery.fr).",
+    lead: "Terms of use, privacy policies and licences for everything Code and Sorcery publishes.",
+    groups: legalIndexGroups,
   },
 
   legal: {

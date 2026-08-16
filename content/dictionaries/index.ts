@@ -9,4 +9,10 @@ export function getDictionary(locale: Locale): Dictionary {
 }
 
 export type { Dictionary };
-export type { Block, LegalDocument, LegalSection } from "./types";
+export type {
+  Block,
+  LegalDocument,
+  LegalIndexEntry,
+  LegalIndexGroup,
+  LegalSection,
+} from "./types";
