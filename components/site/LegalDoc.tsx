@@ -5,10 +5,10 @@ import type { Dictionary, LegalDocument } from "@/content/dictionaries";
 import { localizePath, type Locale } from "@/content/i18n";
 
 import { LegalToc } from "./LegalToc";
+import { Logo } from "./Logo";
 import { ReadingProgress } from "./ReadingProgress";
 import { RichText } from "./RichText";
 import { RuneDivider } from "./RuneDivider";
-import { Sigil } from "./Sigil";
 
 export function LegalDoc({
   doc,
@@ -29,7 +29,7 @@ export function LegalDoc({
       <div className="container max-w-6xl py-14 sm:py-20">
         <header className="max-w-2xl">
           <div className="flex items-center gap-3">
-            <Sigil className="h-4 w-4" gradientId="legal-sigil" />
+            <Logo className="h-4 w-4" />
             <p className="eyebrow">{doc.eyebrow}</p>
           </div>
           <h1 className="mt-5 text-4xl font-semibold sm:text-5xl">

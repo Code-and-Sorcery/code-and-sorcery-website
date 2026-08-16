@@ -5,7 +5,7 @@ import { apps } from "@/content/apps";
 import type { Dictionary } from "@/content/dictionaries";
 import { CONTACT_EMAIL, localizePath, SOCIALS, type Locale } from "@/content/i18n";
 
-import { Sigil } from "./Sigil";
+import { Logo } from "./Logo";
 
 export function SiteFooter({
   dict,
@@ -62,7 +62,7 @@ export function SiteFooter({
               href={localizePath("/", locale)}
               className="inline-flex items-center gap-2.5"
             >
-              <Sigil className="h-6 w-6 text-fg-dim" gradientId="footer-sigil" />
+              <Logo className="h-7 w-7" />
               <span className="text-sm font-semibold">Code and Sorcery</span>
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-fg-faint">

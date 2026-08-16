@@ -56,10 +56,6 @@ const config: Config = {
           "0%, 100%": { opacity: "1", transform: "scale(1)" },
           "50%": { opacity: "0.35", transform: "scale(0.82)" },
         },
-        "sigil-draw": {
-          from: { strokeDashoffset: "1" },
-          to: { strokeDashoffset: "0" },
-        },
         "rise-in": {
           from: { opacity: "0", transform: "translate3d(0, 14px, 0)" },
           to: { opacity: "1", transform: "none" },
@@ -76,7 +72,6 @@ const config: Config = {
       animation: {
         "aurora-drift": "aurora-drift 26s ease-in-out infinite",
         "pulse-dot": "pulse-dot 2.4s ease-in-out infinite",
-        "sigil-draw": "sigil-draw 1.8s ease-out forwards",
         "rise-in": "rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both",
         shimmer: "shimmer 6s linear infinite",
         "scroll-hint": "scroll-hint 2s ease-in-out infinite",

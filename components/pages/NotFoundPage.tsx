@@ -1,5 +1,5 @@
 import { LinkButton } from "@/components/site/LinkButton";
-import { Sigil } from "@/components/site/Sigil";
+import { Logo } from "@/components/site/Logo";
 import { getDictionary } from "@/content/dictionaries";
 import { localizePath, type Locale } from "@/content/i18n";
 
@@ -8,7 +8,7 @@ export function NotFoundPage({ locale }: { locale: Locale }) {
 
   return (
     <section className="container flex min-h-[60svh] flex-col items-center justify-center py-24 text-center">
-      <Sigil className="h-16 w-16" gradientId="notfound-sigil" draw />
+      <Logo className="h-20 w-20 animate-rise-in" priority />
       <p className="eyebrow mt-10">{dict.notFound.eyebrow}</p>
       <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">
         {dict.notFound.title}

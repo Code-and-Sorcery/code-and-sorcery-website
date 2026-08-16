@@ -9,7 +9,7 @@ import { localizePath, type Locale } from "@/content/i18n";
 import { cn } from "@/lib/utils";
 
 import { LocaleSwitch } from "./LocaleSwitch";
-import { Sigil } from "./Sigil";
+import { Logo } from "./Logo";
 
 export function SiteHeader({
   dict,
@@ -54,20 +54,15 @@ export function SiteHeader({
     >
       <div className="container flex h-16 items-center justify-between gap-3 sm:h-20 sm:gap-4">
         <div className="flex min-w-0 items-center gap-3 sm:gap-8">
-          {!floating ? (
-            <Link
-              href={localizePath("/", locale)}
-              className="group inline-flex items-center gap-2.5"
-            >
-              <Sigil
-                className="h-6 w-6 text-fg-dim transition-colors group-hover:text-fg"
-                gradientId="header-sigil"
-              />
-              <span className="hidden text-sm font-semibold tracking-tight sm:inline">
-                Code and Sorcery
-              </span>
-            </Link>
-          ) : null}
+          <Link
+            href={localizePath("/", locale)}
+            className="group inline-flex items-center gap-2.5"
+          >
+            <Logo className="h-7 w-7 opacity-90 transition-opacity group-hover:opacity-100" />
+            <span className="hidden text-sm font-semibold tracking-tight sm:inline">
+              Code and Sorcery
+            </span>
+          </Link>
 
           <nav aria-label={dict.nav.menu} className="min-w-0">
             <ul className="flex items-center gap-0.5 sm:gap-1">

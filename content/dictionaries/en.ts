@@ -479,8 +479,7 @@ export const en = {
     tagline: "Independent software studio",
     subtitle: "Apps, tools and onchain work — built with a bit of magic.",
     enter: "See the apps",
-    marqueeLabel: "Technologies we work with",
-    contact: "Say hello",
+    contact: "Contact me",
   },
 
   studio: {

@@ -484,8 +484,7 @@ export const fr: Dictionary = {
     tagline: "Studio de développement indépendant",
     subtitle: "Applications, outils et onchain — avec un peu de magie.",
     enter: "Voir les applications",
-    marqueeLabel: "Technologies utilisées",
-    contact: "Dire bonjour",
+    contact: "Me contacter",
   },
 
   studio: {

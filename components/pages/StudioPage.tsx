@@ -2,11 +2,11 @@ import Image from "next/image";
 
 import { FeatureGrid } from "@/components/site/FeatureGrid";
 import { LinkButton } from "@/components/site/LinkButton";
+import { Logo } from "@/components/site/Logo";
 import { MetaList } from "@/components/site/MetaList";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { Sigil } from "@/components/site/Sigil";
 import { SpellCard } from "@/components/site/SpellCard";
 import { TechGrid } from "@/components/site/TechGrid";
 import { getDictionary } from "@/content/dictionaries";
@@ -95,10 +95,7 @@ export function StudioPage({ locale }: { locale: Locale }) {
         <Reveal>
           <SpellCard className="overflow-hidden">
             <div className="relative flex flex-col items-start gap-6 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
-              <Sigil
-                className="pointer-events-none absolute -right-6 -top-8 h-40 w-40 opacity-[0.06]"
-                gradientId="studio-cta-sigil"
-              />
+              <Logo className="pointer-events-none absolute -right-8 -top-10 h-44 w-44 opacity-[0.08]" />
               <div className="relative max-w-lg space-y-3">
                 <h2 className="text-2xl font-semibold">
                   {dict.studio.ctaTitle}

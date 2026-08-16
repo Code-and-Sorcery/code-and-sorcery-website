@@ -4,18 +4,11 @@ import Image from "next/image";
 import CircularText from "@/components/CircularText";
 import GlareHover from "@/components/GlareHover";
 import LightPillar from "@/components/LightPillar";
-import LogoLoop, { type LogoItem } from "@/components/LogoLoop";
 import { LinkButton } from "@/components/site/LinkButton";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SocialLinks } from "@/components/site/SocialLinks";
-import { techStack } from "@/components/site/TechGrid";
 import { getDictionary } from "@/content/dictionaries";
 import { CONTACT_EMAIL, localizePath, type Locale } from "@/content/i18n";
-
-const techLogos: LogoItem[] = techStack.map((tech) => ({
-  src: tech.src,
-  alt: tech.name,
-}));
 
 /**
  * The entrance. Kept deliberately scroll-free: one shader, one mark, and the
@@ -52,7 +45,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
         extras={<SocialLinks className="hidden sm:flex" />}
       />
 
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8 px-6 pb-40 pt-24 sm:gap-10">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8 px-6 pb-24 pt-24 sm:gap-10">
         {/* Faded in by CSS rather than by the image's load event: the asset is
             local and prioritised, and a cached hit can fire onLoad before
             hydration, leaving the mark stuck at zero opacity. */}
@@ -124,19 +117,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
         </div>
       </div>
 
-      <div className="absolute inset-x-0 bottom-6 z-10 flex flex-col items-center gap-4">
-        <div className="mask-fade-x mx-auto w-full max-w-[1000px]">
-          <LogoLoop
-            logos={techLogos}
-            logoHeight={28}
-            speed={20}
-            hoverSpeed={0}
-            pauseOnHover
-            ariaLabel={dict.splash.marqueeLabel}
-            scaleOnHover
-            gap={45}
-          />
-        </div>
+      <div className="absolute inset-x-0 bottom-7 z-10 flex justify-center">
         <p
           className="px-6 text-center font-mono text-[9px] uppercase tracking-[0.14em] text-white/45 sm:text-[10px] sm:tracking-[0.22em]"
           style={{ textShadow: "0 1px 16px rgba(0,0,0,0.85)" }}
