@@ -94,25 +94,12 @@ export function SiteHeader({
 
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Below sm there is no room beside the nav; the footer carries
-              these links on small screens. Over the shader the dark --line
-              border disappears, so borrow the splash buttons' own. */}
-          <SocialLinks
-            className="hidden sm:flex"
-            itemClassName={
-              floating
-                ? "border-white/20 text-white/80 hover:border-white/35 hover:text-white"
-                : undefined
-            }
-          />
+              these links on small screens. */}
+          <SocialLinks className="hidden sm:flex" />
           <LocaleSwitch
             code={locale.toUpperCase()}
             label={dict.switchTo}
             ariaLabel={dict.switchAria}
-            className={
-              floating
-                ? "border-white/20 text-white/80 hover:border-white/35 hover:text-white"
-                : undefined
-            }
           />
         </div>
       </div>
