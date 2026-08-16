@@ -557,7 +557,7 @@ export const en = {
         body: "Typed boundaries, Vitest and Playwright suites, Storybook for the parts people touch, CI that blocks instead of nagging.",
       },
     ],
-    stackTitle: "Spell components",
+    stackTitle: "Incantation components",
     stackNote: "The set I reach for most.",
     elsewhereTitle: "Elsewhere",
     elsewhere: [

@@ -561,7 +561,7 @@ export const fr: Dictionary = {
         body: "Frontières typées, suites Vitest et Playwright, Storybook pour ce que les gens manipulent, CI qui bloque au lieu de râler.",
       },
     ],
-    stackTitle: "Composants du sort",
+    stackTitle: "Composants de l’incantation",
     stackNote: "Ceux vers lesquels je vais le plus souvent.",
     elsewhereTitle: "Ailleurs",
     elsewhere: [
