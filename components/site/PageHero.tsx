@@ -4,12 +4,15 @@ export function PageHero({
   eyebrow,
   title,
   lead,
+  /** Sits to the left of the title — an app's icon on its own page. */
+  mark,
   aside,
   children,
 }: {
   eyebrow: string;
   title: React.ReactNode;
   lead: string;
+  mark?: React.ReactNode;
   /** Right-hand column on wide screens: meta, artwork, status. */
   aside?: React.ReactNode;
   children?: React.ReactNode;
@@ -20,9 +23,12 @@ export function PageHero({
         <div>
           <Reveal>
             <p className="eyebrow">{eyebrow}</p>
-            <h1 className="mt-5 text-4xl font-semibold leading-[1.05] sm:text-6xl">
-              {title}
-            </h1>
+            <div className="mt-5 flex items-center gap-4 sm:gap-5">
+              {mark}
+              <h1 className="text-4xl font-semibold leading-[1.05] sm:text-6xl">
+                {title}
+              </h1>
+            </div>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-fg-dim">
               {lead}
             </p>

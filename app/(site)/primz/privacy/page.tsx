@@ -20,6 +20,7 @@ export default function Page() {
       doc={doc}
       dict={dict}
       locale={locale}
+      appSlug="primz"
       sibling={{ title: sibling.title, path: "/primz/terms" }}
     />
   );

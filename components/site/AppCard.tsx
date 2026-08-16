@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { ArrowRightIcon } from "@/components/Icons";
@@ -6,6 +5,7 @@ import type { AppEntry } from "@/content/apps";
 import type { Dictionary } from "@/content/dictionaries";
 import { localizePath, type Locale } from "@/content/i18n";
 
+import { AppIcon } from "./AppIcon";
 import { SpellCard } from "./SpellCard";
 import { StatusPill } from "./StatusPill";
 
@@ -37,20 +37,7 @@ export function AppCard({
 
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
-            <span
-              className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl border border-line"
-              style={{
-                background: app.iconBackground ?? `hsl(${app.accent} / 0.16)`,
-              }}
-            >
-              <Image
-                src={app.icon}
-                alt=""
-                width={88}
-                height={88}
-                className="h-full w-full object-contain p-1"
-              />
-            </span>
+            <AppIcon app={app} className="h-11 w-11 rounded-xl" compact />
             <div>
               <h3 className="text-lg font-semibold">{app.name}</h3>
               <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-fg-faint">

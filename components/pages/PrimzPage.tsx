@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { ArrowRightIcon, LockIcon } from "@/components/Icons";
+import { AppIcon } from "@/components/site/AppIcon";
 import { AppShowcase } from "@/components/site/AppShowcase";
 import { FeatureGrid } from "@/components/site/FeatureGrid";
 import { MetaList } from "@/components/site/MetaList";
@@ -33,6 +34,13 @@ export function PrimzPage({ locale }: { locale: Locale }) {
           </>
         }
         lead={copy.lead}
+        mark={
+          <AppIcon
+            app={app}
+            className="h-12 w-12 rounded-2xl sm:h-16 sm:w-16"
+            compact
+          />
+        }
         aside={
           <AppShowcase
             icon="/images/primz-icon.png"

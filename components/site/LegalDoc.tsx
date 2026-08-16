@@ -1,11 +1,12 @@
 import Link from "next/link";
 
 import { ArrowRightIcon } from "@/components/Icons";
+import { getApp, type AppSlug } from "@/content/apps";
 import type { Dictionary, LegalDocument } from "@/content/dictionaries";
 import { localizePath, type Locale } from "@/content/i18n";
 
+import { AppIcon } from "./AppIcon";
 import { LegalToc } from "./LegalToc";
-import { Logo } from "./Logo";
 import { ReadingProgress } from "./ReadingProgress";
 import { RichText } from "./RichText";
 import { RuneDivider } from "./RuneDivider";
@@ -14,14 +15,19 @@ export function LegalDoc({
   doc,
   dict,
   locale,
+  /** Whose document this is — its icon heads the page. */
+  appSlug,
   /** The sibling document, linked at the foot of the page. */
   sibling,
 }: {
   doc: LegalDocument;
   dict: Dictionary;
   locale: Locale;
+  appSlug: AppSlug;
   sibling: { title: string; path: string };
 }) {
+  const app = getApp(appSlug);
+
   return (
     <>
       <ReadingProgress />
@@ -29,7 +35,7 @@ export function LegalDoc({
       <div className="container max-w-6xl py-14 sm:py-20">
         <header className="max-w-2xl">
           <div className="flex items-center gap-3">
-            <Logo className="h-4 w-4" />
+            <AppIcon app={app} className="h-6 w-6 rounded-md" compact />
             <p className="eyebrow">{doc.eyebrow}</p>
           </div>
           <h1 className="mt-5 text-4xl font-semibold sm:text-5xl">

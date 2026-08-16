@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { AppIcon } from "@/components/site/AppIcon";
 import { CopyCommand } from "@/components/site/CopyCommand";
 import { FeatureGrid } from "@/components/site/FeatureGrid";
 import { LinkButton } from "@/components/site/LinkButton";
@@ -31,6 +32,13 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
           </>
         }
         lead={copy.lead}
+        mark={
+          <AppIcon
+            app={app}
+            className="h-12 w-12 rounded-2xl sm:h-16 sm:w-16"
+            compact
+          />
+        }
         aside={
           <div className="space-y-5">
             <MetaList

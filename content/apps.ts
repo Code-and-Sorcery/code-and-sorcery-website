@@ -20,8 +20,10 @@ export type AppEntry = {
   tech: string[];
   /** Per-app accent, as an HSL triple so it can drop into `hsl(...)`. */
   accent: string;
-  /** The app's own icon, copied out of its repository. */
+  /** The app's own store icon, copied out of its repository. */
   icon: string;
+  /** Compact glyph for small tiles, where a logotype turns to mush. */
+  mark?: string;
   /** Tile colour behind the icon — set when the artwork has a transparent
    *  background and is too dark to read on ink. */
   iconBackground?: string;
@@ -64,6 +66,7 @@ export const apps: AppEntry[] = [
     tech: ["React Native", "Expo", "SQLite"],
     accent: "184 39% 34%",
     icon: "/images/primz-icon.png",
+    mark: "/images/primz-mark.png",
     iconBackground: "#ffffff",
     links: [],
   },
