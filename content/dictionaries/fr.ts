@@ -528,7 +528,7 @@ export const fr: Dictionary = {
 
   splash: {
     tagline: "Studio de développement indépendant",
-    subtitle: "Applications, outils et onchain — avec un peu de magie.",
+    subtitle: "Applications, outils, onchain, avec un peu de magie.",
     enter: "Voir les applications",
     contact: "Me contacter",
   },
@@ -542,7 +542,6 @@ export const fr: Dictionary = {
       { label: "Structure", value: "SASU · France" },
       { label: "Terrain", value: "Web · Mobile · Onchain" },
       { label: "Langues", value: "Français · Anglais" },
-      { label: "Disponibilité", value: "Ouvert aux missions" },
     ],
     workTitle: "Ce que je construis",
     work: [
@@ -579,7 +578,7 @@ export const fr: Dictionary = {
 
   apps: {
     eyebrow: "Catalogue",
-    title: "Les applications de la forge",
+    title: "Les applications forgées",
     lead: "Tout ce que Code and Sorcery a publié ou s’apprête à publier. Les documents légaux de chacune se trouvent dans la section Mentions.",
     entries: {
       "env-checker": {

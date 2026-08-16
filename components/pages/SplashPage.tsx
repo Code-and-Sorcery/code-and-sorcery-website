@@ -101,9 +101,9 @@ export function SplashPage({ locale }: { locale: Locale }) {
             </LinkButton>
             <LinkButton
               href={`mailto:${CONTACT_EMAIL}`}
-              variant="ghost"
+              variant="outline"
               icon="none"
-              className="text-white/60 hover:text-white"
+              className="border-white/20 text-white/90 hover:border-white/35 hover:text-white"
             >
               {dict.splash.contact}
             </LinkButton>

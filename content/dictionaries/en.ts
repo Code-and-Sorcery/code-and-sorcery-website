@@ -523,7 +523,7 @@ export const en = {
 
   splash: {
     tagline: "Independent software studio",
-    subtitle: "Apps, tools and onchain work — built with a bit of magic.",
+    subtitle: "Apps, tools, onchain, built with a bit of magic.",
     enter: "See the apps",
     contact: "Contact me",
   },
@@ -538,7 +538,6 @@ export const en = {
       { label: "Structure", value: "SASU · France" },
       { label: "Practice", value: "Web · Mobile · Onchain" },
       { label: "Languages", value: "French · English" },
-      { label: "Availability", value: "Open to engagements" },
     ],
     workTitle: "What I build",
     work: [
