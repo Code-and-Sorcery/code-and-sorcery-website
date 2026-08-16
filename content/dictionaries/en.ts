@@ -508,7 +508,6 @@ export const en = {
     contact: "Contact",
     backHome: "Back to the entrance",
     backToApps: "Back to apps",
-    version: "Version",
     license: "Licence",
     status: "Status",
     platform: "Platform",

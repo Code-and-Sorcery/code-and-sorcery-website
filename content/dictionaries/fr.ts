@@ -513,7 +513,6 @@ export const fr: Dictionary = {
     contact: "Contact",
     backHome: "Retour à l’entrée",
     backToApps: "Retour aux applications",
-    version: "Version",
     license: "Licence",
     status: "Statut",
     platform: "Plateforme",

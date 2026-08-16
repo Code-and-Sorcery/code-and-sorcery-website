@@ -52,7 +52,6 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
                     />
                   ),
                 },
-                { label: dict.common.version, value: app.version ?? "—" },
                 { label: dict.common.license, value: app.license ?? "—" },
                 { label: dict.common.platform, value: copy.requirements },
               ]}

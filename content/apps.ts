@@ -15,8 +15,6 @@ export type AppEntry = {
   status: AppStatus;
   /** Mono metadata rendered as `key · key · key` on the card. */
   surface: string;
-  /** Only for apps whose published version is worth naming. */
-  version?: string;
   license?: string;
   tech: string[];
   /** Per-app accent, as an HSL triple so it can drop into `hsl(...)`. */
@@ -40,7 +38,6 @@ export const apps: AppEntry[] = [
     name: "Env Checker",
     status: "live",
     surface: "VS Code",
-    version: "0.1.2",
     license: "MIT",
     tech: ["TypeScript", "VS Code API", "esbuild"],
     accent: "199 89% 64%",
