@@ -439,7 +439,6 @@ export const en = {
   htmlLang: "en",
   localeName: "English",
   switchTo: "Français",
-  switchCode: "FR",
   switchAria: "Read this page in French",
 
   nav: {

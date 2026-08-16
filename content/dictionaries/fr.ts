@@ -444,7 +444,6 @@ export const fr: Dictionary = {
   htmlLang: "fr",
   localeName: "Français",
   switchTo: "English",
-  switchCode: "EN",
   switchAria: "Lire cette page en anglais",
 
   nav: {

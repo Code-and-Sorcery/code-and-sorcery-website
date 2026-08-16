@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState } from "react";
 
 import type { Dictionary } from "@/content/dictionaries";
 import { localizePath, type Locale } from "@/content/i18n";
@@ -10,18 +10,17 @@ import { cn } from "@/lib/utils";
 
 import { LocaleSwitch } from "./LocaleSwitch";
 import { Logo } from "./Logo";
+import { SocialLinks } from "./SocialLinks";
 
 export function SiteHeader({
   dict,
   locale,
   floating = false,
-  extras,
 }: {
   dict: Dictionary;
   locale: Locale;
   /** Splash mode: sits over the shader, never grows a border. */
   floating?: boolean;
-  extras?: ReactNode;
 }) {
   const pathname = usePathname() ?? "/";
   const [scrolled, setScrolled] = useState(false);
@@ -59,7 +58,9 @@ export function SiteHeader({
             className="group inline-flex items-center gap-2.5"
           >
             <Logo className="h-7 w-7 opacity-90 transition-opacity group-hover:opacity-100" />
-            <span className="hidden text-sm font-semibold tracking-tight sm:inline">
+            {/* Held back to md: at sm the socials arrive and the wordmark would
+                wrap onto two lines, stretching the header. */}
+            <span className="hidden whitespace-nowrap text-sm font-semibold tracking-tight md:inline">
               Code and Sorcery
             </span>
           </Link>
@@ -92,9 +93,11 @@ export function SiteHeader({
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          {extras}
+          {/* Below sm there is no room beside the nav; the footer carries
+              these links on small screens. */}
+          <SocialLinks className="hidden sm:flex" />
           <LocaleSwitch
-            code={dict.switchCode}
+            code={locale.toUpperCase()}
             label={dict.switchTo}
             ariaLabel={dict.switchAria}
           />

@@ -6,7 +6,6 @@ import GlareHover from "@/components/GlareHover";
 import LightPillar from "@/components/LightPillar";
 import { LinkButton } from "@/components/site/LinkButton";
 import { SiteHeader } from "@/components/site/SiteHeader";
-import { SocialLinks } from "@/components/site/SocialLinks";
 import { getDictionary } from "@/content/dictionaries";
 import { CONTACT_EMAIL, localizePath, type Locale } from "@/content/i18n";
 
@@ -38,12 +37,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
         pillarHeight={0.75}
       />
 
-      <SiteHeader
-        dict={dict}
-        locale={locale}
-        floating
-        extras={<SocialLinks className="hidden sm:flex" />}
-      />
+      <SiteHeader dict={dict} locale={locale} floating />
 
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8 px-6 pb-24 pt-24 sm:gap-10">
         {/* Faded in by CSS rather than by the image's load event: the asset is
