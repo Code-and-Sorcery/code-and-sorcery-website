@@ -13,7 +13,7 @@ import { SpellCard } from "@/components/site/SpellCard";
 import { StatusPill } from "@/components/site/StatusPill";
 import { getApp, MARKETPLACE_ID } from "@/content/apps";
 import { getDictionary } from "@/content/dictionaries";
-import type { Locale } from "@/content/i18n";
+import { localizePath, type Locale } from "@/content/i18n";
 
 const INSTALL_COMMAND = `code --install-extension ${MARKETPLACE_ID}`;
 
@@ -28,6 +28,10 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
         eyebrow={copy.eyebrow}
         title="Env Checker"
         lead={copy.lead}
+        back={{
+          href: localizePath("/apps", locale),
+          label: dict.common.backToApps,
+        }}
         mark={
           <AppIcon
             app={app}

@@ -42,6 +42,12 @@ export const ArrowRightIcon = ({ className = base }: IconProps) => (
   </svg>
 );
 
+export const ArrowLeftIcon = ({ className = base }: IconProps) => (
+  <svg viewBox="0 0 24 24" className={className} {...stroke} aria-hidden="true">
+    <path d="M19.5 12h-15m0 0 5.5-5.5M4.5 12 10 17.5" />
+  </svg>
+);
+
 export const ArrowUpRightIcon = ({ className = base }: IconProps) => (
   <svg viewBox="0 0 24 24" className={className} {...stroke} aria-hidden="true">
     <path d="M7 17 17 7m0 0h-7.5M17 7v7.5" />

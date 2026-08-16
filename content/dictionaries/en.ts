@@ -461,6 +461,7 @@ export const en = {
     readMore: "Read more",
     contact: "Contact",
     backHome: "Back to the entrance",
+    backToApps: "Back to apps",
     version: "Version",
     license: "Licence",
     status: "Status",

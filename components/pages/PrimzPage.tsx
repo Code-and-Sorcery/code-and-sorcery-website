@@ -30,6 +30,10 @@ export function PrimzPage({ locale }: { locale: Locale }) {
         eyebrow={copy.eyebrow}
         title="Primz"
         lead={copy.lead}
+        back={{
+          href: localizePath("/apps", locale),
+          label: dict.common.backToApps,
+        }}
         mark={
           <AppIcon
             app={app}

@@ -1,9 +1,15 @@
+import Link from "next/link";
+
+import { ArrowLeftIcon } from "@/components/Icons";
+
 import { Reveal } from "./Reveal";
 
 export function PageHero({
   eyebrow,
   title,
   lead,
+  /** Way back up the tree, shown above the eyebrow. */
+  back,
   /** Sits to the left of the title — an app's icon on its own page. */
   mark,
   aside,
@@ -12,6 +18,7 @@ export function PageHero({
   eyebrow: string;
   title: React.ReactNode;
   lead: string;
+  back?: { href: string; label: string };
   mark?: React.ReactNode;
   /** Right-hand column on wide screens: meta, artwork, status. */
   aside?: React.ReactNode;
@@ -22,6 +29,15 @@ export function PageHero({
       <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-16">
         <div>
           <Reveal>
+            {back ? (
+              <Link
+                href={back.href}
+                className="group mb-6 inline-flex items-center gap-2 text-sm text-fg-faint transition-colors hover:text-fg"
+              >
+                <ArrowLeftIcon className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+                {back.label}
+              </Link>
+            ) : null}
             <p className="eyebrow">{eyebrow}</p>
             <div className="mt-5 flex items-center gap-4 sm:gap-5">
               {mark}
