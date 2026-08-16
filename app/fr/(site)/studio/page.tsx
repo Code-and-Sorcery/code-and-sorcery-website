@@ -6,7 +6,8 @@ const locale = "fr" as const;
 const dict = getDictionary(locale);
 
 export const metadata = pageMetadata({
-  title: dict.studio.title,
+  // Tab titles stay short and match the nav label that leads here.
+  title: dict.nav.studio,
   description: dict.studio.lead,
   path: "/studio",
   locale,

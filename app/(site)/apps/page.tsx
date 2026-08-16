@@ -6,7 +6,8 @@ const locale = "en" as const;
 const dict = getDictionary(locale);
 
 export const metadata = pageMetadata({
-  title: dict.apps.title,
+  // Tab titles stay short and match the nav label that leads here.
+  title: dict.nav.apps,
   description: dict.apps.lead,
   path: "/apps",
   locale,
