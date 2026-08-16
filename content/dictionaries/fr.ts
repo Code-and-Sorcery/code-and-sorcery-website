@@ -535,8 +535,8 @@ export const fr: Dictionary = {
 
   studio: {
     eyebrow: "Le studio",
-    title: "Petit studio, stack entière",
-    titleParts: ["Petit studio,", "stack entière"],
+    title: "Conjurer le sort, et livrer",
+    titleParts: ["Conjurer le sort,", "et livrer"],
     lead: "Code and Sorcery est un studio de développement à une personne, immatriculé en France sous forme de SASU. Je conçois, construis et livre des produits de bout en bout — et je publie mes propres applications sous le même nom.",
     facts: [
       { label: "Structure", value: "SASU · France" },

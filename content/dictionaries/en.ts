@@ -530,9 +530,9 @@ export const en = {
 
   studio: {
     eyebrow: "The studio",
-    title: "Small studio, whole stack",
-    /** Rendered as two lines, the second one in the brand gradient. */
-    titleParts: ["Small studio,", "whole stack"],
+    title: "Cast the spell, then ship",
+    /** Rendered as two lines. */
+    titleParts: ["Cast the spell,", "then ship"],
     lead: "Code and Sorcery is a one-person software studio registered in France as a SASU. I design, build and ship products end to end — and I publish my own apps under the same name.",
     facts: [
       { label: "Structure", value: "SASU · France" },
