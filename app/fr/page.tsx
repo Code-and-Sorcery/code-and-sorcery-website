@@ -2,7 +2,7 @@ import { SplashPage } from "@/components/pages/SplashPage";
 import { getDictionary } from "@/content/dictionaries";
 import { pageMetadata } from "@/content/i18n";
 
-const locale = "en" as const;
+const locale = "fr" as const;
 const dict = getDictionary(locale);
 
 export const metadata = pageMetadata({

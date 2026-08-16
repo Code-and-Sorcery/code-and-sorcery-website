@@ -1,7 +1,34 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useSyncExternalStore } from "react";
 import * as THREE from "three";
+
+/**
+ * WebGL support never changes for the life of the document, so probe it once
+ * and read it through a store rather than an effect + setState.
+ */
+let webGLProbe: boolean | null = null;
+
+function hasWebGL(): boolean {
+  if (webGLProbe === null) {
+    const canvas = document.createElement("canvas");
+    webGLProbe = Boolean(
+      canvas.getContext("webgl") || canvas.getContext("experimental-webgl")
+    );
+  }
+  return webGLProbe;
+}
+
+const noopSubscribe = () => () => {};
+
+/** Static stand-in for the shader: same diagonal, no GPU. */
+function fallbackGradient(
+  topColor: string,
+  bottomColor: string,
+  rotation: number
+) {
+  return `linear-gradient(${135 + rotation}deg, transparent 34%, ${topColor}2e 47%, ${bottomColor}2e 57%, transparent 70%)`;
+}
 
 interface LightPillarProps {
   topColor?: string;
@@ -43,16 +70,11 @@ const LightPillar = ({
   const geometryRef = useRef<THREE.PlaneGeometry | null>(null);
   const mouseRef = useRef(new THREE.Vector2(0, 0));
   const timeRef = useRef(0);
-  const [webGLSupported, setWebGLSupported] = useState(true);
-
-  useEffect(() => {
-    const canvas = document.createElement("canvas");
-    const gl =
-      canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-    if (!gl) {
-      setWebGLSupported(false);
-    }
-  }, []);
+  const webGLSupported = useSyncExternalStore(
+    noopSubscribe,
+    hasWebGL,
+    () => true
+  );
 
   useEffect(() => {
     if (!containerRef.current || !webGLSupported) return;
@@ -70,10 +92,6 @@ const LightPillar = ({
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
       );
-    const isLowEndDevice =
-      isMobile ||
-      (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
-
     let effectiveQuality = quality;
     if (isMobile && quality !== "low") effectiveQuality = "low";
 
@@ -108,7 +126,13 @@ const LightPillar = ({
         depth: false,
       });
     } catch {
-      setWebGLSupported(false);
+      // The probe said WebGL was there but the renderer still refused: paint
+      // the static fallback straight onto the container and give up quietly.
+      container.style.background = fallbackGradient(
+        topColor,
+        bottomColor,
+        pillarRotation
+      );
       return;
     }
 
@@ -372,6 +396,7 @@ const LightPillar = ({
   if (!webGLSupported) {
     return (
       <div
+        aria-hidden="true"
         className={className}
         style={{
           width: "100%",
@@ -379,16 +404,9 @@ const LightPillar = ({
           position: "absolute",
           top: 0,
           left: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "rgba(0, 0, 0, 0.1)",
-          color: "#888",
-          fontSize: 14,
+          background: fallbackGradient(topColor, bottomColor, pillarRotation),
         }}
-      >
-        WebGL not supported
-      </div>
+      />
     );
   }
 

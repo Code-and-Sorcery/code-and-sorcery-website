@@ -1,4 +1,4 @@
-import { SplashPage } from "@/components/pages/SplashPage";
+import { EnvCheckerPage } from "@/components/pages/EnvCheckerPage";
 import { getDictionary } from "@/content/dictionaries";
 import { pageMetadata } from "@/content/i18n";
 
@@ -6,13 +6,12 @@ const locale = "en" as const;
 const dict = getDictionary(locale);
 
 export const metadata = pageMetadata({
-  title: `Code and Sorcery — ${dict.splash.tagline}`,
-  description: dict.splash.subtitle,
-  path: "/",
+  title: "Env Checker",
+  description: dict.envChecker.lead,
+  path: "/apps/env-checker",
   locale,
-  titleAbsolute: true,
 });
 
 export default function Page() {
-  return <SplashPage locale={locale} />;
+  return <EnvCheckerPage locale={locale} />;
 }

@@ -1,4 +1,4 @@
-import { SplashPage } from "@/components/pages/SplashPage";
+import { LegalIndexPage } from "@/components/pages/LegalIndexPage";
 import { getDictionary } from "@/content/dictionaries";
 import { pageMetadata } from "@/content/i18n";
 
@@ -6,13 +6,12 @@ const locale = "en" as const;
 const dict = getDictionary(locale);
 
 export const metadata = pageMetadata({
-  title: `Code and Sorcery — ${dict.splash.tagline}`,
-  description: dict.splash.subtitle,
-  path: "/",
+  title: dict.legalIndex.title,
+  description: dict.legalIndex.lead,
+  path: "/legal",
   locale,
-  titleAbsolute: true,
 });
 
 export default function Page() {
-  return <SplashPage locale={locale} />;
+  return <LegalIndexPage locale={locale} />;
 }

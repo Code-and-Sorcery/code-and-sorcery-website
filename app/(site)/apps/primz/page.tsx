@@ -1,4 +1,4 @@
-import { SplashPage } from "@/components/pages/SplashPage";
+import { PrimzPage } from "@/components/pages/PrimzPage";
 import { getDictionary } from "@/content/dictionaries";
 import { pageMetadata } from "@/content/i18n";
 
@@ -6,13 +6,12 @@ const locale = "en" as const;
 const dict = getDictionary(locale);
 
 export const metadata = pageMetadata({
-  title: `Code and Sorcery — ${dict.splash.tagline}`,
-  description: dict.splash.subtitle,
-  path: "/",
+  title: "Primz",
+  description: dict.primz.lead,
+  path: "/apps/primz",
   locale,
-  titleAbsolute: true,
 });
 
 export default function Page() {
-  return <SplashPage locale={locale} />;
+  return <PrimzPage locale={locale} />;
 }

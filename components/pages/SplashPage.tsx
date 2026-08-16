@@ -1,0 +1,145 @@
+"use client";
+
+import Image from "next/image";
+import CircularText from "@/components/CircularText";
+import GlareHover from "@/components/GlareHover";
+import LightPillar from "@/components/LightPillar";
+import LogoLoop, { type LogoItem } from "@/components/LogoLoop";
+import { LinkButton } from "@/components/site/LinkButton";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SocialLinks } from "@/components/site/SocialLinks";
+import { techStack } from "@/components/site/TechGrid";
+import { getDictionary } from "@/content/dictionaries";
+import { CONTACT_EMAIL, localizePath, type Locale } from "@/content/i18n";
+
+const techLogos: LogoItem[] = techStack.map((tech) => ({
+  src: tech.src,
+  alt: tech.name,
+}));
+
+/**
+ * The entrance. Kept deliberately scroll-free: one shader, one mark, and the
+ * doors into the rest of the site.
+ */
+export function SplashPage({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
+
+  return (
+    <div
+      lang={locale === "en" ? undefined : locale}
+      className="grain relative h-[100svh] w-full overflow-hidden bg-black"
+    >
+      <LightPillar
+        topColor="#ff5b2d"
+        bottomColor="#60a7ff"
+        intensity={1.5}
+        rotationSpeed={0.1}
+        glowAmount={0.002}
+        pillarWidth={7}
+        noiseIntensity={0.1}
+        pillarRotation={45}
+        pillarHeight={0.75}
+      />
+
+      <SiteHeader
+        dict={dict}
+        locale={locale}
+        floating
+        extras={<SocialLinks className="hidden sm:flex" />}
+      />
+
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8 px-6 pb-40 pt-24 sm:gap-10">
+        {/* Faded in by CSS rather than by the image's load event: the asset is
+            local and prioritised, and a cached hit can fire onLoad before
+            hydration, leaving the mark stuck at zero opacity. */}
+        <div
+          className="relative animate-rise-in"
+          style={{
+            width: "min(62vw, 42vh, 420px)",
+            aspectRatio: "1 / 1",
+          }}
+        >
+          <div className="absolute inset-0 flex items-center justify-center">
+            <CircularText
+              text="CODE AND SORCERY "
+              spinDuration={120}
+              onHover="slowDown"
+              size="93.33%"
+            />
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <GlareHover
+              width="66.67%"
+              height="66.67%"
+              background="transparent"
+              borderRadius="50%"
+              borderColor="rgba(255,255,255,0.08)"
+              glareOpacity={0.1}
+              glareAngle={-45}
+              glareSize={300}
+              transitionDuration={1000}
+            >
+              <Image
+                src="/images/code-and-sorcery-logo.webp"
+                alt="Code and Sorcery"
+                fill
+                sizes="(max-width: 640px) 45vw, 300px"
+                priority
+                style={{ objectFit: "contain" }}
+              />
+            </GlareHover>
+          </div>
+        </div>
+
+        {/* The shader runs bright in places, so the copy carries its own shadow. */}
+        <div
+          className="max-w-md space-y-4 text-center"
+          style={{ textShadow: "0 1px 24px rgba(0,0,0,0.8)" }}
+        >
+          <p className="eyebrow text-white/65">{dict.splash.tagline}</p>
+          <p className="text-balance text-[15px] leading-relaxed text-white/85 sm:text-base">
+            {dict.splash.subtitle}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+            <LinkButton
+              href={localizePath("/apps", locale)}
+              variant="outline"
+              className="border-white/20 bg-white/10 text-white hover:border-white/35"
+            >
+              {dict.splash.enter}
+            </LinkButton>
+            <LinkButton
+              href={`mailto:${CONTACT_EMAIL}`}
+              variant="ghost"
+              icon="none"
+              className="text-white/60 hover:text-white"
+            >
+              {dict.splash.contact}
+            </LinkButton>
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute inset-x-0 bottom-6 z-10 flex flex-col items-center gap-4">
+        <div className="mask-fade-x mx-auto w-full max-w-[1000px]">
+          <LogoLoop
+            logos={techLogos}
+            logoHeight={28}
+            speed={20}
+            hoverSpeed={0}
+            pauseOnHover
+            ariaLabel={dict.splash.marqueeLabel}
+            scaleOnHover
+            gap={45}
+          />
+        </div>
+        <p
+          className="px-6 text-center font-mono text-[9px] uppercase tracking-[0.14em] text-white/45 sm:text-[10px] sm:tracking-[0.22em]"
+          style={{ textShadow: "0 1px 16px rgba(0,0,0,0.85)" }}
+        >
+          {dict.footer.rights}
+        </p>
+      </div>
+    </div>
+  );
+}
