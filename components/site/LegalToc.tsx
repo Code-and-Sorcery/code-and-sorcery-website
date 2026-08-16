@@ -47,6 +47,25 @@ export function LegalToc({
             <li key={section.id}>
               <a
                 href={`#${section.id}`}
+                onClick={(event) => {
+                  // Glide to the section without putting scroll-behavior on
+                  // <html>, which would turn the router's own scroll reset into
+                  // an animation and break page-to-page navigation. scroll-mt
+                  // on the sections keeps them clear of the sticky header.
+                  const target = document.getElementById(section.id);
+                  if (!target) return;
+                  event.preventDefault();
+                  const reduced = window.matchMedia(
+                    "(prefers-reduced-motion: reduce)",
+                  ).matches;
+                  target.scrollIntoView({
+                    behavior: reduced ? "auto" : "smooth",
+                    block: "start",
+                  });
+                  // replace, not push: a table of contents should not bury the
+                  // previous page under a dozen history entries.
+                  history.replaceState(null, "", `#${section.id}`);
+                }}
                 aria-current={current ? "true" : undefined}
                 className={cn(
                   "-ml-px flex gap-2.5 border-l py-1.5 pl-4 text-[13px] leading-snug transition-colors",

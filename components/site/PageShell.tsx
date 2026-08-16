@@ -2,6 +2,7 @@ import type { Dictionary } from "@/content/dictionaries";
 import type { Locale } from "@/content/i18n";
 
 import { ArcaneBackdrop } from "./ArcaneBackdrop";
+import { ScrollReset } from "./ScrollReset";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 
@@ -21,6 +22,7 @@ export function PageShell({
       className="grain relative flex min-h-svh flex-col"
     >
       <ArcaneBackdrop />
+      <ScrollReset />
 
       <a
         href="#content"
