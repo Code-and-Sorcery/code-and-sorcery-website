@@ -21,7 +21,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
   return (
     <div
       lang={locale === "en" ? undefined : locale}
-      className="grain relative h-[100svh] w-full overflow-hidden bg-black"
+      className="grain relative h-[100svh] w-full overflow-hidden bg-ink"
     >
       {/* Blue up, orange down: the ramp runs along the pillar, so the diagonal
           reads the same way round as the logo. The blue is sampled from the
