@@ -28,11 +28,7 @@ export function PrimzPage({ locale }: { locale: Locale }) {
     <>
       <PageHero
         eyebrow={copy.eyebrow}
-        title={
-          <>
-            Prim<span className="text-gradient">z</span>
-          </>
-        }
+        title="Primz"
         lead={copy.lead}
         mark={
           <AppIcon

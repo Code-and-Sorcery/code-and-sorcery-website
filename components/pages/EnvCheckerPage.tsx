@@ -26,11 +26,7 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
     <>
       <PageHero
         eyebrow={copy.eyebrow}
-        title={
-          <>
-            Env <span className="text-gradient">Checker</span>
-          </>
-        }
+        title="Env Checker"
         lead={copy.lead}
         mark={
           <AppIcon
