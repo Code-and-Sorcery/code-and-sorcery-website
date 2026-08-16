@@ -573,7 +573,7 @@ export const en = {
 
   apps: {
     eyebrow: "Catalogue",
-    title: "Apps from the forge",
+    title: "Apps from the anvil",
     lead: "Everything Code and Sorcery has published or is preparing to publish. Legal documents for each one live in the Legal section.",
     entries: {
       "env-checker": {
