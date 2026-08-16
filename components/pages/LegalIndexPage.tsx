@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { ArrowRightIcon, PuzzleIcon } from "@/components/Icons";
 import { AppIcon } from "@/components/site/AppIcon";
+import { Logo } from "@/components/site/Logo";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
@@ -75,7 +76,10 @@ export function LegalIndexPage({ locale }: { locale: Locale }) {
           </div>
 
           <div className="surface rounded-lg p-7">
-            <h2 className="text-base font-semibold">{copy.companyTitle}</h2>
+            <Logo className="h-9 w-9" />
+            <h2 className="mt-4 text-base font-semibold">
+              {copy.companyTitle}
+            </h2>
             <p className="prose-arcane mt-2.5 text-sm">
               <RichText text={copy.companyBody} />
             </p>
