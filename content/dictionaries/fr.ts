@@ -563,7 +563,7 @@ export const fr: Dictionary = {
     ],
     stackTitle: "Composants de l’incantation",
     stackNote: "Ceux vers lesquels je vais le plus souvent.",
-    elsewhereTitle: "Ailleurs",
+    elsewhereTitle: "Liens",
     elsewhere: [
       { label: "GitHub", value: "Varadiell", key: "github" },
       { label: "LinkedIn", value: "williamsimonvezo", key: "linkedin" },
@@ -730,7 +730,7 @@ export const fr: Dictionary = {
     tagline: "Studio de développement indépendant. Applications, outils et onchain.",
     siteTitle: "Site",
     appsTitle: "Applications",
-    elsewhereTitle: "Ailleurs",
+    elsewhereTitle: "Liens",
     legalTitle: "Mentions",
     rights: "Code and Sorcery · SASU immatriculée en France",
   },

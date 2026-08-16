@@ -559,7 +559,7 @@ export const en = {
     ],
     stackTitle: "Incantation components",
     stackNote: "The set I reach for most.",
-    elsewhereTitle: "Elsewhere",
+    elsewhereTitle: "Links",
     elsewhere: [
       { label: "GitHub", value: "Varadiell", key: "github" },
       { label: "LinkedIn", value: "williamsimonvezo", key: "linkedin" },
@@ -726,7 +726,7 @@ export const en = {
     tagline: "Independent software studio. Apps, tools and onchain work.",
     siteTitle: "Site",
     appsTitle: "Apps",
-    elsewhereTitle: "Elsewhere",
+    elsewhereTitle: "Links",
     legalTitle: "Legal",
     rights: "Code and Sorcery · SASU registered in France",
   },
