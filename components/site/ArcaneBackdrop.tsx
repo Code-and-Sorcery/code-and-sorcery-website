@@ -9,13 +9,16 @@ export function ArcaneBackdrop() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-ink"
     >
-      {/* Grid, fading out downwards. */}
+      {/* Grid, fading out downwards. Anchored from the centre rather than the
+          default top-left corner, so the tiling is symmetric about the middle of
+          the viewport and both edges are cut by the same amount. */}
       <div
         className="mask-fade-b absolute inset-0"
         style={{
           backgroundImage:
             "linear-gradient(hsl(var(--line-strong) / 0.55) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--line-strong) / 0.55) 1px, transparent 1px)",
           backgroundSize: "72px 72px",
+          backgroundPosition: "center",
         }}
       />
 
