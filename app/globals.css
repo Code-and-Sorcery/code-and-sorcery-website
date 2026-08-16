@@ -34,13 +34,20 @@
     border-color: hsl(var(--line));
   }
 
+  /* The canvas colour belongs here, not on body: from body it only reaches the
+     canvas by propagation, and a frame where that box is unpainted falls
+     through to the browser's white. */
   html {
     @apply bg-ink;
     -webkit-tap-highlight-color: transparent;
   }
 
+  /* Deliberately no background. Giving html one stops body's from propagating,
+     which turns body into an opaque box — and in paint order the backgrounds of
+     in-flow blocks land above negative z-index descendants, so it would cover
+     the ArcaneBackdrop sitting at -z-10. */
   body {
-    @apply bg-ink font-sans text-fg antialiased;
+    @apply font-sans text-fg antialiased;
     min-height: 100svh;
   }
 
