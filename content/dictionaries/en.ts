@@ -534,10 +534,6 @@ export const en = {
     /** Rendered as two lines, the second one in the brand gradient. */
     titleParts: ["Small studio,", "whole stack"],
     lead: "Code and Sorcery is a one-person software studio registered in France as a SASU. I design, build and ship products end to end — and I publish my own apps under the same name.",
-    paragraphs: [
-      "Behind the name is William Simon--Vezo, a freelance software engineer. Client work and my own apps come out of the same workshop, which means the tools I build for myself get used in anger before anyone else sees them.",
-      "I like the problems that need both halves of the craft: the engineering that makes a thing correct, and the design that makes it worth opening. Typed at the boundaries, tested where it counts, shipped small and often.",
-    ],
     facts: [
       { label: "Structure", value: "SASU · France" },
       { label: "Practice", value: "Web · Mobile · Onchain" },
@@ -563,8 +559,8 @@ export const en = {
         body: "Typed boundaries, Vitest and Playwright suites, Storybook for the parts people touch, CI that blocks instead of nagging.",
       },
     ],
-    stackTitle: "Tools of the trade",
-    stackNote: "The set I reach for most. The list is a habit, not a religion.",
+    stackTitle: "Spell components",
+    stackNote: "The set I reach for most.",
     elsewhereTitle: "Elsewhere",
     elsewhere: [
       { label: "GitHub", value: "Varadiell", key: "github" },

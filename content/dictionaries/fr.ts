@@ -538,10 +538,6 @@ export const fr: Dictionary = {
     title: "Petit studio, stack entière",
     titleParts: ["Petit studio,", "stack entière"],
     lead: "Code and Sorcery est un studio de développement à une personne, immatriculé en France sous forme de SASU. Je conçois, construis et livre des produits de bout en bout — et je publie mes propres applications sous le même nom.",
-    paragraphs: [
-      "Derrière ce nom, William Simon--Vezo, ingénieur logiciel indépendant. Les missions client et mes applications sortent du même atelier : les outils que je fabrique pour moi sont éprouvés en conditions réelles avant que quiconque les voie.",
-      "J’aime les problèmes qui demandent les deux moitiés du métier : l’ingénierie qui rend une chose correcte, et le design qui donne envie de l’ouvrir. Typé aux frontières, testé là où ça compte, livré petit et souvent.",
-    ],
     facts: [
       { label: "Structure", value: "SASU · France" },
       { label: "Terrain", value: "Web · Mobile · Onchain" },
@@ -567,8 +563,8 @@ export const fr: Dictionary = {
         body: "Frontières typées, suites Vitest et Playwright, Storybook pour ce que les gens manipulent, CI qui bloque au lieu de râler.",
       },
     ],
-    stackTitle: "Outils de l’atelier",
-    stackNote: "Ceux vers lesquels je vais le plus souvent. Une habitude, pas une religion.",
+    stackTitle: "Composants du sort",
+    stackNote: "Ceux vers lesquels je vais le plus souvent.",
     elsewhereTitle: "Ailleurs",
     elsewhere: [
       { label: "GitHub", value: "Varadiell", key: "github" },

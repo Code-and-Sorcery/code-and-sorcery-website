@@ -1,5 +1,9 @@
-import Image from "next/image";
-
+import {
+  ArrowUpRightIcon,
+  GitHubIcon,
+  LinkedInIcon,
+  ResumeIcon,
+} from "@/components/Icons";
 import { FeatureGrid } from "@/components/site/FeatureGrid";
 import { LinkButton } from "@/components/site/LinkButton";
 import { Logo } from "@/components/site/Logo";
@@ -11,6 +15,16 @@ import { SpellCard } from "@/components/site/SpellCard";
 import { TechGrid } from "@/components/site/TechGrid";
 import { getDictionary } from "@/content/dictionaries";
 import { CONTACT_EMAIL, SOCIALS, type Locale } from "@/content/i18n";
+
+/** Keyed by the dictionary's `elsewhere` entries. */
+const elsewhereIcons: Record<
+  string,
+  (props: { className?: string }) => React.ReactNode
+> = {
+  github: GitHubIcon,
+  linkedin: LinkedInIcon,
+  resume: ResumeIcon,
+};
 
 export function StudioPage({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
@@ -40,22 +54,7 @@ export function StudioPage({ locale }: { locale: Locale }) {
             </div>
           </div>
         }
-      >
-        <div className="mt-9 flex max-w-xl flex-col gap-6 sm:flex-row sm:items-start">
-          <Image
-            src="/images/wsimonvezo.webp"
-            alt="William Simon--Vezo"
-            width={96}
-            height={96}
-            className="h-20 w-20 shrink-0 rounded-full border border-line object-cover sm:h-24 sm:w-24"
-          />
-          <div className="space-y-4 text-[15px] leading-relaxed text-fg-faint">
-            {dict.studio.paragraphs.map((paragraph) => (
-              <p key={paragraph.slice(0, 24)}>{paragraph}</p>
-            ))}
-          </div>
-        </div>
-      </PageHero>
+      />
 
       <section className="container space-y-8 py-6">
         <SectionHeading title={dict.studio.workTitle} />
@@ -73,21 +72,33 @@ export function StudioPage({ locale }: { locale: Locale }) {
       <section className="container space-y-8 pb-16">
         <SectionHeading title={dict.studio.elsewhereTitle} />
         <ul className="grid gap-4 sm:grid-cols-3">
-          {dict.studio.elsewhere.map((item) => (
-            <SpellCard as="li" key={item.key}>
-              <a
-                href={SOCIALS[item.key as keyof typeof SOCIALS]}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="block p-5"
-              >
-                <p className="eyebrow">{item.label}</p>
-                <p className="mt-2.5 font-mono text-sm text-fg-dim">
-                  {item.value}
-                </p>
-              </a>
-            </SpellCard>
-          ))}
+          {dict.studio.elsewhere.map((item) => {
+            const Icon = elsewhereIcons[item.key];
+
+            return (
+              <SpellCard as="li" key={item.key} className="group">
+                <a
+                  href={SOCIALS[item.key as keyof typeof SOCIALS]}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="flex items-center gap-4 p-5"
+                >
+                  {Icon ? (
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line bg-white/[0.03] text-fg-dim transition-colors group-hover:border-line-strong group-hover:text-fg">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                  ) : null}
+                  <span className="min-w-0 flex-1">
+                    <span className="eyebrow block">{item.label}</span>
+                    <span className="mt-1 block truncate font-mono text-sm text-fg-dim">
+                      {item.value}
+                    </span>
+                  </span>
+                  <ArrowUpRightIcon className="h-4 w-4 shrink-0 text-fg-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" />
+                </a>
+              </SpellCard>
+            );
+          })}
         </ul>
       </section>
 
