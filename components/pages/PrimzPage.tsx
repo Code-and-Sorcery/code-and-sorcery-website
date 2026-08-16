@@ -7,6 +7,7 @@ import { FeatureGrid } from "@/components/site/FeatureGrid";
 import { MetaList } from "@/components/site/MetaList";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
+import { stagger } from "@/components/site/stagger";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { SpellCard } from "@/components/site/SpellCard";
 import { StatusPill } from "@/components/site/StatusPill";
@@ -90,7 +91,7 @@ export function PrimzPage({ locale }: { locale: Locale }) {
         <SectionHeading title={copy.pillarsTitle} />
         <ul className="grid gap-4 lg:grid-cols-3">
           {copy.pillars.map((pillar, index) => (
-            <Reveal as="li" key={pillar.title}>
+            <Reveal as="li" key={pillar.title} delay={stagger(index)}>
               <SpellCard className="h-full p-7">
                 <span className="font-mono text-xs text-ember/70">
                   {String(index + 1).padStart(2, "0")}

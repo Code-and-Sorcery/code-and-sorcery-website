@@ -7,6 +7,7 @@ import { LinkButton } from "@/components/site/LinkButton";
 import { MetaList } from "@/components/site/MetaList";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
+import { stagger } from "@/components/site/stagger";
 import { RichText } from "@/components/site/RichText";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { SpellCard } from "@/components/site/SpellCard";
@@ -111,10 +112,11 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
       <section className="container space-y-8 pb-16">
         <SectionHeading title={copy.commandsTitle} lead={copy.commandsNote} />
         <ul className="space-y-2">
-          {copy.commands.map((command) => (
+          {copy.commands.map((command, index) => (
             <Reveal
               as="li"
               key={command.name}
+              delay={stagger(index)}
               className="surface rounded-md px-5 py-4 sm:flex sm:items-baseline sm:gap-6"
             >
               <code className="block font-mono text-[13px] text-fg sm:w-[26rem] sm:shrink-0">

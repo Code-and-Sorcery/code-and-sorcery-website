@@ -5,6 +5,7 @@ import { AppIcon } from "@/components/site/AppIcon";
 import { Logo } from "@/components/site/Logo";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
+import { stagger } from "@/components/site/stagger";
 import { RichText } from "@/components/site/RichText";
 import { SpellCard } from "@/components/site/SpellCard";
 import { apps } from "@/content/apps";
@@ -73,13 +74,13 @@ export function LegalIndexPage({ locale }: { locale: Locale }) {
               </Reveal>
 
               <ul className="grid gap-4 sm:grid-cols-2">
-                {group.entries.map((entry) => {
+                {group.entries.map((entry, index) => {
                   const body = (
                     <EntryBody entry={entry} readMore={dict.common.readMore} />
                   );
 
                   return (
-                    <Reveal as="li" key={entry.title}>
+                    <Reveal as="li" key={entry.title} delay={stagger(index)}>
                       <SpellCard className="group h-full">
                         {entry.path ? (
                           <Link
