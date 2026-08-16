@@ -29,9 +29,13 @@ export function SplashPage({ locale }: { locale: Locale }) {
       lang={locale === "en" ? undefined : locale}
       className="grain relative h-[100svh] w-full overflow-hidden bg-black"
     >
+      {/* Blue up, orange down: the ramp runs along the pillar, so the diagonal
+          reads the same way round as the logo. The blue is sampled from the
+          logo's triangle; the orange is lifted off its red-leaning gradient so
+          it still reads orange once the glow dims it. */}
       <LightPillar
-        topColor="#ff5b2d"
-        bottomColor="#60a7ff"
+        topColor="#61a6c3"
+        bottomColor="#ff8a3c"
         intensity={1.5}
         rotationSpeed={0.1}
         glowAmount={0.002}

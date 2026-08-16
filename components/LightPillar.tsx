@@ -195,9 +195,9 @@ const LightPillar = ({
           rotS = sin(a);
         }
 
-        vec3 col = vec3(0.0);
+        float energy = 0.0;
         float t = 0.1;
-        
+
         for(int i = 0; i < MAX_ITER; i++) {
           vec3 p = ro + rd * t;
           p.xz = vec2(rotC * p.x - rotS * p.z, rotS * p.x + rotC * p.z);
@@ -221,19 +221,31 @@ const LightPillar = ({
           d = max(d, bound) + h * h * 0.0625 / k;
           d = abs(d) * 0.15 + 0.01;
 
-          float grad = clamp((15.0 - p.y) / 30.0, 0.0, 1.0);
-          col += mix(uBottomColor, uTopColor, grad) / d;
+          energy += 1.0 / d;
 
           t += d * STEP_MULT;
           if(t > 50.0) break;
         }
 
+        // Hue and brightness are kept apart deliberately. Mixing the two brand
+        // colours at every step and saturating each channel afterwards drove
+        // red and blue to the ceiling together and washed the whole field
+        // magenta. Now a pixel takes one hue off a ramp running along the
+        // pillar, and the march only decides how brightly it burns.
         float widthNorm = uPillarWidth / 3.0;
-        col = tanh(col * uGlowAmount / widthNorm);
-        
+        float glow = tanh(energy * uGlowAmount * uIntensity / widthNorm);
+
+        // Narrow crossover: each end keeps a broad field of its own hue and the
+        // muddy midpoint between orange and blue stays a thin seam.
+        float ramp = smoothstep(0.32, 0.68, clamp(uv.y * 0.38 + 0.5, 0.0, 1.0));
+        vec3 col = mix(uBottomColor, uTopColor, ramp) * glow;
+
+        // Only the hottest cores bleach towards white, so they still read as light.
+        col = mix(col, vec3(1.0), pow(glow, 8.0) * 0.35);
+
         col -= fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) / 15.0 * uNoiseIntensity;
-        
-        gl_FragColor = vec4(col * uIntensity, 1.0);
+
+        gl_FragColor = vec4(col, 1.0);
       }
     `;
 
