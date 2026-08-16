@@ -587,7 +587,7 @@ export const en = {
           "A private journal for the children you care about — firsts, memories, photos, audio and small notes, kept on the phone and nowhere else.",
       },
     },
-    forgeTitle: "Still in the forge",
+    forgeTitle: "Still on the anvil",
     forgeBody:
       "Other projects are being hammered on and are not public yet. They land here when they are ready, not before.",
   },
