@@ -88,27 +88,3 @@ export const LockIcon = ({ className = base }: IconProps) => (
   </svg>
 );
 
-export const DeviceIcon = ({ className = base }: IconProps) => (
-  <svg viewBox="0 0 24 24" className={className} {...stroke} aria-hidden="true">
-    <rect x="6" y="2.5" width="12" height="19" rx="3" />
-    <path d="M10.5 5.5h3M12 18.2h.01" />
-  </svg>
-);
-
-export const PuzzleIcon = ({ className = base }: IconProps) => (
-  <svg viewBox="0 0 24 24" className={className} {...stroke} aria-hidden="true">
-    <path d="M9.5 3.5a2 2 0 0 1 4 0V5h3a1.5 1.5 0 0 1 1.5 1.5v3h1.5a2 2 0 0 1 0 4H18v3a1.5 1.5 0 0 1-1.5 1.5h-3v1.5a2 2 0 0 1-4 0V18h-3A1.5 1.5 0 0 1 5 16.5v-3H3.5a2 2 0 0 1 0-4H5v-3A1.5 1.5 0 0 1 6.5 5h3V3.5Z" />
-  </svg>
-);
-
-export const SparkIcon = ({ className = base }: IconProps) => (
-  <svg viewBox="0 0 24 24" className={className} {...stroke} aria-hidden="true">
-    <path d="M12 3.5 13.9 9 19.5 11 13.9 13 12 20.5 10.1 13 4.5 11 10.1 9 12 3.5Z" />
-  </svg>
-);
-
-export const DiamondIcon = ({ className = base }: IconProps) => (
-  <svg viewBox="0 0 24 24" className={className} {...stroke} aria-hidden="true">
-    <path d="M12 3 21 12l-9 9-9-9 9-9Z" />
-  </svg>
-);

@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-import { ArrowRightIcon, PuzzleIcon } from "@/components/Icons";
+import { ArrowRightIcon } from "@/components/Icons";
 import { AppIcon } from "@/components/site/AppIcon";
 import { Logo } from "@/components/site/Logo";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { SpellCard } from "@/components/site/SpellCard";
-import { apps } from "@/content/apps";
+import { apps, getApp } from "@/content/apps";
 import { getDictionary } from "@/content/dictionaries";
 import { localizePath, type Locale } from "@/content/i18n";
 
@@ -64,9 +64,11 @@ export function LegalIndexPage({ locale }: { locale: Locale }) {
 
         <Reveal className="grid gap-4 sm:grid-cols-2">
           <div className="surface rounded-lg p-7">
-            <span className="inline-grid h-9 w-9 place-items-center rounded-full border border-line text-fg-faint">
-              <PuzzleIcon className="h-4 w-4" />
-            </span>
+            <AppIcon
+              app={getApp("env-checker")}
+              className="h-9 w-9 rounded-lg"
+              compact
+            />
             <h2 className="mt-4 text-base font-semibold">
               {copy.envCheckerTitle}
             </h2>
