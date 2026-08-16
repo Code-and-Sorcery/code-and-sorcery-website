@@ -23,7 +23,7 @@ export function StudioPage({ locale }: { locale: Locale }) {
           <>
             {dict.studio.titleParts[0]}
             <br />
-            <span className="text-gradient">{dict.studio.titleParts[1]}</span>
+            {dict.studio.titleParts[1]}
           </>
         }
         lead={dict.studio.lead}
