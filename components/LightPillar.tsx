@@ -13,7 +13,7 @@ function hasWebGL(): boolean {
   if (webGLProbe === null) {
     const canvas = document.createElement("canvas");
     webGLProbe = Boolean(
-      canvas.getContext("webgl") || canvas.getContext("experimental-webgl")
+      canvas.getContext("webgl") || canvas.getContext("experimental-webgl"),
     );
   }
   return webGLProbe;
@@ -25,7 +25,7 @@ const noopSubscribe = () => () => {};
 function fallbackGradient(
   topColor: string,
   bottomColor: string,
-  rotation: number
+  rotation: number,
 ) {
   return `linear-gradient(${135 + rotation}deg, transparent 34%, ${topColor}2e 47%, ${bottomColor}2e 57%, transparent 70%)`;
 }
@@ -73,7 +73,7 @@ const LightPillar = ({
   const webGLSupported = useSyncExternalStore(
     noopSubscribe,
     hasWebGL,
-    () => true
+    () => true,
   );
 
   useEffect(() => {
@@ -90,7 +90,7 @@ const LightPillar = ({
 
     const isMobile =
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
+        navigator.userAgent,
       );
     let effectiveQuality = quality;
     if (isMobile && quality !== "low") effectiveQuality = "low";
@@ -131,7 +131,7 @@ const LightPillar = ({
       container.style.background = fallbackGradient(
         topColor,
         bottomColor,
-        pillarRotation
+        pillarRotation,
       );
       return;
     }
@@ -352,10 +352,7 @@ const LightPillar = ({
         const newWidth = containerRef.current.clientWidth;
         const newHeight = containerRef.current.clientHeight;
         rendererRef.current.setSize(newWidth, newHeight);
-        materialRef.current.uniforms.uResolution.value.set(
-          newWidth,
-          newHeight
-        );
+        materialRef.current.uniforms.uResolution.value.set(newWidth, newHeight);
       }, 150);
     };
 

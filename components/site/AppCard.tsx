@@ -50,7 +50,9 @@ export function AppCard({
 
         <div className="space-y-3">
           <p className="text-[15px] font-medium text-fg">{copy.tagline}</p>
-          <p className="text-sm leading-relaxed text-fg-faint">{copy.summary}</p>
+          <p className="text-sm leading-relaxed text-fg-faint">
+            {copy.summary}
+          </p>
         </div>
 
         <div className="mt-auto space-y-5">

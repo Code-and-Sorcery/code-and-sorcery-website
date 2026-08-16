@@ -43,9 +43,7 @@ export function SiteHeader({
     <header
       className={cn(
         "z-50 w-full transition-colors duration-500",
-        floating
-          ? "absolute inset-x-0 top-0"
-          : "sticky top-0 border-b",
+        floating ? "absolute inset-x-0 top-0" : "sticky top-0 border-b",
         !floating && scrolled
           ? "border-line bg-ink/80 backdrop-blur-xl"
           : "border-transparent",

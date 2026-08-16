@@ -6,7 +6,11 @@ import "./CircularText.css";
 
 type OnHover = "slowDown" | "speedUp" | "pause" | "goBonkers";
 
-const getRotationTransition = (duration: number, from: number, loop = true) => ({
+const getRotationTransition = (
+  duration: number,
+  from: number,
+  loop = true,
+) => ({
   from,
   to: from + 360,
   ease: "linear" as const,

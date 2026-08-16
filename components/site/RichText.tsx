@@ -7,9 +7,7 @@ import type { ReactNode } from "react";
  * Harmless for English, which never puts a space before those marks.
  */
 function tightenPunctuation(text: string): string {
-  return text
-    .replace(/ ([:;?!»])/g, "\u00a0$1")
-    .replace(/« /g, "«\u00a0");
+  return text.replace(/ ([:;?!»])/g, "\u00a0$1").replace(/« /g, "«\u00a0");
 }
 
 const TOKEN = /\*\*([^*]+)\*\*|`([^`]+)`|\[([^\]]+)\]\(([^)]+)\)/g;

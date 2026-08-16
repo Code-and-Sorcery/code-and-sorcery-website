@@ -3,7 +3,12 @@ import Link from "next/link";
 import { MailIcon } from "@/components/Icons";
 import { apps } from "@/content/apps";
 import type { Dictionary } from "@/content/dictionaries";
-import { CONTACT_EMAIL, localizePath, SOCIALS, type Locale } from "@/content/i18n";
+import {
+  CONTACT_EMAIL,
+  localizePath,
+  SOCIALS,
+  type Locale,
+} from "@/content/i18n";
 
 import { Logo } from "./Logo";
 

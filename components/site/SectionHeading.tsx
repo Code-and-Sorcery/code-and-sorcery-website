@@ -26,7 +26,9 @@ export function SectionHeading({
       {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
       <h2 className="text-3xl font-semibold sm:text-4xl">{title}</h2>
       {lead ? (
-        <p className="max-w-2xl text-base leading-relaxed text-fg-dim">{lead}</p>
+        <p className="max-w-2xl text-base leading-relaxed text-fg-dim">
+          {lead}
+        </p>
       ) : null}
     </Reveal>
   );
