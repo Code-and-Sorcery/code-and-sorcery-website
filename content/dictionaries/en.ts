@@ -670,6 +670,7 @@ export const en = {
     lead: "Terms of use and privacy policies for the apps published by Code and Sorcery.",
     groups: [
       {
+        slug: "primz",
         app: "Primz",
         note: "iOS & Android · in development",
         docs: [

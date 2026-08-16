@@ -674,6 +674,7 @@ export const fr: Dictionary = {
     lead: "Conditions d’utilisation et politiques de confidentialité des applications publiées par Code and Sorcery.",
     groups: [
       {
+        slug: "primz",
         app: "Primz",
         note: "iOS & Android · en développement",
         docs: [
