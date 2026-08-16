@@ -15,7 +15,8 @@ export type AppEntry = {
   status: AppStatus;
   /** Mono metadata rendered as `key · key · key` on the card. */
   surface: string;
-  version: string;
+  /** Only for apps whose published version is worth naming. */
+  version?: string;
   license?: string;
   tech: string[];
   /** Per-app accent, as an HSL triple so it can drop into `hsl(...)`. */
@@ -62,7 +63,6 @@ export const apps: AppEntry[] = [
     name: "Primz",
     status: "building",
     surface: "iOS · Android",
-    version: "0.4.24",
     tech: ["React Native", "Expo", "SQLite"],
     accent: "184 39% 34%",
     icon: "/images/primz-icon.png",

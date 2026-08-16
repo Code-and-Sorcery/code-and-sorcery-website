@@ -47,7 +47,7 @@ export function PrimzPage({ locale }: { locale: Locale }) {
             iconAlt="Primz"
             iconBackground={app.iconBackground}
             accent={app.accent}
-            badges={["iOS", "Android", `v${app.version}`]}
+            badges={["iOS", "Android"]}
           />
         }
       >
