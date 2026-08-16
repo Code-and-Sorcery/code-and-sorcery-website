@@ -24,8 +24,8 @@ export const techStack: TechItem[] = [
 export function TechGrid() {
   return (
     <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-      {techStack.map((tech, index) => (
-        <Reveal as="li" key={tech.name} delay={Math.min(index * 30, 300)}>
+      {techStack.map((tech) => (
+        <Reveal as="li" key={tech.name}>
           <div className="surface flex items-center gap-3 rounded-md px-3.5 py-3 transition-colors hover:border-line-strong">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img

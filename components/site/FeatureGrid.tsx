@@ -21,7 +21,7 @@ export function FeatureGrid({
         className,
       )}
     >
-      {items.map((item, index) => (
+      {items.map((item) => (
         // The cell itself stays put — only its contents fade in, so the grid
         // never flashes as a bare block of separator colour.
         <li
@@ -29,7 +29,7 @@ export function FeatureGrid({
           className="group relative bg-ink/80 p-6 backdrop-blur-sm transition-colors hover:bg-ink-raised/80"
         >
           <span className="absolute left-6 top-[1.7rem] h-1.5 w-1.5 rotate-45 bg-line-strong transition-colors group-hover:bg-ember" />
-          <Reveal delay={Math.min(index * 45, 320)} className="pl-6">
+          <Reveal className="pl-6">
             <h3 className="text-sm font-semibold">{item.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-fg-faint">
               {item.body}

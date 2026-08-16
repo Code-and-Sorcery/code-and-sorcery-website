@@ -49,9 +49,9 @@ export function PageHero({
               {lead}
             </p>
           </Reveal>
-          {children ? <Reveal delay={90}>{children}</Reveal> : null}
+          {children ? <Reveal>{children}</Reveal> : null}
         </div>
-        {aside ? <Reveal delay={140}>{aside}</Reveal> : null}
+        {aside ? <Reveal>{aside}</Reveal> : null}
       </div>
     </section>
   );

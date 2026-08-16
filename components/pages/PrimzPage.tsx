@@ -90,7 +90,7 @@ export function PrimzPage({ locale }: { locale: Locale }) {
         <SectionHeading title={copy.pillarsTitle} />
         <ul className="grid gap-4 lg:grid-cols-3">
           {copy.pillars.map((pillar, index) => (
-            <Reveal as="li" key={pillar.title} delay={index * 70}>
+            <Reveal as="li" key={pillar.title}>
               <SpellCard className="h-full p-7">
                 <span className="font-mono text-xs text-ember/70">
                   {String(index + 1).padStart(2, "0")}

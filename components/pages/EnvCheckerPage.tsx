@@ -111,11 +111,10 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
       <section className="container space-y-8 pb-16">
         <SectionHeading title={copy.commandsTitle} lead={copy.commandsNote} />
         <ul className="space-y-2">
-          {copy.commands.map((command, index) => (
+          {copy.commands.map((command) => (
             <Reveal
               as="li"
               key={command.name}
-              delay={Math.min(index * 50, 200)}
               className="surface rounded-md px-5 py-4 sm:flex sm:items-baseline sm:gap-6"
             >
               <code className="block font-mono text-[13px] text-fg sm:w-[26rem] sm:shrink-0">

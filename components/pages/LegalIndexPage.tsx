@@ -73,13 +73,13 @@ export function LegalIndexPage({ locale }: { locale: Locale }) {
               </Reveal>
 
               <ul className="grid gap-4 sm:grid-cols-2">
-                {group.entries.map((entry, index) => {
+                {group.entries.map((entry) => {
                   const body = (
                     <EntryBody entry={entry} readMore={dict.common.readMore} />
                   );
 
                   return (
-                    <Reveal as="li" key={entry.title} delay={index * 70}>
+                    <Reveal as="li" key={entry.title}>
                       <SpellCard className="group h-full">
                         {entry.path ? (
                           <Link
