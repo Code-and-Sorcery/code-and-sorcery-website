@@ -12,6 +12,7 @@ import { MetaList } from "@/components/site/MetaList";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import { stagger } from "@/components/site/stagger";
 import { SpellCard } from "@/components/site/SpellCard";
 import { TechGrid } from "@/components/site/TechGrid";
 import { getDictionary } from "@/content/dictionaries";
@@ -77,31 +78,33 @@ export function StudioPage({ locale }: { locale: Locale }) {
       <section className="container space-y-8 pb-16">
         <SectionHeading title={dict.studio.elsewhereTitle} />
         <ul className="grid gap-4 sm:grid-cols-3">
-          {dict.studio.elsewhere.map((item) => {
+          {dict.studio.elsewhere.map((item, index) => {
             const Icon = elsewhereIcons[item.key];
 
             return (
-              <SpellCard as="li" key={item.key} className="group">
-                <a
-                  href={SOCIALS[item.key as keyof typeof SOCIALS]}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="flex items-center gap-4 p-5"
-                >
-                  {Icon ? (
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line bg-white/[0.03] text-fg-dim transition-colors group-hover:border-line-strong group-hover:text-fg">
-                      <Icon className="h-4 w-4" />
+              <Reveal as="li" key={item.key} delay={stagger(index)}>
+                <SpellCard className="group">
+                  <a
+                    href={SOCIALS[item.key as keyof typeof SOCIALS]}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="flex items-center gap-4 p-5"
+                  >
+                    {Icon ? (
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line bg-white/[0.03] text-fg-dim transition-colors group-hover:border-line-strong group-hover:text-fg">
+                        <Icon className="h-4 w-4" />
+                      </span>
+                    ) : null}
+                    <span className="min-w-0 flex-1">
+                      <span className="eyebrow block">{item.label}</span>
+                      <span className="mt-1 block truncate font-mono text-sm text-fg-dim">
+                        {item.value}
+                      </span>
                     </span>
-                  ) : null}
-                  <span className="min-w-0 flex-1">
-                    <span className="eyebrow block">{item.label}</span>
-                    <span className="mt-1 block truncate font-mono text-sm text-fg-dim">
-                      {item.value}
-                    </span>
-                  </span>
-                  <ArrowUpRightIcon className="h-4 w-4 shrink-0 text-fg-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" />
-                </a>
-              </SpellCard>
+                    <ArrowUpRightIcon className="h-4 w-4 shrink-0 text-fg-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" />
+                  </a>
+                </SpellCard>
+              </Reveal>
             );
           })}
         </ul>
