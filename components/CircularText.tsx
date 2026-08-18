@@ -13,12 +13,14 @@ import "./CircularText.css";
 type OnHover = "slowDown" | "speedUp" | "pause" | "goBonkers";
 
 /**
- * ASCII stand-ins for Elder Futhark. Geist carries no Runic block, so real
- * runes would drop to whatever face the OS happens to have for them — or to
- * tofu. These angular marks are guaranteed to render in the same font as the
- * letters they replace.
+ * Elder Futhark, from the Unicode Runic block (U+16A0). Geist carries no Runic
+ * coverage, so these fall through the stack to whatever face the OS has for
+ * them — present by default on macOS and Windows, but a bare Linux box without
+ * a Noto font would show tofu.
  */
-const RUNES = Array.from("FNRPHIXSTBMLY<>/\\|+*=^");
+const RUNES = Array.from(
+  "\u16A0\u16A2\u16A6\u16A8\u16B1\u16B2\u16B7\u16B9\u16BA\u16BE\u16C1\u16C3\u16C7\u16C8\u16C9\u16CA\u16CF\u16D2\u16D6\u16D7\u16DA\u16DC\u16DE\u16DF",
+);
 
 const STEP_MS = 42; // gap between two letters starting to turn
 const CHURN_MS = 150; // how long a letter cycles before it settles
@@ -50,6 +52,12 @@ function shuffledRanks(length: number): number[] {
 }
 
 const randomRune = () => RUNES[Math.floor(Math.random() * RUNES.length)];
+
+/** Runes need the stroke compensation in the stylesheet; letters do not. */
+function isRune(glyph: string): boolean {
+  const code = glyph.codePointAt(0) ?? 0;
+  return code >= 0x16a0 && code <= 0x16ff;
+}
 
 interface CircularTextProps {
   text: string;
@@ -224,7 +232,11 @@ export default function CircularText({
         const transform = `rotateZ(${rotationDeg}deg) translate3d(${x}px, ${y}px, 0)`;
 
         return (
-          <span key={i} style={{ transform }}>
+          <span
+            key={i}
+            className={isRune(glyph) ? "rune" : undefined}
+            style={{ transform }}
+          >
             {glyph}
           </span>
         );
