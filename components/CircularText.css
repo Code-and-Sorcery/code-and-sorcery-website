@@ -21,10 +21,12 @@
   pointer-events: none;
 }
 
-/* The fallback face that covers the Runic block ships no bold, and the OS
-   barely synthesises one, so a rune would read about 40% lighter than the
-   900-weight letter it replaces. A centred hairline stroke evens the two out —
-   measured against the Latin ink density from 12px to 40px. */
+/* Noto Sans Runic, self-hosted, rather than whatever the OS has for the block
+   (nothing, on a bare Linux box). It ships Regular only, so the browser
+   synthesises the 900 weight the letters carry; that lands a touch light, and a
+   hair of stroke closes the gap. Judged on screen against the Latin at the same
+   weight — by 0.05em the counters of the tighter runes start to fill in. */
 .circular-text span.rune {
-  -webkit-text-stroke: 0.06em currentColor;
+  font-family: var(--font-runic), sans-serif;
+  -webkit-text-stroke: 0.02em currentColor;
 }

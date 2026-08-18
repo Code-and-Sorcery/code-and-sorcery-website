@@ -19,6 +19,21 @@ const geistMono = localFont({
   display: "swap",
 });
 
+/**
+ * Runes for the splash mark (see CircularText). Geist has no Runic coverage and
+ * the OS fallback for the block is absent on a bare Linux box, so ship it.
+ * Not preloaded and pinned to the block: nothing fetches these 3.5 kB until a
+ * rune is actually painted, which only happens on hover.
+ */
+const notoRunic = localFont({
+  src: "./fonts/NotoSansRunic-Regular.woff2",
+  variable: "--font-runic",
+  weight: "400",
+  display: "swap",
+  preload: false,
+  declarations: [{ prop: "unicode-range", value: "U+16A0-16F8" }],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -43,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${notoRunic.variable} antialiased`}
       >
         {/* Scroll reveals are JS driven; without it, show everything outright. */}
         <noscript>
