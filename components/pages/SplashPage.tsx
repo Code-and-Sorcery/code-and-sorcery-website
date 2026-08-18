@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 
 import { MailIcon } from "@/components/Icons";
@@ -17,6 +18,7 @@ import { CONTACT_EMAIL, localizePath, type Locale } from "@/content/i18n";
  */
 export function SplashPage({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
+  const [runic, setRunic] = useState(false);
 
   return (
     <div
@@ -51,6 +53,8 @@ export function SplashPage({ locale }: { locale: Locale }) {
             width: "min(62vw, 42vh, 420px)",
             aspectRatio: "1 / 1",
           }}
+          onPointerEnter={() => setRunic(true)}
+          onPointerLeave={() => setRunic(false)}
         >
           <div className="absolute inset-0 flex items-center justify-center">
             <CircularText
@@ -58,6 +62,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
               spinDuration={120}
               onHover="slowDown"
               size="93.33%"
+              runic={runic}
             />
           </div>
           {/* The artwork carries a transparent margin: its disc is 93.769% of
