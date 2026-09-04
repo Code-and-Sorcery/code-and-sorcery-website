@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback } from "react";
 
 import { LanguagesIcon } from "@/components/Icons";
 import { swapLocaleInPath } from "@/content/i18n";
+import { useShortcut } from "@/lib/useShortcut";
 
 export function LocaleSwitch({
   code,
@@ -17,7 +19,13 @@ export function LocaleSwitch({
   ariaLabel: string;
 }) {
   const pathname = usePathname() ?? "/";
+  const router = useRouter();
   const { href, target } = swapLocaleInPath(pathname);
+
+  useShortcut(
+    "l",
+    useCallback(() => router.push(href), [router, href]),
+  );
 
   return (
     <Link
@@ -25,10 +33,14 @@ export function LocaleSwitch({
       hrefLang={target}
       aria-label={ariaLabel}
       title={label}
-      className="inline-flex h-9 items-center gap-2 rounded-full border border-white/20 bg-white/[0.03] px-3.5 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-dim backdrop-blur-sm transition-colors hover:border-white/35 hover:text-fg"
+      className="group inline-flex h-9 items-center gap-2 rounded-full border border-edge bg-panel pl-3.5 pr-3.5 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-dim backdrop-blur-sm transition-colors hover:border-edge-strong hover:text-fg md:pr-2.5"
     >
       <LanguagesIcon className="h-3.5 w-3.5" />
       {code}
+      {/* Too cramped to earn its place until there is room beside the nav. */}
+      <kbd className="kbd hidden tracking-normal transition-colors group-hover:text-fg md:inline-grid">
+        L
+      </kbd>
     </Link>
   );
 }

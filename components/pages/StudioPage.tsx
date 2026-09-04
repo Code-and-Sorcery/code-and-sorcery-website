@@ -91,7 +91,7 @@ export function StudioPage({ locale }: { locale: Locale }) {
                     className="flex items-center gap-4 p-5"
                   >
                     {Icon ? (
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line bg-white/[0.03] text-fg-dim transition-colors group-hover:border-line-strong group-hover:text-fg">
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line bg-panel text-fg-dim transition-colors group-hover:border-line-strong group-hover:text-fg">
                         <Icon className="h-4 w-4" />
                       </span>
                     ) : null}

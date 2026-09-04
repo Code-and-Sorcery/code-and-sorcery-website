@@ -1,7 +1,14 @@
+import { cn } from "@/lib/utils";
+
 import { Reveal } from "./Reveal";
 import { stagger } from "./stagger";
 
-export type TechItem = { name: string; src: string };
+export type TechItem = {
+  name: string;
+  src: string;
+  /** Flat white artwork, which has nothing left to show on the light page. */
+  invertOnLight?: boolean;
+};
 
 export const techStack: TechItem[] = [
   { name: "TypeScript", src: "/svg/typescript.svg" },
@@ -14,7 +21,7 @@ export const techStack: TechItem[] = [
   { name: "MongoDB", src: "/svg/mongodb.svg" },
   { name: "GraphQL", src: "/svg/graphql.svg" },
   { name: "Python", src: "/svg/python.svg" },
-  { name: "Solidity", src: "/svg/solidity.svg" },
+  { name: "Solidity", src: "/svg/solidity.svg", invertOnLight: true },
   { name: "Vitest", src: "/svg/vitest.svg" },
   { name: "Playwright", src: "/svg/playwright.svg" },
   { name: "Storybook", src: "/svg/storybook.svg" },
@@ -35,7 +42,10 @@ export function TechGrid() {
               width={20}
               height={20}
               loading="lazy"
-              className="h-5 w-5 shrink-0 rounded-[3px] object-contain"
+              className={cn(
+                "h-5 w-5 shrink-0 rounded-[3px] object-contain",
+                tech.invertOnLight && "invert-on-light",
+              )}
             />
             <span className="truncate text-[13px] text-fg-dim">
               {tech.name}

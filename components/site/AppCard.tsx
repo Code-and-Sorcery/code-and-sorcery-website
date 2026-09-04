@@ -60,7 +60,7 @@ export function AppCard({
             {app.tech.map((tech) => (
               <li
                 key={tech}
-                className="rounded-md border border-line bg-white/[0.02] px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-fg-faint"
+                className="rounded-md border border-line bg-veil px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-fg-faint"
               >
                 {tech}
               </li>

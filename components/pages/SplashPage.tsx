@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { MailIcon } from "@/components/Icons";
@@ -11,19 +11,38 @@ import { LinkButton } from "@/components/site/LinkButton";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { getDictionary } from "@/content/dictionaries";
 import { CONTACT_EMAIL, localizePath, type Locale } from "@/content/i18n";
+import { syncThemeColor } from "@/lib/theme";
 
 /**
  * The entrance. Kept deliberately scroll-free: one shader, one mark, and the
  * doors into the rest of the site.
+ *
+ * The one page that ignores the light theme: it is a full-bleed shader, and the
+ * mark, the copy and the buttons are all composed against the ink field. The
+ * switch in the header still records the reader's choice — it simply lands once
+ * they are through the door. .theme-dark pins the palette; see globals.css.
  */
 export function SplashPage({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const [runic, setRunic] = useState(false);
 
+  // CSS reaches the document, not the browser chrome around it, which would
+  // otherwise sit light above a page that never turns light.
+  useEffect(() => {
+    const root = document.documentElement;
+    root.dataset.chrome = "dark";
+    syncThemeColor();
+
+    return () => {
+      delete root.dataset.chrome;
+      syncThemeColor();
+    };
+  }, []);
+
   return (
     <div
       lang={locale === "en" ? undefined : locale}
-      className="grain relative h-[100svh] w-full overflow-hidden bg-ink"
+      className="theme-dark grain relative h-[100svh] w-full overflow-hidden bg-ink"
     >
       {/* Blue up, orange down: the ramp runs along the pillar, so the diagonal
           reads the same way round as the logo. The blue is sampled from the
@@ -77,7 +96,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
               height="62.513%"
               background="transparent"
               borderRadius="50%"
-              borderColor="rgba(255,255,255,0.08)"
+              borderColor="hsl(var(--fg) / 0.08)"
               glareOpacity={0.1}
               glareAngle={-45}
               glareSize={300}
@@ -98,17 +117,17 @@ export function SplashPage({ locale }: { locale: Locale }) {
         {/* The shader runs bright in places, so the copy carries its own shadow. */}
         <div
           className="max-w-md space-y-4 text-center"
-          style={{ textShadow: "0 1px 24px rgba(0,0,0,0.8)" }}
+          style={{ textShadow: "0 1px 24px hsl(var(--ink) / 0.8)" }}
         >
-          <p className="eyebrow text-white/65">{dict.splash.tagline}</p>
-          <p className="text-balance text-[15px] leading-relaxed text-white/85 sm:text-base">
+          <p className="eyebrow text-fg-dim">{dict.splash.tagline}</p>
+          <p className="text-balance text-[15px] leading-relaxed text-fg/90 sm:text-base">
             {dict.splash.subtitle}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
             <LinkButton
               href={localizePath("/apps", locale)}
               variant="outline"
-              className="border-white/20 bg-white/10 text-white hover:border-white/35"
+              className="border-edge bg-panel-strong text-fg hover:border-edge-strong"
             >
               {dict.splash.enter}
             </LinkButton>
@@ -117,7 +136,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
               variant="outline"
               icon="none"
               leadingIcon={<MailIcon className="h-4 w-4" />}
-              className="border-white/20 text-white/90 hover:border-white/35 hover:text-white"
+              className="border-edge text-fg/90 hover:border-edge-strong hover:text-fg"
             >
               {dict.splash.contact}
             </LinkButton>
@@ -127,8 +146,8 @@ export function SplashPage({ locale }: { locale: Locale }) {
 
       <div className="absolute inset-x-0 bottom-7 z-10 flex justify-center">
         <p
-          className="px-6 text-center font-mono text-[9px] uppercase tracking-[0.14em] text-white/45 sm:text-[10px] sm:tracking-[0.22em]"
-          style={{ textShadow: "0 1px 16px rgba(0,0,0,0.85)" }}
+          className="px-6 text-center font-mono text-[9px] uppercase tracking-[0.14em] text-fg/45 sm:text-[10px] sm:tracking-[0.22em]"
+          style={{ textShadow: "0 1px 16px hsl(var(--ink) / 0.85)" }}
         >
           {dict.footer.rights}
         </p>

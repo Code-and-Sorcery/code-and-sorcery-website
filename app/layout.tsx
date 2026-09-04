@@ -48,18 +48,41 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
+  /* Kept as a single tag rather than a media-scoped pair: restoreTheme rewrites
+     its content, and there would be no one tag to rewrite. */
   themeColor: "#08080a",
-  colorScheme: "dark",
+  colorScheme: "dark light",
 };
+
+/**
+ * Restores the reader's theme before anything paints — see ThemeToggle for the
+ * writing half. Inlined at the top of <body> and deliberately synchronous: the
+ * document has not been painted yet at that point, so setting the attribute
+ * here is what keeps a light-theme reader from seeing a black frame first.
+ */
+const restoreTheme = `(function(){
+  var theme;
+  try { theme = localStorage.getItem("cas-theme"); } catch (e) { /* private mode */ }
+  if (theme !== "light" && theme !== "dark") {
+    theme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  }
+  document.documentElement.dataset.theme = theme;
+  var meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) { meta.setAttribute("content", theme === "light" ? "#f9f8fc" : "#08080a"); }
+})();`;
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    /* The theme attribute is written by a script the server never runs, so the
+       markup React hydrates against always differs from the live element. */
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${notoRunic.variable} antialiased`}
       >
+        <script dangerouslySetInnerHTML={{ __html: restoreTheme }} />
+
         {/* Scroll reveals are JS driven; without it, show everything outright. */}
         <noscript>
           <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>

@@ -4,12 +4,26 @@
 
 /* ---------------------------------------------------------------------------
    Code and Sorcery — "arcane workshop" theme.
-   Dark only. Palette derives from the logo: ember orange -> arcane blue on ink.
+   Palette derives from the logo: ember orange -> arcane blue on ink. Dark is
+   the house look; the light theme keeps the same roles, flipped.
    --------------------------------------------------------------------------- */
 
 @layer base {
   :root {
-    --ink: 240 9% 4%;
+    --radius: 1rem;
+
+    /* The ink field, pinned outside the two themes: the splash keeps the dark
+       palette whichever theme is on, and the page canvas behind it follows. */
+    --ink-dark: 240 9% 4%;
+  }
+
+  /* Dark. Also the bare :root fallback, so a paint that somehow beats the
+     restore script in app/layout.tsx lands on the house theme, not on white —
+     and .theme-dark, which pins a subtree to it (see the splash). */
+  :root,
+  html[data-theme="dark"],
+  .theme-dark {
+    --ink: var(--ink-dark);
     --ink-sunken: 240 12% 2%;
     --ink-raised: 240 8% 8%;
 
@@ -22,12 +36,81 @@
     --ember: 24 100% 62%;
     --arcane: 198 45% 57%;
 
+    /* The backdrop washes. Split from --ember / --arcane because those have to
+       stay legible as text, which pins them once the page turns white. */
+    --glow-ember: 24 100% 62%;
+    --glow-arcane: 198 45% 57%;
+
     --line: 240 8% 18%;
     --line-strong: 240 8% 30%;
 
-    --radius: 1rem;
+    /* Fills that lift an element off the page, faintest first. Each carries its
+       own alpha: the light theme raises with white and sinks with ink, so the
+       opacities are not shared between the two. */
+    --veil: 0 0% 100% / 0.02;
+    --panel: 0 0% 100% / 0.03;
+    --panel-strong: 0 0% 100% / 0.06;
+
+    --edge: 0 0% 100% / 0.2;
+    --edge-strong: 0 0% 100% / 0.35;
+
+    /* Both stops of the frosted .surface gradient. */
+    --surface-a: 0 0% 100% / 0.045;
+    --surface-b: 0 0% 100% / 0.015;
+
+    --shade: 240 40% 2% / 0.9;
 
     color-scheme: dark;
+  }
+
+  html[data-theme="light"] {
+    --ink: 250 40% 98%;
+    --ink-sunken: 250 30% 95%;
+    --ink-raised: 0 0% 100%;
+
+    --fg: 250 30% 12%;
+    --fg-dim: 250 12% 30%;
+    --fg-faint: 250 8% 40%;
+
+    /* Darkened off the logo: #ff8a3c against white is barely 2:1. */
+    --ember: 18 88% 38%;
+    --arcane: 200 72% 32%;
+
+    /* The washes go the other way — pale, so they tint the page instead of
+       staining it. */
+    --glow-ember: 24 100% 76%;
+    --glow-arcane: 198 65% 74%;
+
+    --line: 250 20% 88%;
+    --line-strong: 250 16% 76%;
+
+    --veil: 250 30% 20% / 0.04;
+    --panel: 0 0% 100% / 0.7;
+    --panel-strong: 250 30% 20% / 0.07;
+
+    --edge: 250 25% 25% / 0.14;
+    --edge-strong: 250 25% 25% / 0.3;
+
+    --surface-a: 0 0% 100% / 0.92;
+    --surface-b: 0 0% 100% / 0.66;
+
+    --shade: 250 40% 30% / 0.18;
+
+    color-scheme: light;
+  }
+
+  /* Text that never names a colour inherits it from <body>, where the property
+     was already substituted against the reader's theme — so a pinned subtree
+     has to state it again to get its own --fg. Borders need no such rule: the
+     * below is matched per element, and resolves there. */
+  .theme-dark {
+    color: hsl(var(--fg));
+  }
+
+  /* The pinned subtree covers the viewport but not the document canvas, which
+     an overscroll would flash past its edge in the other theme. */
+  html:has(.theme-dark) {
+    background-color: hsl(var(--ink-dark));
   }
 
   * {
@@ -97,8 +180,8 @@
   .surface {
     background: linear-gradient(
       180deg,
-      hsl(0 0% 100% / 0.045) 0%,
-      hsl(0 0% 100% / 0.015) 100%
+      hsl(var(--surface-a)) 0%,
+      hsl(var(--surface-b)) 100%
     );
     border: 1px solid hsl(var(--line));
     backdrop-filter: blur(14px) saturate(140%);
@@ -190,6 +273,24 @@
     transform: scaleX(1);
   }
 
+  /* Keyboard hint carried by the header controls — see lib/useShortcut.ts.
+     Font family is left to inherit, so it picks up the button's own. */
+  .kbd {
+    display: inline-grid;
+    place-items: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border: 1px solid hsl(var(--edge-strong));
+    border-bottom-width: 2px;
+    border-radius: 5px;
+    background: hsl(var(--panel-strong));
+    color: hsl(var(--fg-faint));
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
   /* Long-form legal / documentation copy. */
   .prose-arcane {
     @apply text-[15px] leading-[1.75] text-fg-dim sm:text-base;
@@ -201,7 +302,7 @@
     @apply text-arcane underline decoration-arcane/40 underline-offset-4 transition-colors hover:decoration-arcane;
   }
   .prose-arcane code {
-    @apply rounded border border-line bg-white/[0.04] px-1.5 py-0.5 font-mono text-[0.86em] text-fg;
+    @apply rounded border border-line bg-panel-strong px-1.5 py-0.5 font-mono text-[0.86em] text-fg;
   }
   .prose-arcane ul {
     @apply space-y-2.5 pl-5;
@@ -242,6 +343,50 @@
     -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
     mask-image: linear-gradient(to bottom, #000 60%, transparent);
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Theme switching
+   --------------------------------------------------------------------------- */
+
+/* Every colour on the page comes out of a custom property, so flipping the
+   theme repaints the whole document at once. The blanket transition that makes
+   that a fade rather than a jump is switched on for the length of the swap
+   only — left on permanently it would fight every hover transition. */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition:
+    background-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    fill 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    stroke 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+/* Sun and moon share one grid cell and cross-fade. The button shows the theme
+   it switches TO, so the sun is the one lit while the page is dark. Keyed off
+   :not([data-theme="light"]) rather than ="dark" so the split second before the
+   restore script runs still shows exactly one glyph. */
+.theme-icon {
+  grid-area: 1 / 1;
+  transition:
+    opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+html:not([data-theme="light"]) .theme-icon--moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.4);
+}
+html[data-theme="light"] .theme-icon--sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.4);
+}
+
+/* Marks drawn as flat white artwork have nothing left once the page is white. */
+html[data-theme="light"] .invert-on-light {
+  filter: invert(1);
 }
 
 @media (prefers-reduced-motion: reduce) {

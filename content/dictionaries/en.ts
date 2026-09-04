@@ -494,6 +494,7 @@ export const en = {
     home: "Home",
     skipToContent: "Skip to content",
     menu: "Menu",
+    theme: "Switch theme",
     close: "Close",
   },
 

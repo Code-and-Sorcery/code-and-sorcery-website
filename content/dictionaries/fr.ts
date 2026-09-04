@@ -499,6 +499,7 @@ export const fr: Dictionary = {
     home: "Accueil",
     skipToContent: "Aller au contenu",
     menu: "Menu",
+    theme: "Changer de thème",
     close: "Fermer",
   },
 

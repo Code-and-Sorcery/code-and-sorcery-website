@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 
 const variants = {
   primary:
-    "border-transparent bg-fg text-ink hover:bg-white [--icon-opacity:1]",
+    "border-transparent bg-fg text-ink hover:bg-fg/90 [--icon-opacity:1]",
   outline:
-    "border-line bg-white/[0.03] text-fg backdrop-blur-sm hover:border-line-strong",
+    "border-line bg-panel text-fg backdrop-blur-sm hover:border-line-strong",
   ghost: "border-transparent text-fg-dim hover:text-fg",
 } as const;
 

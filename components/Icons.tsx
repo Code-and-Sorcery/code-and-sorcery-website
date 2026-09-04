@@ -97,3 +97,16 @@ export const LockIcon = ({ className = base }: IconProps) => (
     <path d="M8 10.5V7.8a4 4 0 0 1 8 0v2.7" />
   </svg>
 );
+
+export const SunIcon = ({ className = base }: IconProps) => (
+  <svg viewBox="0 0 24 24" className={className} {...stroke} aria-hidden="true">
+    <circle cx="12" cy="12" r="4.1" />
+    <path d="M12 2.6v2.2M12 19.2v2.2M4.3 4.3l1.6 1.6M18.1 18.1l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.3 19.7l1.6-1.6M18.1 5.9l1.6-1.6" />
+  </svg>
+);
+
+export const MoonIcon = ({ className = base }: IconProps) => (
+  <svg viewBox="0 0 24 24" className={className} {...stroke} aria-hidden="true">
+    <path d="M20.4 14.2A8.8 8.8 0 0 1 9.8 3.6a8.8 8.8 0 1 0 10.6 10.6Z" />
+  </svg>
+);

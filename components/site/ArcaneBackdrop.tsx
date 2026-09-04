@@ -27,7 +27,7 @@ export function ArcaneBackdrop() {
         className="absolute left-1/2 top-[-30%] h-[160%] w-[38rem] -translate-x-1/2 rotate-[38deg] opacity-40 blur-3xl"
         style={{
           background:
-            "linear-gradient(180deg, transparent, hsl(var(--ember) / 0.28) 30%, hsl(var(--arcane) / 0.22) 70%, transparent)",
+            "linear-gradient(180deg, transparent, hsl(var(--glow-ember) / 0.28) 30%, hsl(var(--glow-arcane) / 0.22) 70%, transparent)",
         }}
       />
 
@@ -36,14 +36,14 @@ export function ArcaneBackdrop() {
         className="absolute -left-40 -top-56 h-[38rem] w-[38rem] animate-aurora-drift rounded-full opacity-60 blur-[110px]"
         style={{
           background:
-            "radial-gradient(circle, hsl(var(--ember) / 0.34), transparent 68%)",
+            "radial-gradient(circle, hsl(var(--glow-ember) / 0.34), transparent 68%)",
         }}
       />
       <div
         className="absolute -bottom-72 -right-32 h-[42rem] w-[42rem] animate-aurora-drift rounded-full opacity-50 blur-[120px] [animation-delay:-13s]"
         style={{
           background:
-            "radial-gradient(circle, hsl(var(--arcane) / 0.3), transparent 68%)",
+            "radial-gradient(circle, hsl(var(--glow-arcane) / 0.3), transparent 68%)",
         }}
       />
 

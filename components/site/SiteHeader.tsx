@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { LocaleSwitch } from "./LocaleSwitch";
 import { Logo } from "./Logo";
 import { SocialLinks } from "./SocialLinks";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function SiteHeader({
   dict,
@@ -19,7 +20,8 @@ export function SiteHeader({
 }: {
   dict: Dictionary;
   locale: Locale;
-  /** Splash mode: sits over the shader, never grows a border. */
+  /** Splash mode: sits over the shader, never grows a border — and drops the
+      theme switch, since the entrance is pinned to the dark palette. */
   floating?: boolean;
 }) {
   const pathname = usePathname() ?? "/";
@@ -77,7 +79,7 @@ export function SiteHeader({
                       className={cn(
                         "inline-block whitespace-nowrap rounded-full px-2.5 py-1.5 text-[13px] transition-colors sm:px-3 sm:text-sm",
                         active
-                          ? "bg-white/[0.06] text-fg"
+                          ? "bg-panel-strong text-fg"
                           : "text-fg-dim hover:text-fg",
                       )}
                     >
@@ -99,6 +101,9 @@ export function SiteHeader({
             label={dict.switchTo}
             ariaLabel={dict.switchAria}
           />
+          {/* Unmounting it takes the T shortcut with it, which is the point:
+              neither can show the reader anything on this page. */}
+          {floating ? null : <ThemeToggle label={dict.nav.theme} />}
         </div>
       </div>
     </header>

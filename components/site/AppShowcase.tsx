@@ -30,7 +30,7 @@ export function AppShowcase({
 
       <div className="surface rounded-[2rem] p-8 sm:p-10">
         <div
-          className="mx-auto grid aspect-square w-44 place-items-center overflow-hidden rounded-[1.75rem] border border-white/10 p-5 shadow-lift"
+          className="mx-auto grid aspect-square w-44 place-items-center overflow-hidden rounded-[1.75rem] border border-edge p-5 shadow-lift"
           style={{
             background: iconBackground ?? `hsl(${accent} / 0.2)`,
           }}

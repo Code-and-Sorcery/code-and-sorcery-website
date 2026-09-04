@@ -30,6 +30,18 @@ const config: Config = {
           DEFAULT: "hsl(var(--line))",
           strong: "hsl(var(--line-strong))",
         },
+        /* Fills and rings that lift an element off the page. The alpha lives
+           inside the custom property, since the two themes raise with opposite
+           colours and cannot share one opacity. */
+        veil: "hsl(var(--veil))",
+        panel: {
+          DEFAULT: "hsl(var(--panel))",
+          strong: "hsl(var(--panel-strong))",
+        },
+        edge: {
+          DEFAULT: "hsl(var(--edge))",
+          strong: "hsl(var(--edge-strong))",
+        },
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
@@ -45,7 +57,7 @@ const config: Config = {
       },
       boxShadow: {
         glow: "0 0 0 1px hsl(var(--line-strong)), 0 24px 60px -30px hsl(var(--ember) / 0.35)",
-        lift: "0 30px 80px -40px hsl(240 40% 2% / 0.9)",
+        lift: "0 30px 80px -40px hsl(var(--shade))",
       },
       keyframes: {
         "aurora-drift": {
