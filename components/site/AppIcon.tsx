@@ -29,13 +29,20 @@ export function AppIcon({
       )}
       style={{ background: app.iconBackground ?? `hsl(${app.accent} / 0.16)` }}
     >
-      <Image
-        src={src}
-        alt=""
-        width={128}
-        height={128}
-        className="h-full w-full object-contain p-[9%]"
-      />
+      <span
+        className={cn(
+          "h-[82%] w-[82%] overflow-hidden",
+          app.slug === "env-checker" && "rounded-[18%]",
+        )}
+      >
+        <Image
+          src={src}
+          alt=""
+          width={128}
+          height={128}
+          className="h-full w-full object-contain"
+        />
+      </span>
     </span>
   );
 }

@@ -14,7 +14,8 @@
 
     /* The ink field, pinned outside the two themes: the splash keeps the dark
        palette whichever theme is on, and the page canvas behind it follows. */
-    --ink-dark: 240 9% 4%;
+    --ink-dark: 216 55% 6%;
+    --ember-bright: 24 100% 62%;
   }
 
   /* Dark. Also the bare :root fallback, so a paint that somehow beats the
@@ -24,41 +25,55 @@
   html[data-theme="dark"],
   .theme-dark {
     --ink: var(--ink-dark);
-    --ink-sunken: 240 12% 2%;
-    --ink-raised: 240 8% 8%;
+    --ink-sunken: 218 58% 4%;
+    --ink-raised: 214 44% 11%;
 
-    --fg: 45 20% 97%;
-    --fg-dim: 240 8% 81%;
-    --fg-faint: 240 6% 63%;
+    --fg: 210 35% 97%;
+    --fg-dim: 210 24% 81%;
+    --fg-faint: 211 19% 65%;
 
     /* Straight off the logo: #ff8a3c and #61a6c3. LightPillar takes the same
        two as hex, since a shader uniform cannot read a CSS variable. */
     --ember: 24 100% 62%;
     --arcane: 198 45% 57%;
+    --success: 152 65% 62%;
 
     /* The backdrop washes. Split from --ember / --arcane because those have to
        stay legible as text, which pins them once the page turns white. */
     --glow-ember: 24 100% 62%;
     --glow-arcane: 198 45% 57%;
 
-    --line: 240 8% 18%;
-    --line-strong: 240 8% 30%;
+    /* Blue ink and light at rest; the logo's orange marks interaction. */
+    --pillar-upper: var(--glow-arcane) / 0.46;
+    --pillar-lower: var(--glow-arcane) / 0.24;
+    --ambient-upper: var(--glow-arcane) / 0.56;
+    --ambient-lower: var(--glow-arcane) / 0.32;
+    --card-glow: var(--ember);
+    --interactive: var(--ember);
+    --interactive-border: var(--ember);
+    --action-fill: var(--ember);
+    --action-text: var(--ink-dark);
+    --active-panel: var(--ember) / 0.14;
+    --link-accent: var(--ember);
+
+    --line: 212 32% 21%;
+    --line-strong: 207 32% 35%;
 
     /* Fills that lift an element off the page, faintest first. Each carries its
        own alpha: the light theme raises with white and sinks with ink, so the
        opacities are not shared between the two. */
-    --veil: 0 0% 100% / 0.02;
-    --panel: 0 0% 100% / 0.03;
-    --panel-strong: 0 0% 100% / 0.06;
+    --veil: 205 70% 75% / 0.025;
+    --panel: 205 65% 75% / 0.04;
+    --panel-strong: 205 65% 75% / 0.08;
 
-    --edge: 0 0% 100% / 0.2;
-    --edge-strong: 0 0% 100% / 0.35;
+    --edge: 205 55% 80% / 0.24;
+    --edge-strong: var(--ember) / 0.65;
 
     /* Both stops of the frosted .surface gradient. */
-    --surface-a: 0 0% 100% / 0.045;
-    --surface-b: 0 0% 100% / 0.015;
+    --surface-a: 205 65% 75% / 0.065;
+    --surface-b: 212 55% 55% / 0.025;
 
-    --shade: 240 40% 2% / 0.9;
+    --shade: 218 65% 3% / 0.9;
 
     color-scheme: dark;
   }
@@ -72,27 +87,39 @@
     --fg-dim: 250 12% 30%;
     --fg-faint: 250 8% 40%;
 
-    /* Darkened off the logo: #ff8a3c against white is barely 2:1. */
-    --ember: 18 88% 38%;
+    /* One luminous orange for text, interactions, fills and light effects. */
+    --ember: var(--ember-bright);
     --arcane: 200 72% 32%;
+    --success: 153 65% 29%;
 
     /* The washes go the other way — pale, so they tint the page instead of
        staining it. */
-    --glow-ember: 24 100% 76%;
+    --glow-ember: var(--ember-bright);
     --glow-arcane: 198 65% 74%;
+
+    --pillar-upper: var(--glow-ember) / 0.46;
+    --pillar-lower: var(--glow-arcane) / 0.2;
+    --ambient-upper: var(--glow-ember) / 0.48;
+    --ambient-lower: var(--glow-arcane) / 0.25;
+    --card-glow: var(--ember-bright);
+    --interactive: var(--ember);
+    --interactive-border: var(--ember-bright);
+    --action-fill: var(--ember-bright);
+    --active-panel: var(--ember-bright) / 0.14;
+    --link-accent: var(--ember);
 
     --line: 250 20% 88%;
     --line-strong: 250 16% 76%;
 
     --veil: 250 30% 20% / 0.04;
     --panel: 0 0% 100% / 0.7;
-    --panel-strong: 250 30% 20% / 0.07;
+    --panel-strong: var(--ember-bright) / 0.1;
 
     --edge: 250 25% 25% / 0.14;
-    --edge-strong: 250 25% 25% / 0.3;
+    --edge-strong: var(--ember-bright) / 0.75;
 
     --surface-a: 0 0% 100% / 0.92;
-    --surface-b: 0 0% 100% / 0.66;
+    --surface-b: 28 100% 96% / 0.82;
 
     --shade: 250 40% 30% / 0.18;
 
@@ -135,12 +162,12 @@
   }
 
   ::selection {
-    background: hsl(var(--ember) / 0.32);
+    background: hsl(var(--card-glow) / 0.32);
     color: hsl(var(--fg));
   }
 
   :focus-visible {
-    outline: 2px solid hsl(var(--arcane));
+    outline: 2px solid hsl(var(--link-accent));
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -202,8 +229,8 @@
     padding: 1px;
     background: radial-gradient(
       220px circle at var(--mx, 50%) var(--my, 0%),
-      hsl(var(--ember) / 0.9),
-      hsl(var(--arcane) / 0.55) 45%,
+      hsl(var(--card-glow) / 0.9),
+      hsl(var(--link-accent) / 0.55) 45%,
       transparent 70%
     );
     -webkit-mask:
@@ -222,7 +249,7 @@
     border-radius: inherit;
     background: radial-gradient(
       420px circle at var(--mx, 50%) var(--my, 0%),
-      hsl(var(--ember) / 0.1),
+      hsl(var(--card-glow) / 0.1),
       transparent 65%
     );
     opacity: 0;
@@ -261,8 +288,8 @@
     height: 1px;
     background: linear-gradient(
       90deg,
-      hsl(var(--ember)),
-      hsl(var(--arcane))
+      hsl(var(--card-glow)),
+      hsl(var(--link-accent))
     );
     transform: scaleX(0);
     transform-origin: left;
@@ -274,7 +301,7 @@
   }
 
   /* Keyboard hint carried by the header controls — see lib/useShortcut.ts.
-     Font family is left to inherit, so it picks up the button's own. */
+     Font family and colour inherit from the button, including during hover. */
   .kbd {
     display: inline-grid;
     place-items: center;
@@ -285,7 +312,7 @@
     border-bottom-width: 2px;
     border-radius: 5px;
     background: hsl(var(--panel-strong));
-    color: hsl(var(--fg-faint));
+    color: inherit;
     font-size: 10px;
     font-weight: 600;
     line-height: 1;
@@ -299,7 +326,12 @@
     @apply font-semibold text-fg;
   }
   .prose-arcane a {
-    @apply text-arcane underline decoration-arcane/40 underline-offset-4 transition-colors hover:decoration-arcane;
+    @apply underline underline-offset-4 transition-colors;
+    color: hsl(var(--link-accent));
+    text-decoration-color: hsl(var(--link-accent) / 0.4);
+  }
+  .prose-arcane a:hover {
+    text-decoration-color: hsl(var(--link-accent));
   }
   .prose-arcane code {
     @apply rounded border border-line bg-panel-strong px-1.5 py-0.5 font-mono text-[0.86em] text-fg;
@@ -339,9 +371,17 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  .mask-fade-b {
-    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
-    mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  .mask-fade-edges {
+    /* Keep the top fade below the sticky header's 5rem footprint, then
+       gradually reveal the grid across the upper half of the viewport. */
+    -webkit-mask-image:
+      linear-gradient(to right, transparent, #000 22%, #000 78%, transparent),
+      linear-gradient(to bottom, transparent 5rem, #000 45%, #000 60%, transparent);
+    mask-image:
+      linear-gradient(to right, transparent, #000 22%, #000 78%, transparent),
+      linear-gradient(to bottom, transparent 5rem, #000 45%, #000 60%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
   }
 }
 
@@ -365,8 +405,8 @@ html.theme-switching *::after {
     box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
-/* Sun and moon share one grid cell and cross-fade. The button shows the theme
-   it switches TO, so the sun is the one lit while the page is dark. Keyed off
+/* Sun and moon share one grid cell and cross-fade. The button shows the current
+   theme: moon on dark pages, sun on light pages. Keyed off
    :not([data-theme="light"]) rather than ="dark" so the split second before the
    restore script runs still shows exactly one glyph. */
 .theme-icon {
@@ -375,11 +415,11 @@ html.theme-switching *::after {
     opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-html:not([data-theme="light"]) .theme-icon--moon {
+html:not([data-theme="light"]) .theme-icon--sun {
   opacity: 0;
   transform: rotate(90deg) scale(0.4);
 }
-html[data-theme="light"] .theme-icon--sun {
+html[data-theme="light"] .theme-icon--moon {
   opacity: 0;
   transform: rotate(-90deg) scale(0.4);
 }

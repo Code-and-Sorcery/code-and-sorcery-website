@@ -8,7 +8,7 @@ const doc = dict.legal.primzTerms;
 const sibling = dict.legal.primzPrivacy;
 
 export const metadata = pageMetadata({
-  title: `Primz — ${doc.title}`,
+  title: `Primz, ${doc.title}`,
   description: doc.lead,
   path: "/primz/terms",
   locale,

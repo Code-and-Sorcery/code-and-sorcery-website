@@ -19,16 +19,18 @@ export function AppShowcase({
   badges: string[];
 }) {
   return (
-    <div className="relative mx-auto w-full max-w-sm">
+    <div className="relative isolate mx-auto w-full max-w-sm">
+      {/* A soft gradient needs no blur filter. Keep the halo and opaque card
+          outside reveal animations to avoid compositor changes on arrival. */}
       <div
         aria-hidden="true"
-        className="absolute -inset-8 -z-10 rounded-full blur-3xl"
+        className="pointer-events-none absolute -inset-12 z-0 rounded-full"
         style={{
-          background: `radial-gradient(circle, hsl(${accent} / 0.45), transparent 68%)`,
+          background: `radial-gradient(ellipse, hsl(${accent} / 0.2), hsl(${accent} / 0.08) 40%, transparent 72%)`,
         }}
       />
 
-      <div className="surface rounded-[2rem] p-8 sm:p-10">
+      <div className="relative z-10 rounded-[2rem] border border-line bg-ink-raised p-8 sm:p-10">
         <div
           className="mx-auto grid aspect-square w-44 place-items-center overflow-hidden rounded-[1.75rem] border border-edge p-5 shadow-lift"
           style={{
@@ -40,6 +42,7 @@ export function AppShowcase({
             alt={iconAlt}
             width={512}
             height={512}
+            priority
             className="h-full w-full object-contain"
           />
         </div>

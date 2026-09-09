@@ -26,12 +26,12 @@ export function AppCard({
         href={localizePath(app.path, locale)}
         className="flex h-full flex-col gap-6 p-7 sm:p-8"
       >
-        {/* Per-app accent wash, lit only on hover. */}
+        {/* The theme interaction colour lights the card on hover. */}
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-40 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           style={{
-            background: `radial-gradient(60% 100% at 50% 0%, hsl(${app.accent} / 0.16), transparent 70%)`,
+            background: `radial-gradient(60% 100% at 50% 0%, hsl(var(--card-glow) / 0.16), transparent 70%)`,
           }}
         />
 
@@ -67,7 +67,7 @@ export function AppCard({
             ))}
           </ul>
 
-          <span className="inline-flex items-center gap-2 text-sm text-fg-dim transition-colors group-hover:text-fg">
+          <span className="inline-flex items-center gap-2 text-sm text-fg-dim transition-colors group-hover:text-interactive">
             {dict.common.readMore}
             <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </span>

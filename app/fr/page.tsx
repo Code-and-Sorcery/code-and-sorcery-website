@@ -6,7 +6,7 @@ const locale = "fr" as const;
 const dict = getDictionary(locale);
 
 export const metadata = pageMetadata({
-  title: `Code and Sorcery — ${dict.splash.tagline}`,
+  title: `Code and Sorcery, ${dict.splash.tagline}`,
   description: dict.splash.subtitle,
   path: "/",
   locale,

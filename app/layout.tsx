@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     template: "%s | Code and Sorcery",
   },
   description:
-    "Independent software studio. Apps, tools and onchain work — built with a bit of magic.",
+    "Independent software studio. Apps, tools and onchain work, built with a bit of magic.",
   applicationName: "Code and Sorcery",
   authors: [{ name: "William Simon--Vezo" }],
   creator: "Code and Sorcery",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   /* Kept as a single tag rather than a media-scoped pair: restoreTheme rewrites
      its content, and there would be no one tag to rewrite. */
-  themeColor: "#08080a",
+  themeColor: "#070e18",
   colorScheme: "dark light",
 };
 
@@ -68,7 +68,7 @@ const restoreTheme = `(function(){
   }
   document.documentElement.dataset.theme = theme;
   var meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) { meta.setAttribute("content", theme === "light" ? "#f9f8fc" : "#08080a"); }
+  if (meta) { meta.setAttribute("content", theme === "light" ? "#f9f8fc" : "#070e18"); }
 })();`;
 
 export default function RootLayout({

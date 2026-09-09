@@ -24,7 +24,7 @@ export function SocialLinks({ className }: { className?: string }) {
             rel="noreferrer noopener"
             title={label}
             aria-label={label}
-            className="grid h-9 w-9 place-items-center rounded-full border border-edge bg-panel text-fg-dim backdrop-blur-sm transition-colors hover:border-edge-strong hover:text-fg"
+            className="grid h-9 w-9 place-items-center rounded-full border border-edge bg-panel text-fg-dim backdrop-blur-sm transition-colors hover:border-edge-strong hover:text-interactive"
           >
             <Icon className="h-4 w-4" />
           </a>

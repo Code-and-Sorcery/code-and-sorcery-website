@@ -5,10 +5,10 @@ import { cn } from "@/lib/utils";
 
 const variants = {
   primary:
-    "border-transparent bg-fg text-ink hover:bg-fg/90 [--icon-opacity:1]",
+    "border-transparent bg-action-fill text-action-text hover:bg-action-fill/90 [--icon-opacity:1]",
   outline:
-    "border-line bg-panel text-fg backdrop-blur-sm hover:border-line-strong",
-  ghost: "border-transparent text-fg-dim hover:text-fg",
+    "border-line bg-panel text-fg backdrop-blur-sm hover:border-interactive-border hover:text-interactive",
+  ghost: "border-transparent text-fg-dim hover:text-interactive",
 } as const;
 
 export function LinkButton({

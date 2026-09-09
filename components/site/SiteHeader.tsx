@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
 import type { Dictionary } from "@/content/dictionaries";
 import { localizePath, type Locale } from "@/content/i18n";
@@ -25,15 +24,6 @@ export function SiteHeader({
   floating?: boolean;
 }) {
   const pathname = usePathname() ?? "/";
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    if (floating) return;
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [floating]);
 
   const nav = [
     { href: localizePath("/apps", locale), label: dict.nav.apps },
@@ -45,10 +35,9 @@ export function SiteHeader({
     <header
       className={cn(
         "z-50 w-full transition-colors duration-500",
-        floating ? "absolute inset-x-0 top-0" : "sticky top-0 border-b",
-        !floating && scrolled
-          ? "border-line bg-ink/80 backdrop-blur-xl"
-          : "border-transparent",
+        floating
+          ? "absolute inset-x-0 top-0 border-transparent"
+          : "sticky top-0 border-b border-line bg-ink/80 backdrop-blur-xl",
       )}
     >
       <div className="container flex h-16 items-center justify-between gap-3 sm:h-20 sm:gap-4">
@@ -79,8 +68,8 @@ export function SiteHeader({
                       className={cn(
                         "inline-block whitespace-nowrap rounded-full px-2.5 py-1.5 text-[13px] transition-colors sm:px-3 sm:text-sm",
                         active
-                          ? "bg-panel-strong text-fg"
-                          : "text-fg-dim hover:text-fg",
+                          ? "bg-active-panel text-interactive"
+                          : "text-fg-dim hover:text-interactive",
                       )}
                     >
                       {item.label}

@@ -35,7 +35,11 @@ export function LegalDoc({
       <div className="container max-w-6xl py-14 sm:py-20">
         <header className="max-w-2xl">
           <div className="flex items-center gap-3">
-            <AppIcon app={app} className="h-6 w-6 rounded-md" compact />
+            <AppIcon
+              app={app}
+              className="h-10 w-10 rounded-xl sm:h-12 sm:w-12"
+              compact
+            />
             <p className="eyebrow">{doc.eyebrow}</p>
           </div>
           <h1 className="mt-5 text-4xl font-semibold sm:text-5xl">
@@ -94,7 +98,7 @@ export function LegalDoc({
             <div className="border-t border-line pt-8">
               <Link
                 href={localizePath(sibling.path, locale)}
-                className="group inline-flex items-center gap-2 text-sm text-fg-dim transition-colors hover:text-fg"
+                className="group inline-flex items-center gap-2 text-sm text-fg-dim transition-colors hover:text-interactive"
               >
                 {sibling.title}
                 <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />

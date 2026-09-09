@@ -30,6 +30,7 @@ export function PrimzPage({ locale }: { locale: Locale }) {
       <PageHero
         eyebrow={copy.eyebrow}
         title="Primz"
+        revealAside={false}
         lead={copy.lead}
         back={{
           href: localizePath("/apps", locale),
@@ -118,10 +119,10 @@ export function PrimzPage({ locale }: { locale: Locale }) {
             <SpellCard as="li" key={document.path} className="group">
               <Link
                 href={localizePath(document.path, locale)}
-                className="flex items-center justify-between gap-4 p-6"
+                className="flex items-center justify-between gap-4 p-6 transition-colors hover:text-interactive focus-visible:text-interactive"
               >
                 <span className="text-sm font-medium">{document.title}</span>
-                <ArrowRightIcon className="h-4 w-4 text-fg-faint transition-transform group-hover:translate-x-1 group-hover:text-fg" />
+                <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </SpellCard>
           ))}

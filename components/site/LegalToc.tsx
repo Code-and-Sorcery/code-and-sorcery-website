@@ -37,10 +37,14 @@ export function LegalToc({
   return (
     <nav
       aria-label={title}
-      className="hidden lg:sticky lg:top-28 lg:block lg:h-fit"
+      className="hidden lg:sticky lg:top-28 lg:flex lg:max-h-[calc(100dvh-9rem)] lg:flex-col lg:self-start"
     >
-      <h2 className="eyebrow mb-4">{title}</h2>
-      <ol className="space-y-0.5 border-l border-line">
+      <h2 className="eyebrow mb-4 shrink-0">{title}</h2>
+      <ol
+        tabIndex={0}
+        aria-label={title}
+        className="min-h-0 space-y-0.5 overflow-y-auto overscroll-contain border-l border-line py-1 pl-1 pr-2 [scrollbar-gutter:stable]"
+      >
         {sections.map((section, index) => {
           const current = active === section.id;
           return (
@@ -70,8 +74,8 @@ export function LegalToc({
                 className={cn(
                   "-ml-px flex gap-2.5 border-l py-1.5 pl-4 text-[13px] leading-snug transition-colors",
                   current
-                    ? "border-ember text-fg"
-                    : "border-transparent text-fg-faint hover:border-line-strong hover:text-fg-dim",
+                    ? "border-[hsl(var(--card-glow))] text-interactive"
+                    : "border-transparent text-fg-faint hover:border-interactive-border hover:text-fg-dim",
                 )}
               >
                 <span className="font-mono text-[10px] tabular-nums opacity-60">

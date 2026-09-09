@@ -37,19 +37,22 @@ export function CopyCommand({
   }
 
   return (
-    <div className="surface flex items-center gap-3 rounded-lg p-1.5 pl-4">
+    <div className="surface flex w-fit max-w-full items-center gap-3 rounded-lg p-1.5 pl-4">
       <TerminalIcon className="h-4 w-4 shrink-0 text-fg-faint" />
-      <code className="min-w-0 flex-1 break-all py-2 font-mono text-[12.5px] leading-snug text-fg-dim">
+      <code
+        tabIndex={0}
+        className="min-w-0 flex-1 overflow-x-auto whitespace-nowrap py-2 font-mono text-[12.5px] leading-snug text-fg-dim"
+      >
         {command}
       </code>
       <button
         type="button"
         onClick={copy}
         aria-label={ariaLabel}
-        className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-line bg-ink-raised px-3 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-fg-dim transition-colors hover:border-line-strong hover:text-fg"
+        className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-line bg-ink-raised px-3 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-fg-dim transition-colors hover:border-interactive-border hover:text-interactive"
       >
         {copied ? (
-          <CheckIcon className="h-3.5 w-3.5 text-arcane" />
+          <CheckIcon className="h-3.5 w-3.5" />
         ) : (
           <CopyIcon className="h-3.5 w-3.5" />
         )}

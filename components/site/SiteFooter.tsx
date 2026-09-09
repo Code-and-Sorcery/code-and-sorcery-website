@@ -75,7 +75,7 @@ export function SiteFooter({
             </p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="link-wipe inline-flex items-center gap-2 font-mono text-xs text-fg-dim transition-colors hover:text-fg"
+              className="link-wipe inline-flex items-center gap-2 font-mono text-xs text-fg-dim transition-colors hover:text-interactive"
             >
               <MailIcon className="h-3.5 w-3.5" />
               {CONTACT_EMAIL}
@@ -90,7 +90,7 @@ export function SiteFooter({
                   <li key={link.href + link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-fg-faint transition-colors hover:text-fg"
+                      className="text-sm text-fg-faint transition-colors hover:text-interactive"
                     >
                       {link.label}
                     </Link>
@@ -109,7 +109,7 @@ export function SiteFooter({
                     href={link.href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="text-sm text-fg-faint transition-colors hover:text-fg"
+                    className="text-sm text-fg-faint transition-colors hover:text-interactive"
                   >
                     {link.label}
                   </a>

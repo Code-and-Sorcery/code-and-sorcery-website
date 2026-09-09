@@ -8,7 +8,6 @@ import {
 import { FeatureGrid } from "@/components/site/FeatureGrid";
 import { LinkButton } from "@/components/site/LinkButton";
 import { Logo } from "@/components/site/Logo";
-import { MetaList } from "@/components/site/MetaList";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -17,6 +16,7 @@ import { SpellCard } from "@/components/site/SpellCard";
 import { TechGrid } from "@/components/site/TechGrid";
 import { getDictionary } from "@/content/dictionaries";
 import { CONTACT_EMAIL, SOCIALS, type Locale } from "@/content/i18n";
+import { cn } from "@/lib/utils";
 
 /** Keyed by the dictionary's `elsewhere` entries. */
 const elsewhereIcons: Record<
@@ -38,14 +38,48 @@ export function StudioPage({ locale }: { locale: Locale }) {
         title={
           <>
             {dict.studio.titleParts[0]}
-            <br />
-            {dict.studio.titleParts[1]}
+            {dict.studio.titleParts[1] ? (
+              <>
+                <br />
+                {dict.studio.titleParts[1]}
+              </>
+            ) : null}
           </>
         }
         lead={dict.studio.lead}
         aside={
           <div className="space-y-5">
-            <MetaList items={dict.studio.facts} />
+            <dl className="grid grid-cols-2 overflow-hidden rounded-2xl border border-line bg-ink-raised shadow-lift">
+              {dict.studio.facts.map((fact, index) => (
+                <div
+                  key={fact.label}
+                  className={cn(
+                    "p-5 sm:p-6",
+                    index === 1 && "order-last col-span-2 border-t border-line bg-veil",
+                    index === 2 && "border-l border-line",
+                  )}
+                >
+                  <dt className="text-xs font-medium uppercase tracking-[0.12em] text-fg-faint">
+                    {fact.label}
+                  </dt>
+                  <dd className="mt-3">
+                    {index === 1 ? (
+                      <div className="flex flex-wrap gap-2">
+                        {fact.value.split(" · ").map((field) => (
+                          <span key={field} className="rounded-md border border-line bg-panel px-3 py-1.5 text-sm font-medium text-fg-dim">
+                            {field}
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <span className="text-base font-semibold leading-relaxed text-fg">
+                        {fact.value}
+                      </span>
+                    )}
+                  </dd>
+                </div>
+              ))}
+            </dl>
             <div className="flex flex-wrap gap-2">
               <LinkButton
                 href={`mailto:${CONTACT_EMAIL}`}
@@ -68,10 +102,7 @@ export function StudioPage({ locale }: { locale: Locale }) {
       </section>
 
       <section className="container space-y-8 py-16">
-        <SectionHeading
-          title={dict.studio.stackTitle}
-          lead={dict.studio.stackNote}
-        />
+        <SectionHeading title={dict.studio.stackTitle} />
         <TechGrid />
       </section>
 
@@ -91,17 +122,17 @@ export function StudioPage({ locale }: { locale: Locale }) {
                     className="flex items-center gap-4 p-5"
                   >
                     {Icon ? (
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line bg-panel text-fg-dim transition-colors group-hover:border-line-strong group-hover:text-fg">
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line bg-panel text-fg-dim transition-colors group-hover:border-interactive-border group-hover:text-interactive">
                         <Icon className="h-4 w-4" />
                       </span>
                     ) : null}
                     <span className="min-w-0 flex-1">
-                      <span className="eyebrow block">{item.label}</span>
-                      <span className="mt-1 block truncate font-mono text-sm text-fg-dim">
+                      <span className="eyebrow block transition-colors group-hover:text-interactive group-focus-within:text-interactive">{item.label}</span>
+                      <span className="mt-1 block truncate font-mono text-sm text-fg-dim transition-colors group-hover:text-interactive group-focus-within:text-interactive">
                         {item.value}
                       </span>
                     </span>
-                    <ArrowUpRightIcon className="h-4 w-4 shrink-0 text-fg-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" />
+                    <ArrowUpRightIcon className="h-4 w-4 shrink-0 text-fg-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-interactive" />
                   </a>
                 </SpellCard>
               </Reveal>
@@ -114,7 +145,7 @@ export function StudioPage({ locale }: { locale: Locale }) {
         <Reveal>
           <SpellCard className="overflow-hidden">
             <div className="relative flex flex-col items-start gap-6 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
-              <Logo className="pointer-events-none absolute -right-8 -top-10 h-44 w-44 opacity-[0.08]" />
+              <Logo className="pointer-events-none absolute -right-8 -top-10 h-44 w-44 opacity-[0.14]" />
               <div className="relative max-w-lg space-y-3">
                 <h2 className="text-2xl font-semibold">
                   {dict.studio.ctaTitle}

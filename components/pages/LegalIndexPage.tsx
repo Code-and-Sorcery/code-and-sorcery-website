@@ -11,6 +11,7 @@ import { SpellCard } from "@/components/site/SpellCard";
 import { apps } from "@/content/apps";
 import { getDictionary, type LegalIndexEntry } from "@/content/dictionaries";
 import { localizePath, type Locale } from "@/content/i18n";
+import { cn } from "@/lib/utils";
 
 /** Same card body whether or not the entry leads anywhere. */
 function EntryBody({
@@ -22,18 +23,26 @@ function EntryBody({
 }) {
   return (
     <>
-      <h3 className="text-base font-semibold">{entry.title}</h3>
+      <h3
+        className={cn(
+          "text-base font-semibold transition-colors",
+          (entry.path || entry.href) &&
+            "group-hover:text-interactive group-focus-within:text-interactive",
+        )}
+      >
+        {entry.title}
+      </h3>
       <p className="prose-arcane text-sm">
         <RichText text={entry.body} />
       </p>
       {entry.path ? (
-        <span className="mt-auto inline-flex items-center gap-2 pt-3 text-sm text-fg-dim transition-colors group-hover:text-fg">
+        <span className="mt-auto inline-flex items-center gap-2 pt-3 text-sm text-fg-dim transition-colors group-hover:text-interactive group-focus-within:text-interactive">
           {readMore}
           <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </span>
       ) : null}
       {entry.href ? (
-        <span className="mt-auto inline-flex items-center gap-2 pt-3 text-sm text-fg-dim transition-colors group-hover:text-fg">
+        <span className="mt-auto inline-flex items-center gap-2 pt-3 text-sm text-fg-dim transition-colors group-hover:text-interactive group-focus-within:text-interactive">
           {readMore}
           <ArrowUpRightIcon className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </span>

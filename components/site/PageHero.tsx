@@ -13,7 +13,9 @@ export function PageHero({
   /** Sits to the left of the title — an app's icon on its own page. */
   mark,
   aside,
+  revealAside = true,
   children,
+  footer,
 }: {
   eyebrow: string;
   title: React.ReactNode;
@@ -22,7 +24,11 @@ export function PageHero({
   mark?: React.ReactNode;
   /** Right-hand column on wide screens: meta, artwork, status. */
   aside?: React.ReactNode;
+  /** Keep composited artwork static while the text reveals beside it. */
+  revealAside?: boolean;
   children?: React.ReactNode;
+  /** Content that needs the full hero width, below both columns. */
+  footer?: React.ReactNode;
 }) {
   return (
     <section className="container pb-14 pt-10 sm:pb-20 sm:pt-16">
@@ -32,7 +38,7 @@ export function PageHero({
             {back ? (
               <Link
                 href={back.href}
-                className="group mb-6 inline-flex items-center gap-2 text-sm text-fg-faint transition-colors hover:text-fg"
+                className="group mb-6 inline-flex items-center gap-2 text-sm text-fg-faint transition-colors hover:text-interactive"
               >
                 <ArrowLeftIcon className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
                 {back.label}
@@ -51,8 +57,11 @@ export function PageHero({
           </Reveal>
           {children ? <Reveal>{children}</Reveal> : null}
         </div>
-        {aside ? <Reveal>{aside}</Reveal> : null}
+        {aside ? (
+          revealAside ? <Reveal>{aside}</Reveal> : <div>{aside}</div>
+        ) : null}
       </div>
+      {footer ? <Reveal className="mt-8 min-w-0">{footer}</Reveal> : null}
     </section>
   );
 }

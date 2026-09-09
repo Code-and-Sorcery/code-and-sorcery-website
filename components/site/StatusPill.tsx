@@ -17,7 +17,7 @@ export function StatusPill({
       className={cn(
         "inline-flex items-center gap-2 rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em]",
         live
-          ? "border-arcane/30 bg-arcane/10 text-arcane"
+          ? "border-success/30 bg-success/10 text-success"
           : "border-ember/30 bg-ember/10 text-ember",
         className,
       )}
@@ -25,7 +25,7 @@ export function StatusPill({
       <span
         className={cn(
           "h-1.5 w-1.5 rounded-full",
-          live ? "animate-pulse-dot bg-arcane" : "bg-ember",
+          live ? "animate-pulse-dot bg-success" : "bg-ember",
         )}
       />
       {label}

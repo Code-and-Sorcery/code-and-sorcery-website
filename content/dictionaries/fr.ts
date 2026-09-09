@@ -5,7 +5,7 @@ const primzPrivacy: LegalDocument = {
   eyebrow: "Primz",
   title: "Politique de confidentialité",
   updated: "1er juin 2026",
-  lead: "Comment l’application mobile Primz traite les informations — et pourquoi la plupart ne quittent jamais votre appareil.",
+  lead: "Comment l’application mobile Primz traite les informations, et pourquoi la plupart ne quittent jamais votre appareil.",
   translationNote:
     "Version française de ce document. La [version anglaise](/primz/privacy) est également disponible.",
   sections: [
@@ -30,18 +30,18 @@ const primzPrivacy: LegalDocument = {
         },
         {
           ul: [
-            "**Profils** — nom, date de naissance facultative, photo de profil ;",
-            "**Premières fois** — entrées de jalons, dates, notes et médias liés ;",
-            "**Souvenirs** — moments que vous choisissez de conserver, avec titres, catégories, dates et médias ;",
-            "**Perles** — brefs temps forts avec un titre, une description facultative, une date et des médias ;",
-            "**Réglages de l’application** — langue, thème, options d’accessibilité, préférences de notification et verrouillage de l’application.",
+            "**Profils** : nom, date de naissance facultative, photo de profil ;",
+            "**Premières fois** : entrées de jalons, dates, notes et médias liés ;",
+            "**Souvenirs** : moments que vous choisissez de conserver, avec titres, catégories, dates et médias ;",
+            "**Perles** : brefs temps forts avec un titre, une description facultative, une date et des médias ;",
+            "**Réglages de l’application** : langue, thème, options d’accessibilité, préférences de notification et verrouillage de l’application.",
           ],
         },
         {
           p: "Nous n’exploitons pas de système de compte utilisateur dans l’Application permettant de synchroniser vos contenus personnels vers nos serveurs, et l’Application n’est pas conçue pour transférer l’ensemble de vos données à Code and Sorcery aux fins de stockage ou de traitement.",
         },
         {
-          p: "Vos données principales restant sur l’appareil, vous les maîtrisez via l’Application et les réglages de votre appareil — par exemple en modifiant ou supprimant des entrées, en exportant des médias, en utilisant les options de nettoyage ou en désinstallant l’Application.",
+          p: "Vos données principales restant sur l’appareil, vous les maîtrisez via l’Application et les réglages de votre appareil, par exemple en modifiant ou supprimant des entrées, en exportant des médias, en utilisant les options de nettoyage ou en désinstallant l’Application.",
         },
       ],
     },
@@ -54,11 +54,11 @@ const primzPrivacy: LegalDocument = {
         },
         {
           ul: [
-            "**Photos et bibliothèque de médias** — pour choisir des images et des vidéos (photo de profil, médias liés à une entrée). Vous pouvez refuser l’accès ; certaines fonctionnalités seront alors indisponibles.",
-            "**Appareil photo** — pour prendre des photos ou filmer directement dans l’Application. Vous pouvez refuser l’accès ; les fonctions de capture seront alors indisponibles.",
-            "**Microphone** — pour enregistrer du son lorsque vous filmez ou ajoutez un média audio. Vous pouvez refuser l’accès ; les fonctions concernées seront alors indisponibles.",
-            "**Notifications** — pour afficher les rappels locaux que vous activez dans l’Application (par exemple des rappels mensuels de jalons). Vous pouvez les refuser ou les désactiver dans l’Application ou dans les réglages du système.",
-            "**Authentification biométrique** (là où elle est prise en charge) — uniquement pour déverrouiller l’Application sur votre appareil, via les API sécurisées de la plateforme. Nous ne recevons pas vos données biométriques.",
+            "**Photos et bibliothèque de médias** : pour choisir des images et des vidéos (photo de profil, médias liés à une entrée). Vous pouvez refuser l’accès ; certaines fonctionnalités seront alors indisponibles.",
+            "**Appareil photo** : pour prendre des photos ou filmer directement dans l’Application. Vous pouvez refuser l’accès ; les fonctions de capture seront alors indisponibles.",
+            "**Microphone** : pour enregistrer du son lorsque vous filmez ou ajoutez un média audio. Vous pouvez refuser l’accès ; les fonctions concernées seront alors indisponibles.",
+            "**Notifications** : pour afficher les rappels locaux que vous activez dans l’Application (par exemple des rappels mensuels de jalons). Vous pouvez les refuser ou les désactiver dans l’Application ou dans les réglages du système.",
+            "**Authentification biométrique** (là où elle est prise en charge) : uniquement pour déverrouiller l’Application sur votre appareil, via les API sécurisées de la plateforme. Nous ne recevons pas vos données biométriques.",
           ],
         },
         {
@@ -71,7 +71,7 @@ const primzPrivacy: LegalDocument = {
       heading: "Notifications",
       blocks: [
         {
-          p: "Si vous activez les notifications, Primz planifie des **rappels locaux sur votre appareil** — par exemple des rappels mensuels de jalons calculés à partir de la date de naissance d’un profil. Ces notifications sont générées et délivrées sur votre appareil ; nous n’envoyons pas de notifications push depuis nos serveurs et nous ne recevons pas le contenu de votre journal par le biais des notifications.",
+          p: "Si vous activez les notifications, Primz planifie des **rappels locaux sur votre appareil** : par exemple des rappels mensuels de jalons calculés à partir de la date de naissance d’un profil. Ces notifications sont générées et délivrées sur votre appareil ; nous n’envoyons pas de notifications push depuis nos serveurs et nous ne recevons pas le contenu de votre journal par le biais des notifications.",
         },
       ],
     },
@@ -89,7 +89,7 @@ const primzPrivacy: LegalDocument = {
       heading: "Données que vous pourriez nous transmettre",
       blocks: [
         {
-          p: "L’Application est construite de sorte que son usage quotidien **n’exige pas** de nous envoyer vos contenus. Si vous nous contactez (par courriel, par exemple) pour une question, un retour ou une demande d’assistance, nous traiterons les informations que vous choisissez d’inclure dans ce message — comme votre adresse électronique et le contenu de votre demande — afin d’y répondre et, le cas échéant, d’améliorer nos services.",
+          p: "L’Application est construite de sorte que son usage quotidien **n’exige pas** de nous envoyer vos contenus. Si vous nous contactez (par courriel, par exemple) pour une question, un retour ou une demande d’assistance, nous traiterons les informations que vous choisissez d’inclure dans ce message, comme votre adresse électronique et le contenu de votre demande, afin d’y répondre et, le cas échéant, d’améliorer nos services.",
         },
       ],
     },
@@ -119,7 +119,7 @@ const primzPrivacy: LegalDocument = {
           p: "Les données enregistrées dans l’Application restent sur votre appareil jusqu’à ce que vous les supprimiez (par exemple en modifiant ou supprimant des entrées ou des profils, en utilisant les fonctions de nettoyage ou de réinitialisation, ou en désinstallant l’Application).",
         },
         {
-          p: "L’Application peut proposer des options d’export — par exemple l’export des médias copiés sous forme de fichier que vous pouvez enregistrer ou partager depuis votre appareil. L’export est déclenché par vous ; une fois partagée hors de l’Application, cette copie est sous votre contrôle.",
+          p: "L’Application peut proposer des options d’export, par exemple l’export des médias copiés sous forme de fichier que vous pouvez enregistrer ou partager depuis votre appareil. L’export est déclenché par vous ; une fois partagée hors de l’Application, cette copie est sous votre contrôle.",
         },
         {
           p: "La désinstallation peut supprimer les données locales de l’Application selon les règles de votre plateforme. Utilisez les options d’export ou de sauvegarde avant toute suppression si vous souhaitez conserver une copie.",
@@ -202,7 +202,7 @@ const primzTerms: LegalDocument = {
       heading: "Description du service",
       blocks: [
         {
-          p: "Primz est une application mobile permettant de documenter et d’organiser des moments qui comptent — premières fois, souvenirs, photos, notes et contenus associés — au sujet d’enfants ou de personnes que vous suivez.",
+          p: "Primz est une application mobile permettant de documenter et d’organiser des moments qui comptent, premières fois, souvenirs, photos, notes et contenus associés, au sujet d’enfants ou de personnes que vous suivez.",
         },
         {
           p: "L’Application est conçue selon une approche **locale d’abord** : vos contenus sont principalement stockés **sur votre appareil**, dans l’espace privé de l’Application. Primz n’est pas conçue pour synchroniser l’ensemble de vos données vers des serveurs de Code and Sorcery, ni pour offrir un compte en ligne de sauvegarde.",
@@ -535,8 +535,8 @@ export const fr: Dictionary = {
 
   studio: {
     eyebrow: "Le studio",
-    titleParts: ["Conjurer le sort,", "et livrer"],
-    lead: "Code and Sorcery est un studio de développement à une personne, immatriculé en France sous forme de SASU. Je conçois, construis et livre des produits de bout en bout — et je publie mes propres applications sous le même nom.",
+    titleParts: ["Conjurer le sort"],
+    lead: "Code and Sorcery est un studio de développement à une personne, immatriculé en France sous forme de SASU. Je conçois, construis et livre des produits de bout en bout, et je publie mes propres applications sous le même nom.",
     facts: [
       { label: "Structure", value: "SASU · France" },
       { label: "Terrain", value: "Web · Mobile · Onchain" },
@@ -546,23 +546,22 @@ export const fr: Dictionary = {
     work: [
       {
         title: "Ingénierie produit",
-        body: "TypeScript de bout en bout : front Next.js, services Node, Postgres ou Mongo en dessous, GraphQL ou REST entre les deux.",
+        body: "Je développe des applications web complètes, de l’interface utilisateur aux API et aux bases de données, avec TypeScript, Next.js et Node.js.",
       },
       {
         title: "Applications mobiles",
-        body: "React Native et Expo pour iOS et Android, hors ligne d’abord quand le produit le mérite — comme Primz, qui n’a jamais besoin de serveur.",
+        body: "Je crée des applications iOS et Android avec React Native et Expo. Le stockage local et le fonctionnement hors ligne sont intégrés lorsque le projet en a besoin.",
       },
       {
         title: "Travail onchain",
-        body: "Contrats Solidity et les dapps autour, du prototype à quelque chose que l’on confie à un auditeur.",
+        body: "Je développe des smart contracts en Solidity et les interfaces web qui permettent de les utiliser, du prototype à la préparation d’un audit.",
       },
       {
         title: "La qualité comme fonctionnalité",
-        body: "Frontières typées, suites Vitest et Playwright, Storybook pour ce que les gens manipulent, CI qui bloque au lieu de râler.",
+        body: "Je mets en place des tests automatisés, une documentation des composants et des contrôles avant livraison pour prévenir les régressions et faciliter la maintenance.",
       },
     ],
     stackTitle: "Composants de l’incantation",
-    stackNote: "Ceux vers lesquels je vais le plus souvent.",
     elsewhereTitle: "Liens",
     elsewhere: [
       { label: "GitHub", value: "Varadiell", key: "github" },
@@ -571,8 +570,8 @@ export const fr: Dictionary = {
     ],
     ctaTitle: "Quelque chose à construire ?",
     ctaBody:
-      "Travail produit, projet à partir de zéro, audit, ou base de code qui a grandi plus vite que ses fondations — dites-moi ce que vous avez en face de vous.",
-    ctaAction: "M’écrire",
+      "Travail produit, projet à partir de zéro, audit, ou base de code qui a grandi plus vite que ses fondations, dites-moi ce que vous avez en face de vous.",
+    ctaAction: "Me contacter",
   },
 
   apps: {
@@ -588,7 +587,7 @@ export const fr: Dictionary = {
       primz: {
         tagline: "Gardez la trace de toutes les premières fois.",
         summary:
-          "Un journal privé pour les enfants qui vous sont proches — premières fois, souvenirs, photos, audio et notes courtes, gardés sur le téléphone et nulle part ailleurs.",
+          "Un journal privé pour les enfants qui vous sont proches, premières fois, souvenirs, photos, audio et notes courtes, gardés sur le téléphone et nulle part ailleurs.",
       },
     },
     forgeTitle: "Encore sur l’enclume",
@@ -600,12 +599,12 @@ export const fr: Dictionary = {
     eyebrow: "Extension VS Code",
     lead: "Ouvrez un fichier .env dans une vue structurée. Les commentaires deviennent la documentation de chaque clé, et la comparaison de deux variantes montre d’un coup d’œil ce qui manque ou ce qui traîne.",
     screenshotCaption:
-      ".env comparé à .env.example — clés communes, une clé en trop et deux clés manquantes.",
+      ".env comparé à .env.example, clés communes, une clé en trop et deux clés manquantes.",
     installTitle: "Installation",
     installNote:
       "Ou cherchez « Env Checker » dans la vue Extensions de votre éditeur.",
     requirements: "VS Code 1.85.0 ou plus récent",
-    featuresTitle: "Ce qu’elle fait",
+    featuresTitle: "Fonctionnalités",
     features: [
       {
         title: "Éditeur personnalisé",
@@ -627,8 +626,14 @@ export const fr: Dictionary = {
         title: "Langage dotenv",
         body: "Un identifiant de langage dotenv est enregistré pour les motifs de noms habituels : l’édition en texte brut se comporte correctement aussi.",
       },
+      {
+        title: "Valeurs masquées",
+        body: "Les valeurs sont masquées par défaut dans le tableau. Affichez-les à la demande avec le bouton dédié, puis masquez-les de nouveau en un clic.",
+      },
     ],
     commandsTitle: "Commandes",
+    commandsPalette: "Palette de commandes · VS Code",
+    commandsHelp: "Dans VS Code, appuyez sur F1, puis recherchez « Env Checker » pour lancer l’une de ces commandes.",
     commandsNote:
       "Également accessibles depuis le menu contextuel de l’explorateur et la barre de titre de l’éditeur quand le fichier est un fichier env.",
     commands: [
@@ -650,10 +655,18 @@ export const fr: Dictionary = {
       },
     ],
     settingsTitle: "Réglages",
+    settingsLead: "Dans les paramètres de VS Code, recherchez « Env Checker » pour personnaliser les fichiers proposés à la comparaison.",
+    settingKeyLabel: "Paramètre",
+    settingTypeLabel: "Valeur attendue",
+    settingsExampleLabel: "Exemple · settings.json",
     settings: [
       {
         name: "envChecker.relatedFileNames",
-        body: "Noms de fichiers du même dossier que le fichier actif à considérer comme fichiers env apparentés, en plus des motifs .env et .env.*.",
+        title: "Ajouter des fichiers à la comparaison",
+        valueType: "Liste de noms de fichiers",
+        body: "Indiquez les noms des fichiers à proposer en plus des fichiers .env et .env.*. Ils doivent se trouver dans le même dossier que le fichier actif.",
+        exampleValues: [".env.example", "config.env"],
+        exampleNote: "Avec cet exemple, config.env est aussi proposé à la comparaison. Remplacez ce nom par celui de votre fichier.",
       },
     ],
     parserTitle: "Notes sur l’analyseur",
@@ -669,7 +682,7 @@ export const fr: Dictionary = {
 
   primz: {
     eyebrow: "iOS & Android",
-    lead: "Un journal privé pour les enfants qui vous sont proches. Premières fois, souvenirs, photos, audio et notes courtes — gardés sur le téléphone, sans compte et sans serveur au milieu.",
+    lead: "Un journal privé pour les enfants qui vous sont proches. Premières fois, souvenirs, photos, audio et notes courtes, gardés sur le téléphone, sans compte et sans serveur au milieu.",
     statusTitle: "Pas encore sur les stores",
     statusBody:
       "Primz est encore en développement. Ses conditions et sa politique de confidentialité sont déjà publiées ici pour que l’application pointe vers une adresse stable dès le premier jour.",
@@ -681,7 +694,7 @@ export const fr: Dictionary = {
       },
       {
         title: "Chaque première fois, gardée",
-        body: "Premières fois, souvenirs et perles sur une seule frise, avec photos, vidéo, audio et dates — et un profil par enfant.",
+        body: "Premières fois, souvenirs et perles sur une seule frise, avec photos, vidéo, audio et dates, et un profil par enfant.",
       },
       {
         title: "À vous de les sortir",

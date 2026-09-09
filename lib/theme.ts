@@ -1,6 +1,6 @@
 /** Shared with the restore script in app/layout.tsx, which reads both. */
 export const THEME_STORAGE_KEY = "cas-theme";
-export const THEME_COLOR = { dark: "#08080a", light: "#f9f8fc" } as const;
+export const THEME_COLOR = { dark: "#070e18", light: "#f9f8fc" } as const;
 
 export type Theme = keyof typeof THEME_COLOR;
 

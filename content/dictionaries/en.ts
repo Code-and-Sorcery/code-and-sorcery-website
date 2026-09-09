@@ -4,7 +4,7 @@ const primzPrivacy: LegalDocument = {
   eyebrow: "Primz",
   title: "Privacy Policy",
   updated: "June 1, 2026",
-  lead: "How the Primz mobile app handles information — and why most of it never leaves your device.",
+  lead: "How the Primz mobile app handles information, and why most of it never leaves your device.",
   sections: [
     {
       id: "introduction",
@@ -27,18 +27,18 @@ const primzPrivacy: LegalDocument = {
         },
         {
           ul: [
-            "**Profiles** — such as a name, optional birth date, and profile photo;",
-            "**Firsts** — milestone entries, dates, notes, and linked media;",
-            "**Memories** — moments you choose to keep, with titles, categories, dates, and media;",
-            "**Gems** — short highlights with a title, optional description, date, and media;",
-            "**App settings** — such as language, theme, accessibility options, notification preferences, and app-lock settings.",
+            "**Profiles**: such as a name, optional birth date, and profile photo;",
+            "**Firsts**: milestone entries, dates, notes, and linked media;",
+            "**Memories**: moments you choose to keep, with titles, categories, dates, and media;",
+            "**Gems**: short highlights with a title, optional description, date, and media;",
+            "**App settings**: such as language, theme, accessibility options, notification preferences, and app-lock settings.",
           ],
         },
         {
           p: "We do not operate a user account system in the App for syncing your personal content to our servers, and the App is not designed to upload your full dataset to Code and Sorcery for storage or processing.",
         },
         {
-          p: "Because your primary data remains on the device, you control it through the App and your device settings — for example, by editing or deleting entries, exporting media, using cleanup options, or uninstalling the App.",
+          p: "Because your primary data remains on the device, you control it through the App and your device settings, for example, by editing or deleting entries, exporting media, using cleanup options, or uninstalling the App.",
         },
       ],
     },
@@ -51,11 +51,11 @@ const primzPrivacy: LegalDocument = {
         },
         {
           ul: [
-            "**Photos and media library** — to pick images and videos (for example, profile photos or media linked to entries). You can decline access; some features will then be unavailable.",
-            "**Camera** — to take photos or record video directly in the App. You can decline access; camera features will then be unavailable.",
-            "**Microphone** — to record audio when you capture video or add audio media. You can decline access; related features will then be unavailable.",
-            "**Notifications** — to show local reminders you enable in the App (for example, monthly milestone reminders). You can decline or disable them in the App or system settings.",
-            "**Biometric authentication** (where supported) — only to unlock the App on your device, using the platform’s secure APIs. We do not receive your biometric data.",
+            "**Photos and media library**: to pick images and videos (for example, profile photos or media linked to entries). You can decline access; some features will then be unavailable.",
+            "**Camera**: to take photos or record video directly in the App. You can decline access; camera features will then be unavailable.",
+            "**Microphone**: to record audio when you capture video or add audio media. You can decline access; related features will then be unavailable.",
+            "**Notifications**: to show local reminders you enable in the App (for example, monthly milestone reminders). You can decline or disable them in the App or system settings.",
+            "**Biometric authentication** (where supported): only to unlock the App on your device, using the platform’s secure APIs. We do not receive your biometric data.",
           ],
         },
         {
@@ -68,7 +68,7 @@ const primzPrivacy: LegalDocument = {
       heading: "Notifications",
       blocks: [
         {
-          p: "If you enable notifications, Primz schedules **local reminders on your device** — for example, monthly milestone reminders based on a profile’s birth date. These notifications are generated and delivered on your device; we do not send push notifications from our servers and we do not receive the content of your journal through notification features.",
+          p: "If you enable notifications, Primz schedules **local reminders on your device**: for example, monthly milestone reminders based on a profile’s birth date. These notifications are generated and delivered on your device; we do not send push notifications from our servers and we do not receive the content of your journal through notification features.",
         },
       ],
     },
@@ -86,7 +86,7 @@ const primzPrivacy: LegalDocument = {
       heading: "Data you might send to us",
       blocks: [
         {
-          p: "The App is built so that everyday use does **not** require sending your content to us. If you contact us (for example, by email) with a question, feedback, or support request, we will process the information you choose to include in that message — such as your email address and the content of your request — to respond and improve our services as appropriate.",
+          p: "The App is built so that everyday use does **not** require sending your content to us. If you contact us (for example, by email) with a question, feedback, or support request, we will process the information you choose to include in that message, such as your email address and the content of your request, to respond and improve our services as appropriate.",
         },
       ],
     },
@@ -116,7 +116,7 @@ const primzPrivacy: LegalDocument = {
           p: "Data stored in the App remains on your device until you remove it (for example, by editing or deleting entries or profiles, using cleanup or reset features, or uninstalling the App).",
         },
         {
-          p: "The App may offer export options — for example, exporting copied media as a file you can save or share through your device. Export is initiated by you; once shared outside the App, that copy is under your control.",
+          p: "The App may offer export options, for example, exporting copied media as a file you can save or share through your device. Export is initiated by you; once shared outside the App, that copy is under your control.",
         },
         {
           p: "Uninstalling may delete local App data according to your platform’s rules. Use export or backup options before removal if you need to keep a copy.",
@@ -197,7 +197,7 @@ const primzTerms: LegalDocument = {
       heading: "Description of the service",
       blocks: [
         {
-          p: "Primz is a mobile app for documenting and organizing meaningful moments — first times, memories, photos, notes, and related content — about children or people you follow.",
+          p: "Primz is a mobile app for documenting and organizing meaningful moments, first times, memories, photos, notes, and related content, about children or people you follow.",
         },
         {
           p: "The App is designed with a **local-first** approach: your content is primarily stored **on your device** in the App’s private storage. Primz is not designed to sync your full dataset to Code and Sorcery servers or to provide an online account for cloud backup.",
@@ -530,9 +530,8 @@ export const en = {
 
   studio: {
     eyebrow: "The studio",
-    /** Rendered as two lines. */
-    titleParts: ["Cast the spell,", "then ship"],
-    lead: "Code and Sorcery is a one-person software studio registered in France as a SASU. I design, build and ship products end to end — and I publish my own apps under the same name.",
+    titleParts: ["Cast the spell"],
+    lead: "Code and Sorcery is a one-person software studio registered in France as a SASU. I design, build and ship products end to end, and I publish my own apps under the same name.",
     facts: [
       { label: "Structure", value: "SASU · France" },
       { label: "Practice", value: "Web · Mobile · Onchain" },
@@ -542,23 +541,22 @@ export const en = {
     work: [
       {
         title: "Product engineering",
-        body: "TypeScript from end to end: Next.js front ends, Node services, Postgres or Mongo underneath, GraphQL or REST between them.",
+        body: "I build complete web applications, from user interfaces to APIs and databases, using TypeScript, Next.js and Node.js.",
       },
       {
         title: "Mobile apps",
-        body: "React Native and Expo for iOS and Android, offline-first when the product deserves it — as in Primz, which never needs a server.",
+        body: "I create iOS and Android apps with React Native and Expo, adding local storage and offline support when the project calls for them.",
       },
       {
         title: "Onchain work",
-        body: "Solidity contracts and the dapps around them, from prototype to something you would let an auditor read.",
+        body: "I develop Solidity smart contracts and the web interfaces that connect to them, from the first prototype through preparation for an audit.",
       },
       {
         title: "Quality as a feature",
-        body: "Typed boundaries, Vitest and Playwright suites, Storybook for the parts people touch, CI that blocks instead of nagging.",
+        body: "I set up automated tests, component documentation and release checks to prevent regressions and make applications easier to maintain.",
       },
     ],
     stackTitle: "Incantation components",
-    stackNote: "The set I reach for most.",
     elsewhereTitle: "Links",
     elsewhere: [
       { label: "GitHub", value: "Varadiell", key: "github" },
@@ -567,8 +565,8 @@ export const en = {
     ],
     ctaTitle: "Something to build?",
     ctaBody:
-      "Product work, greenfield builds, audits, or a codebase that grew faster than its foundations — tell me what you are up against.",
-    ctaAction: "Write to me",
+      "Product work, greenfield builds, audits, or a codebase that grew faster than its foundations, tell me what you are up against.",
+    ctaAction: "Contact me",
   },
 
   apps: {
@@ -584,7 +582,7 @@ export const en = {
       primz: {
         tagline: "Keep track of all your first times.",
         summary:
-          "A private journal for the children you care about — firsts, memories, photos, audio and small notes, kept on the phone and nowhere else.",
+          "A private journal for the children you care about, firsts, memories, photos, audio and small notes, kept on the phone and nowhere else.",
       },
     },
     forgeTitle: "Still on the anvil",
@@ -596,12 +594,12 @@ export const en = {
     eyebrow: "VS Code extension",
     lead: "Open a .env file in a structured view. Comments become documentation next to each key, and comparing two variants shows what is missing or left over at a glance.",
     screenshotCaption:
-      ".env checked against .env.example — shared keys, one extra key, and two missing keys.",
+      ".env checked against .env.example, shared keys, one extra key, and two missing keys.",
     installTitle: "Install",
     installNote:
       "Or search for “Env Checker” in the Extensions view of your editor.",
     requirements: "VS Code 1.85.0 or newer",
-    featuresTitle: "What it does",
+    featuresTitle: "Features",
     features: [
       {
         title: "Custom editor",
@@ -623,8 +621,14 @@ export const en = {
         title: "Dotenv language",
         body: "A dotenv language id is registered for the usual filename patterns, so plain-text editing behaves properly too.",
       },
+      {
+        title: "Hidden values",
+        body: "Values are hidden by default in the table. Reveal them with the dedicated button, then hide them again with one click.",
+      },
     ],
     commandsTitle: "Commands",
+    commandsPalette: "Command Palette · VS Code",
+    commandsHelp: "In VS Code, press F1, then search for “Env Checker” to run one of these commands.",
     commandsNote:
       "Also available from the Explorer context menu and the editor title bar when the file is an env file.",
     commands: [
@@ -646,10 +650,18 @@ export const en = {
       },
     ],
     settingsTitle: "Settings",
+    settingsLead: "Search for “Env Checker” in VS Code settings to customize which files are offered for comparison.",
+    settingKeyLabel: "Setting",
+    settingTypeLabel: "Expected value",
+    settingsExampleLabel: "Example · settings.json",
     settings: [
       {
         name: "envChecker.relatedFileNames",
-        body: "Basenames in the same folder as the active file that count as related env files, in addition to the .env and .env.* patterns.",
+        title: "Add files to the comparison",
+        valueType: "List of file names",
+        body: "List the files to offer alongside .env and .env.* files. They must be in the same folder as the active file.",
+        exampleValues: [".env.example", "config.env"],
+        exampleNote: "This example also offers config.env for comparison. Replace it with the name of your file.",
       },
     ],
     parserTitle: "Parser notes",
@@ -665,7 +677,7 @@ export const en = {
 
   primz: {
     eyebrow: "iOS & Android",
-    lead: "A private journal for the children you care about. Firsts, memories, photos, audio and small notes — kept on the phone, with no account and no server in the middle.",
+    lead: "A private journal for the children you care about. Firsts, memories, photos, audio and small notes, kept on the phone, with no account and no server in the middle.",
     statusTitle: "Not on the stores yet",
     statusBody:
       "Primz is still in development. Its terms and privacy policy are already published here so the app can point at a stable address from day one.",
@@ -677,7 +689,7 @@ export const en = {
       },
       {
         title: "Every first, kept",
-        body: "Firsts, memories and gems on a single timeline, with photos, video, audio and dates — plus one profile per child.",
+        body: "Firsts, memories and gems on a single timeline, with photos, video, audio and dates, plus one profile per child.",
       },
       {
         title: "Yours to take out",

@@ -31,23 +31,25 @@ export const techStack: TechItem[] = [
 
 export function TechGrid() {
   return (
-    <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+    <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
       {techStack.map((tech, index) => (
         <Reveal as="li" key={tech.name} delay={stagger(index)}>
-          <div className="surface flex items-center gap-3 rounded-md px-3.5 py-3 transition-colors hover:border-line-strong">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={tech.src}
-              alt=""
-              width={20}
-              height={20}
-              loading="lazy"
-              className={cn(
-                "h-5 w-5 shrink-0 rounded-[3px] object-contain",
-                tech.invertOnLight && "invert-on-light",
-              )}
-            />
-            <span className="truncate text-[13px] text-fg-dim">
+          <div className="group flex h-full flex-col items-start gap-4 rounded-xl border border-line bg-ink-raised p-4 transition-[border-color,box-shadow] duration-300 hover:border-interactive-border hover:shadow-[0_8px_24px_-12px_hsl(var(--ember-bright)/0.45)] sm:flex-row sm:items-center sm:p-5">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-line bg-veil transition-colors duration-300 group-hover:border-interactive-border/50 group-hover:bg-active-panel">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={tech.src}
+                alt=""
+                width={28}
+                height={28}
+                loading="lazy"
+                className={cn(
+                  "h-7 w-7 object-contain",
+                  tech.invertOnLight && "invert-on-light",
+                )}
+              />
+            </span>
+            <span className="text-sm font-medium leading-snug text-fg transition-colors duration-300 group-hover:text-interactive">
               {tech.name}
             </span>
           </div>

@@ -29,10 +29,15 @@ export function FeatureGrid({
           key={item.title}
           className="group relative bg-ink/80 p-6 backdrop-blur-sm transition-colors hover:bg-ink-raised/80"
         >
-          <span className="absolute left-6 top-[1.7rem] h-1.5 w-1.5 rotate-45 bg-line-strong transition-colors group-hover:bg-ember" />
-          <Reveal delay={stagger(index)} className="pl-6">
-            <h3 className="text-sm font-semibold">{item.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-fg-faint">
+          <Reveal delay={stagger(index)}>
+            <div className="flex items-center gap-[1.125rem]">
+              <span
+                aria-hidden="true"
+                className="h-1.5 w-1.5 shrink-0 rotate-45 bg-ember-bright/50 transition-[background-color,box-shadow,transform] duration-500 ease-out group-hover:scale-125 group-hover:bg-ember-bright group-hover:shadow-[0_0_14px_hsl(var(--ember-bright)/0.55)]"
+              />
+              <h3 className="text-sm font-semibold">{item.title}</h3>
+            </div>
+            <p className="mt-2 pl-6 text-sm leading-relaxed text-fg-faint">
               {item.body}
             </p>
           </Reveal>
