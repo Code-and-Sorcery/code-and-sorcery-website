@@ -44,9 +44,13 @@ export const apps: AppEntry[] = [
     icon: "/images/env-checker-icon.png",
     links: [
       {
-        label: "Marketplace",
+        label: "Visual Studio Marketplace",
         href: `https://marketplace.visualstudio.com/items?itemName=${MARKETPLACE_ID}`,
         primary: true,
+      },
+      {
+        label: "Open VSX",
+        href: "https://open-vsx.org/extension/CodeandSorcery/vscode-env-checker",
       },
       {
         label: "GitHub",
