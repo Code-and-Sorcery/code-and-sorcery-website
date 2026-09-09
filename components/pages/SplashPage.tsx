@@ -122,7 +122,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
             <LinkButton
               href={localizePath("/apps", locale)}
               variant="outline"
-              className="border-edge bg-panel-strong text-fg hover:border-edge-strong"
+              className="border-edge bg-panel-strong text-fg hover:border-edge-strong hover:text-white"
             >
               {dict.splash.enter}
             </LinkButton>
@@ -131,7 +131,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
               variant="outline"
               icon="none"
               leadingIcon={<MailIcon className="h-4 w-4" />}
-              className="border-edge text-fg/90 hover:border-edge-strong hover:text-fg"
+              className="border-edge text-fg/90 hover:border-edge-strong hover:text-fg [html[data-theme=light]_&]:hover:text-white"
             >
               {dict.splash.contact}
             </LinkButton>
