@@ -79,14 +79,14 @@
 
   html[data-theme="light"] {
     --ink: 0 0% 100%;
-    --ink-sunken: 0 0% 97%;
-    --ink-raised: 0 0% 100%;
+    --ink-sunken: 20 65% 95%;
+    --ink-raised: 20 100% 98%;
 
     --fg: 0 0% 14%;
     --fg-dim: 0 0% 31%;
     --fg-faint: 0 0% 42%;
 
-    /* White surfaces with vivid orange accents and more visible local glows. */
+    /* White canvas, peach-tinted surfaces and vivid orange accents. */
     --ember: 24 100% 56%;
     --arcane: var(--ember);
     --success: 153 65% 29%;
@@ -94,10 +94,10 @@
     --glow-ember: var(--ember);
     --glow-arcane: var(--glow-ember);
 
-    --pillar-upper: var(--glow-ember) / 0.28;
-    --pillar-lower: var(--glow-ember) / 0.14;
-    --ambient-upper: var(--glow-ember) / 0.24;
-    --ambient-lower: var(--glow-ember) / 0.12;
+    --pillar-upper: var(--glow-ember) / 0.48;
+    --pillar-lower: var(--glow-ember) / 0.26;
+    --ambient-upper: var(--glow-ember) / 0.42;
+    --ambient-lower: var(--glow-ember) / 0.24;
     --card-glow: var(--ember);
     --interactive: var(--ember);
     --interactive-border: var(--ember);
@@ -106,20 +106,20 @@
     /* A deeper orange keeps inline links legible against white. */
     --link-accent: 20 100% 40%;
 
-    --line: 0 0% 87%;
-    --line-strong: 0 0% 74%;
+    --line: 20 35% 87%;
+    --line-strong: 20 35% 74%;
 
-    --veil: 0 0% 45% / 0.03;
-    --panel: 0 0% 100% / 0.72;
+    --veil: var(--ember) / 0.05;
+    --panel: 20 100% 98% / 0.86;
     --panel-strong: var(--ember) / 0.16;
 
     --edge: var(--ember) / 0.26;
     --edge-strong: var(--ember) / 0.9;
 
-    --surface-a: 0 0% 100% / 0.95;
-    --surface-b: 0 0% 98% / 0.86;
+    --surface-a: 0 0% 100% / 0.97;
+    --surface-b: 20 100% 94% / 0.88;
 
-    --shade: 0 0% 28% / 0.12;
+    --shade: 20 30% 30% / 0.14;
 
     color-scheme: light;
   }
