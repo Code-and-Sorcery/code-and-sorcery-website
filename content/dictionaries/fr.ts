@@ -600,7 +600,7 @@ export const fr: Dictionary = {
     eyebrow: "Extension VS Code",
     lead: "Ouvrez un fichier .env dans une vue structurée. Les commentaires deviennent la documentation de chaque clé, et la comparaison de deux variantes montre d’un coup d’œil ce qui manque ou ce qui traîne.",
     screenshotCaption:
-      ".env comparé à .env.example — clés identiques, une clé en trop, une clé manquante.",
+      ".env comparé à .env.example — clés communes, une clé en trop et deux clés manquantes.",
     installTitle: "Installation",
     installNote:
       "Ou cherchez « Env Checker » dans la vue Extensions de votre éditeur.",

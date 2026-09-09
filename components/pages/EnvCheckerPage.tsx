@@ -90,8 +90,8 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
               <Image
                 src="/images/env-checker-preview.png"
                 alt={copy.screenshotCaption}
-                width={1790}
-                height={862}
+                width={1280}
+                height={720}
                 sizes="(max-width: 1200px) 100vw, 1100px"
                 className="h-auto w-full"
                 priority

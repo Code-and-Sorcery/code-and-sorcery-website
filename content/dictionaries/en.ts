@@ -596,7 +596,7 @@ export const en = {
     eyebrow: "VS Code extension",
     lead: "Open a .env file in a structured view. Comments become documentation next to each key, and comparing two variants shows what is missing or left over at a glance.",
     screenshotCaption:
-      ".env checked against .env.example — matching keys, an extra one, and a missing one.",
+      ".env checked against .env.example — shared keys, one extra key, and two missing keys.",
     installTitle: "Install",
     installNote:
       "Or search for “Env Checker” in the Extensions view of your editor.",
