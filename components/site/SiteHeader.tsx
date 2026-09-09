@@ -80,7 +80,7 @@ export function SiteHeader({
           </nav>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 [--edge:205_55%_80%/0.24] [--edge-strong:var(--ember-bright)/0.65]">
           {/* Below sm there is no room beside the nav; the footer carries
               these links on small screens. */}
           <SocialLinks className="hidden sm:flex" />

@@ -21,20 +21,11 @@ export function AppCard({
   copy: { tagline: string; summary: string };
 }) {
   return (
-    <SpellCard as="li" className="group">
+    <SpellCard as="li" className="app-card group">
       <Link
         href={localizePath(app.path, locale)}
         className="flex h-full flex-col gap-6 p-7 sm:p-8"
       >
-        {/* The theme interaction colour lights the card on hover. */}
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-40 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-          style={{
-            background: `radial-gradient(60% 100% at 50% 0%, hsl(var(--card-glow) / 0.16), transparent 70%)`,
-          }}
-        />
-
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
             <AppIcon app={app} className="h-11 w-11 rounded-xl" compact />

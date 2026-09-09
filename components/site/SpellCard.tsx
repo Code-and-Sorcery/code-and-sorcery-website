@@ -5,7 +5,7 @@ import { useCallback, type PointerEvent } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Surface whose border and inner wash light up wherever the pointer is.
+ * Flat surface with a subtle hover tint and a border that follows the pointer.
  * The cursor position is handed to CSS through --mx / --my; all the drawing
  * happens in the .spell-card rules in globals.css.
  */

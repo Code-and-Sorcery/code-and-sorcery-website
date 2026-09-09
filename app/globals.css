@@ -68,10 +68,6 @@
     --edge: 205 55% 80% / 0.24;
     --edge-strong: var(--ember) / 0.65;
 
-    /* Both stops of the frosted .surface gradient. */
-    --surface-a: 205 65% 75% / 0.065;
-    --surface-b: 212 55% 55% / 0.025;
-
     --shade: 218 65% 3% / 0.9;
 
     color-scheme: dark;
@@ -79,14 +75,14 @@
 
   html[data-theme="light"] {
     --ink: 0 0% 100%;
-    --ink-sunken: 20 65% 95%;
-    --ink-raised: 20 100% 98%;
+    --ink-sunken: 20 65% 97%;
+    --ink-raised: 20 100% 99%;
 
     --fg: 0 0% 14%;
     --fg-dim: 0 0% 31%;
     --fg-faint: 0 0% 42%;
 
-    /* White canvas, peach-tinted surfaces and vivid orange accents. */
+    /* White canvas, lightly tinted surfaces and vivid orange accents. */
     --ember: 24 100% 56%;
     --arcane: var(--ember);
     --success: 153 65% 29%;
@@ -94,10 +90,10 @@
     --glow-ember: var(--ember);
     --glow-arcane: var(--glow-ember);
 
-    --pillar-upper: var(--glow-ember) / 0.48;
-    --pillar-lower: var(--glow-ember) / 0.26;
-    --ambient-upper: var(--glow-ember) / 0.42;
-    --ambient-lower: var(--glow-ember) / 0.24;
+    --pillar-upper: var(--glow-ember) / 0.18;
+    --pillar-lower: var(--glow-ember) / 0.1;
+    --ambient-upper: var(--glow-ember) / 0.16;
+    --ambient-lower: var(--glow-ember) / 0.08;
     --card-glow: var(--ember);
     --interactive: var(--ember);
     --interactive-border: var(--ember);
@@ -109,15 +105,12 @@
     --line: 20 35% 87%;
     --line-strong: 20 35% 74%;
 
-    --veil: var(--ember) / 0.05;
-    --panel: 20 100% 98% / 0.86;
+    --veil: var(--ember) / 0.025;
+    --panel: 20 100% 99% / 0.9;
     --panel-strong: var(--ember) / 0.16;
 
     --edge: var(--ember) / 0.26;
     --edge-strong: var(--ember) / 0.9;
-
-    --surface-a: 0 0% 100% / 0.97;
-    --surface-b: 20 100% 94% / 0.88;
 
     --shade: 20 30% 30% / 0.14;
 
@@ -200,15 +193,17 @@
     @apply font-mono text-[11px] font-medium uppercase tracking-[0.28em] text-fg-faint;
   }
 
-  /* Frosted panel used for cards, headers, pills. */
+  /* Same flat veil over raised ink as Env Checker's platform row.
+     Identical stops form a uniform overlay, with no colour transition. */
   .surface {
-    background: linear-gradient(
-      180deg,
-      hsl(var(--surface-a)) 0%,
-      hsl(var(--surface-b)) 100%
-    );
+    background-color: hsl(var(--ink-raised));
+    background-image: linear-gradient(hsl(var(--veil)), hsl(var(--veil)));
     border: 1px solid hsl(var(--line));
-    backdrop-filter: blur(14px) saturate(140%);
+  }
+
+  html[data-theme="light"] .app-card:not(:hover):not(:focus-within) {
+    background-color: #fff;
+    background-image: none;
   }
 
   /* Card whose border lights up where the cursor is (see SpellCard). */
@@ -225,10 +220,10 @@
     border-radius: inherit;
     padding: 1px;
     background: radial-gradient(
-      220px circle at var(--mx, 50%) var(--my, 0%),
-      hsl(var(--card-glow) / 0.9),
-      hsl(var(--link-accent) / 0.55) 45%,
-      transparent 70%
+      320px circle at var(--mx, 50%) var(--my, 0%),
+      hsl(var(--card-glow) / 0.7) 0%,
+      hsl(var(--card-glow) / 0.25) 42%,
+      hsl(var(--card-glow) / 0) 78%
     );
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
@@ -244,11 +239,7 @@
     inset: 0;
     z-index: -1;
     border-radius: inherit;
-    background: radial-gradient(
-      420px circle at var(--mx, 50%) var(--my, 0%),
-      hsl(var(--card-glow) / 0.1),
-      transparent 65%
-    );
+    background: hsl(var(--card-glow) / 0.04);
     opacity: 0;
     transition: opacity 0.4s ease;
   }
