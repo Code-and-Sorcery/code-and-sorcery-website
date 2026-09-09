@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useSyncExternalStore } from "react";
 import * as THREE from "three";
+import { currentTheme } from "@/lib/theme";
 
 /**
  * WebGL support never changes for the life of the document, so probe it once
@@ -27,7 +28,7 @@ function fallbackGradient(
   bottomColor: string,
   rotation: number,
 ) {
-  return `linear-gradient(${135 + rotation}deg, transparent 34%, ${topColor}2e 47%, ${bottomColor}2e 57%, transparent 70%)`;
+  return `linear-gradient(${135 + rotation}deg, transparent 34%, ${topColor}2e calc(47% + var(--pillar-color-shift, 0%)), ${bottomColor}2e calc(57% + var(--pillar-color-shift, 0%)), transparent 70%)`;
 }
 
 interface LightPillarProps {
@@ -44,6 +45,8 @@ interface LightPillarProps {
   mixBlendMode?: string;
   pillarRotation?: number;
   quality?: "low" | "medium";
+  /** Expand the top (blue) field in dark mode and the bottom (orange) in light. */
+  followTheme?: boolean;
 }
 
 const LightPillar = ({
@@ -60,6 +63,7 @@ const LightPillar = ({
   mixBlendMode = "screen",
   pillarRotation = 0,
   quality = "medium",
+  followTheme = false,
 }: LightPillarProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
@@ -70,11 +74,32 @@ const LightPillar = ({
   const geometryRef = useRef<THREE.PlaneGeometry | null>(null);
   const mouseRef = useRef(new THREE.Vector2(0, 0));
   const timeRef = useRef(0);
+  const colorBalanceRef = useRef(0);
   const webGLSupported = useSyncExternalStore(
     noopSubscribe,
     hasWebGL,
     () => true,
   );
+
+  useEffect(() => {
+    const updateBalance = () => {
+      const light = followTheme && currentTheme() === "light";
+      const balance = followTheme ? (light ? -0.22 : 0.22) : 0;
+      colorBalanceRef.current = balance;
+      containerRef.current?.style.setProperty("--pillar-color-shift", `${balance * 40}%`);
+    };
+    updateBalance();
+    if (!followTheme) return;
+
+    // Observe the restored preference and all later changes without recreating
+    // the WebGL renderer or resetting the running animation.
+    const observer = new MutationObserver(updateBalance);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+    return () => observer.disconnect();
+  }, [followTheme, webGLSupported]);
 
   useEffect(() => {
     if (!containerRef.current || !webGLSupported) return;
@@ -162,6 +187,7 @@ const LightPillar = ({
       uniform vec2 uMouse;
       uniform vec3 uTopColor;
       uniform vec3 uBottomColor;
+      uniform float uColorBalance;
       uniform float uIntensity;
       uniform bool uInteractive;
       uniform float uGlowAmount;
@@ -237,7 +263,7 @@ const LightPillar = ({
 
         // Narrow crossover: each end keeps a broad field of its own hue and the
         // muddy midpoint between orange and blue stays a thin seam.
-        float ramp = smoothstep(0.32, 0.68, clamp(uv.y * 0.38 + 0.5, 0.0, 1.0));
+        float ramp = smoothstep(0.32, 0.68, clamp(uv.y * 0.38 + 0.5 + uColorBalance, 0.0, 1.0));
         vec3 col = mix(uBottomColor, uTopColor, ramp) * glow;
 
         // Only the hottest cores bleach towards white, so they still read as light.
@@ -262,6 +288,7 @@ const LightPillar = ({
         uMouse: { value: mouseRef.current },
         uTopColor: { value: parseColor(topColor) },
         uBottomColor: { value: parseColor(bottomColor) },
+        uColorBalance: { value: colorBalanceRef.current },
         uIntensity: { value: intensity },
         uInteractive: { value: interactive },
         uGlowAmount: { value: glowAmount },
@@ -310,6 +337,7 @@ const LightPillar = ({
     let lastTime = performance.now();
     const targetFPS = effectiveQuality === "low" ? 30 : 60;
     const frameTime = 1000 / targetFPS;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     const animate = (currentTime: number) => {
       if (
@@ -328,6 +356,10 @@ const LightPillar = ({
         materialRef.current.uniforms.uTime.value = t;
         materialRef.current.uniforms.uRotCos.value = Math.cos(t * 0.3);
         materialRef.current.uniforms.uRotSin.value = Math.sin(t * 0.3);
+        const balance = materialRef.current.uniforms.uColorBalance;
+        balance.value = reducedMotion.matches
+          ? colorBalanceRef.current
+          : THREE.MathUtils.damp(balance.value, colorBalanceRef.current, 5, deltaTime / 1000);
         rendererRef.current.render(sceneRef.current, cameraRef.current);
         lastTime = currentTime - (deltaTime % frameTime);
       }
@@ -405,6 +437,7 @@ const LightPillar = ({
   if (!webGLSupported) {
     return (
       <div
+        ref={containerRef}
         aria-hidden="true"
         className={className}
         style={{

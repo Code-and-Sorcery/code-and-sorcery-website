@@ -12,15 +12,14 @@
   :root {
     --radius: 1rem;
 
-    /* The ink field, pinned outside the two themes: the splash keeps the dark
-       palette whichever theme is on, and the page canvas behind it follows. */
+    /* Shared brand colours, independent of the selected theme. */
     --ink-dark: 216 55% 6%;
     --ember-bright: 24 100% 62%;
   }
 
   /* Dark. Also the bare :root fallback, so a paint that somehow beats the
      restore script in app/layout.tsx lands on the house theme, not on white —
-     and .theme-dark, which pins a subtree to it (see the splash). */
+     and .theme-dark for explicitly pinned subtrees. */
   :root,
   html[data-theme="dark"],
   .theme-dark {
@@ -79,49 +78,48 @@
   }
 
   html[data-theme="light"] {
-    --ink: 250 40% 98%;
-    --ink-sunken: 250 30% 95%;
+    --ink: 0 0% 100%;
+    --ink-sunken: 0 0% 97%;
     --ink-raised: 0 0% 100%;
 
-    --fg: 250 30% 12%;
-    --fg-dim: 250 12% 30%;
-    --fg-faint: 250 8% 40%;
+    --fg: 0 0% 14%;
+    --fg-dim: 0 0% 31%;
+    --fg-faint: 0 0% 42%;
 
-    /* One luminous orange for text, interactions, fills and light effects. */
-    --ember: var(--ember-bright);
-    --arcane: 200 72% 32%;
+    /* White surfaces with vivid orange accents and more visible local glows. */
+    --ember: 24 100% 56%;
+    --arcane: var(--ember);
     --success: 153 65% 29%;
 
-    /* The washes go the other way — pale, so they tint the page instead of
-       staining it. */
-    --glow-ember: var(--ember-bright);
-    --glow-arcane: 198 65% 74%;
+    --glow-ember: var(--ember);
+    --glow-arcane: var(--glow-ember);
 
-    --pillar-upper: var(--glow-ember) / 0.46;
-    --pillar-lower: var(--glow-arcane) / 0.2;
-    --ambient-upper: var(--glow-ember) / 0.48;
-    --ambient-lower: var(--glow-arcane) / 0.25;
-    --card-glow: var(--ember-bright);
+    --pillar-upper: var(--glow-ember) / 0.28;
+    --pillar-lower: var(--glow-ember) / 0.14;
+    --ambient-upper: var(--glow-ember) / 0.24;
+    --ambient-lower: var(--glow-ember) / 0.12;
+    --card-glow: var(--ember);
     --interactive: var(--ember);
-    --interactive-border: var(--ember-bright);
-    --action-fill: var(--ember-bright);
-    --active-panel: var(--ember-bright) / 0.14;
-    --link-accent: var(--ember);
+    --interactive-border: var(--ember);
+    --action-fill: var(--ember);
+    --active-panel: var(--ember) / 0.22;
+    /* A deeper orange keeps inline links legible against white. */
+    --link-accent: 20 100% 40%;
 
-    --line: 250 20% 88%;
-    --line-strong: 250 16% 76%;
+    --line: 0 0% 87%;
+    --line-strong: 0 0% 74%;
 
-    --veil: 250 30% 20% / 0.04;
-    --panel: 0 0% 100% / 0.7;
-    --panel-strong: var(--ember-bright) / 0.1;
+    --veil: 0 0% 45% / 0.03;
+    --panel: 0 0% 100% / 0.72;
+    --panel-strong: var(--ember) / 0.16;
 
-    --edge: 250 25% 25% / 0.14;
-    --edge-strong: var(--ember-bright) / 0.75;
+    --edge: var(--ember) / 0.26;
+    --edge-strong: var(--ember) / 0.9;
 
-    --surface-a: 0 0% 100% / 0.92;
-    --surface-b: 28 100% 96% / 0.82;
+    --surface-a: 0 0% 100% / 0.95;
+    --surface-b: 0 0% 98% / 0.86;
 
-    --shade: 250 40% 30% / 0.18;
+    --shade: 0 0% 28% / 0.12;
 
     color-scheme: light;
   }
@@ -134,9 +132,8 @@
     color: hsl(var(--fg));
   }
 
-  /* The pinned subtree covers the viewport but not the document canvas, which
-     an overscroll would flash past its edge in the other theme. */
-  html:has(.theme-dark) {
+  /* The entrance keeps its dark canvas in both themes, including overscroll. */
+  html:has(.splash-page) {
     background-color: hsl(var(--ink-dark));
   }
 

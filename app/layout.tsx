@@ -68,7 +68,7 @@ const restoreTheme = `(function(){
   }
   document.documentElement.dataset.theme = theme;
   var meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) { meta.setAttribute("content", theme === "light" ? "#f9f8fc" : "#070e18"); }
+  if (meta) { meta.setAttribute("content", theme === "light" ? "#ffffff" : "#070e18"); }
 })();`;
 
 export default function RootLayout({

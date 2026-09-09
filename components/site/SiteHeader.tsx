@@ -19,8 +19,7 @@ export function SiteHeader({
 }: {
   dict: Dictionary;
   locale: Locale;
-  /** Splash mode: sits over the shader, never grows a border — and drops the
-      theme switch, since the entrance is pinned to the dark palette. */
+  /** Splash mode: sits over the shader without a background or border. */
   floating?: boolean;
 }) {
   const pathname = usePathname() ?? "/";
@@ -90,9 +89,7 @@ export function SiteHeader({
             label={dict.switchTo}
             ariaLabel={dict.switchAria}
           />
-          {/* Unmounting it takes the T shortcut with it, which is the point:
-              neither can show the reader anything on this page. */}
-          {floating ? null : <ThemeToggle label={dict.nav.theme} />}
+          <ThemeToggle label={dict.nav.theme} />
         </div>
       </div>
     </header>

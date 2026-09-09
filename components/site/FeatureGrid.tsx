@@ -33,7 +33,7 @@ export function FeatureGrid({
             <div className="flex items-center gap-[1.125rem]">
               <span
                 aria-hidden="true"
-                className="h-1.5 w-1.5 shrink-0 rotate-45 bg-ember-bright/50 transition-[background-color,box-shadow,transform] duration-500 ease-out group-hover:scale-125 group-hover:bg-ember-bright group-hover:shadow-[0_0_14px_hsl(var(--ember-bright)/0.55)]"
+                className="h-1.5 w-1.5 shrink-0 rotate-45 bg-ember-bright/50 transition-[background-color,box-shadow,transform] duration-500 ease-out group-hover:scale-125 group-hover:bg-[hsl(var(--card-glow))] group-hover:shadow-[0_0_14px_hsl(var(--card-glow)/0.55)]"
               />
               <h3 className="text-sm font-semibold">{item.title}</h3>
             </div>

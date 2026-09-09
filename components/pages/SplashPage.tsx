@@ -17,24 +17,18 @@ import { syncThemeColor } from "@/lib/theme";
  * The entrance. Kept deliberately scroll-free: one shader, one mark, and the
  * doors into the rest of the site.
  *
- * The one page that ignores the light theme: it is a full-bleed shader, and the
- * mark, the copy and the buttons are all composed against the ink field. The
- * switch in the header still records the reader's choice — it simply lands once
- * they are through the door. .theme-dark pins the palette; see globals.css.
+ * Both themes share the dark canvas. The selected theme shifts the shader
+ * towards orange or blue and controls the interaction accents.
  */
 export function SplashPage({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const [runic, setRunic] = useState(false);
 
-  // CSS reaches the document, not the browser chrome around it, which would
-  // otherwise sit light above a page that never turns light.
   useEffect(() => {
-    const root = document.documentElement;
-    root.dataset.chrome = "dark";
+    document.documentElement.dataset.chrome = "dark";
     syncThemeColor();
-
     return () => {
-      delete root.dataset.chrome;
+      delete document.documentElement.dataset.chrome;
       syncThemeColor();
     };
   }, []);
@@ -42,7 +36,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
   return (
     <div
       lang={locale === "en" ? undefined : locale}
-      className="theme-dark grain relative h-[100svh] w-full overflow-hidden bg-ink"
+      className="splash-page theme-dark grain relative h-[100svh] w-full overflow-hidden bg-ink"
     >
       {/* Blue up, orange down: the ramp runs along the pillar, so the diagonal
           reads the same way round as the logo. The blue is sampled from the
@@ -51,6 +45,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
       <LightPillar
         topColor="#61a6c3"
         bottomColor="#ff8a3c"
+        followTheme
         intensity={1.5}
         rotationSpeed={0.1}
         glowAmount={0.002}
