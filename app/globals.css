@@ -201,9 +201,19 @@
     border: 1px solid hsl(var(--line));
   }
 
-  html[data-theme="light"] .app-card:not(:hover):not(:focus-within) {
+  /* Keep the same background layer in both states so its colour can fade. */
+  html[data-theme="light"] :is(.app-card, .link-card) {
     background-color: #fff;
     background-image: none;
+    transition: background-color 0.35s ease;
+  }
+
+  html[data-theme="light"] .app-card:is(:hover, :focus-within) {
+    background-color: hsl(var(--ink-raised));
+  }
+
+  html[data-theme="light"] .link-card:is(:hover, :focus-within) {
+    background-color: hsl(22 65% 92%);
   }
 
   /* Card whose border lights up where the cursor is (see SpellCard). */

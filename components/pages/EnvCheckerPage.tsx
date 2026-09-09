@@ -127,7 +127,7 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
 
       <section className="container space-y-8 pb-16">
         <SectionHeading title={copy.commandsTitle} lead={copy.commandsHelp} />
-        <div className="surface overflow-hidden rounded-lg">
+        <div className="surface overflow-hidden rounded-lg [html[data-theme=light]_&]:bg-white [html[data-theme=light]_&]:bg-none [html[data-theme=light]_&]:[--ink-sunken:22_65%_92%]">
           <div className="flex items-center justify-between gap-4 border-b border-line bg-ink-sunken/70 px-5 py-4">
             <span className="flex items-center gap-3 text-sm font-medium text-fg-dim">
               <TerminalIcon className="h-4 w-4 text-ember" />

@@ -4,7 +4,6 @@ import { ArrowRightIcon, LockIcon } from "@/components/Icons";
 import { AppIcon } from "@/components/site/AppIcon";
 import { AppShowcase } from "@/components/site/AppShowcase";
 import { FeatureGrid } from "@/components/site/FeatureGrid";
-import { MetaList } from "@/components/site/MetaList";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { stagger } from "@/components/site/stagger";
@@ -54,21 +53,41 @@ export function PrimzPage({ locale }: { locale: Locale }) {
         }
       >
         <div className="mt-8 max-w-md">
-          <MetaList
-            items={[
-              {
-                label: dict.common.status,
-                value: (
-                  <StatusPill
-                    status={app.status}
-                    label={dict.status[app.status]}
-                  />
-                ),
-              },
-              { label: dict.common.platform, value: app.surface },
-              { label: dict.common.stack, value: app.tech.join(" · ") },
-            ]}
-          />
+          <dl className="grid overflow-hidden rounded-2xl border border-line bg-ink-raised shadow-lift sm:grid-cols-2">
+            <div className="p-6">
+              <dt className="text-xs font-medium uppercase tracking-[0.12em] text-fg-faint">
+                {dict.common.status}
+              </dt>
+              <dd className="mt-3">
+                <StatusPill
+                  status={app.status}
+                  label={dict.status[app.status]}
+                />
+              </dd>
+            </div>
+            <div className="border-t border-line p-6 sm:border-l sm:border-t-0">
+              <dt className="text-xs font-medium uppercase tracking-[0.12em] text-fg-faint">
+                {dict.common.platform}
+              </dt>
+              <dd className="mt-3 text-base font-semibold leading-relaxed text-fg">
+                {app.surface}
+              </dd>
+            </div>
+            <div className="border-t border-line bg-veil px-6 py-5 sm:col-span-2">
+              <dt className="text-xs font-medium uppercase tracking-[0.12em] text-fg-faint">
+                {dict.common.stack}
+              </dt>
+              <dd className="mt-3">
+                <ul className="flex flex-wrap gap-2">
+                  {app.tech.map((tech) => (
+                    <li key={tech} className="rounded-md border border-line bg-panel px-3 py-1.5 text-sm font-medium text-fg-dim">
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          </dl>
         </div>
       </PageHero>
 
@@ -116,7 +135,7 @@ export function PrimzPage({ locale }: { locale: Locale }) {
         <SectionHeading title={copy.legalTitle} lead={copy.legalBody} />
         <ul className="grid gap-4 sm:grid-cols-2">
           {documents.map((document) => (
-            <SpellCard as="li" key={document.path} className="group">
+            <SpellCard as="li" key={document.path} className="link-card group">
               <Link
                 href={localizePath(document.path, locale)}
                 className="flex items-center justify-between gap-4 p-6 transition-colors hover:text-interactive focus-visible:text-interactive"

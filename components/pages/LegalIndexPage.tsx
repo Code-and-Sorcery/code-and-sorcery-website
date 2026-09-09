@@ -90,7 +90,12 @@ export function LegalIndexPage({ locale }: { locale: Locale }) {
 
                   return (
                     <Reveal as="li" key={entry.title} delay={stagger(index)}>
-                      <SpellCard className="group h-full">
+                      <SpellCard
+                        className={cn(
+                          "group h-full",
+                          (entry.path || entry.href) && "link-card",
+                        )}
+                      >
                         {entry.path ? (
                           <Link
                             href={localizePath(entry.path, locale)}

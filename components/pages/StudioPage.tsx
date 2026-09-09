@@ -114,7 +114,7 @@ export function StudioPage({ locale }: { locale: Locale }) {
 
             return (
               <Reveal as="li" key={item.key} delay={stagger(index)}>
-                <SpellCard className="group">
+                <SpellCard className="link-card group">
                   <a
                     href={SOCIALS[item.key as keyof typeof SOCIALS]}
                     target="_blank"
