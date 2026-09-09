@@ -184,7 +184,7 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
                     </div>
                   </dl>
                 </div>
-                <div className="border-t border-line bg-ink-sunken/80 p-6">
+                <div className="border-t border-line bg-ink-sunken/80 p-6 [html[data-theme=light]_&]:bg-white">
                   <p className="mb-4 font-mono text-xs text-fg-faint">{copy.settingsExampleLabel}</p>
                   <pre
                     tabIndex={0}
