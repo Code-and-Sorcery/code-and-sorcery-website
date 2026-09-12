@@ -95,7 +95,10 @@
     --ambient-upper: var(--glow-ember) / 0.16;
     --ambient-lower: var(--glow-ember) / 0.08;
     --card-glow: var(--ember);
-    --interactive: var(--ember);
+    /* Orange as text. The vivid accent is 2.6:1 on white; this reads 5.7:1 on
+       the canvas and 4.8:1 on the active pill, so every text-interactive
+       clears AA. Fills and borders keep the vivid --ember. */
+    --interactive: 20 100% 35%;
     --interactive-border: var(--ember);
     --action-fill: var(--ember);
     --active-panel: var(--ember) / 0.22;
@@ -190,7 +193,7 @@
 @layer components {
   /* Small mono label that sits above a heading. */
   .eyebrow {
-    @apply font-mono text-[11px] font-medium uppercase tracking-[0.28em] text-fg-faint;
+    @apply font-mono text-xs font-medium uppercase tracking-[0.28em] text-fg-faint;
   }
 
   /* Same flat veil over raised ink as Env Checker's platform row.
@@ -298,10 +301,20 @@
     transform: scaleX(1);
   }
 
+  /* Below-the-fold content waiting for its scroll reveal — see Reveal.tsx,
+     which adds this after mount and takes it off at the viewport edge. */
+  .reveal-pending {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
   /* Keyboard hint carried by the header controls — see lib/useShortcut.ts.
-     Font family and colour inherit from the button, including during hover. */
-  .kbd {
-    display: inline-grid;
+     Generated content rather than a <kbd>, so it is neither part of the
+     accessible name nor of the visible text that voice control and axe match
+     against it. Hidden until there is room beside the nav (md). */
+  .kbd-hint::after {
+    content: attr(data-key);
+    display: none;
     place-items: center;
     min-width: 18px;
     height: 18px;
@@ -310,10 +323,21 @@
     border-bottom-width: 2px;
     border-radius: 5px;
     background: hsl(var(--panel-strong));
-    color: inherit;
+    color: hsl(var(--fg-faint));
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
     font-size: 10px;
     font-weight: 600;
     line-height: 1;
+    letter-spacing: normal;
+    transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .kbd-hint:hover::after {
+    color: hsl(var(--fg));
+  }
+  @media (min-width: 768px) {
+    .kbd-hint::after {
+      display: inline-grid;
+    }
   }
 
   /* Long-form legal / documentation copy. */
@@ -386,6 +410,17 @@
 /* ---------------------------------------------------------------------------
    Theme switching
    --------------------------------------------------------------------------- */
+
+/* The CSS stand-in for the splash shader leans blue in the dark theme and
+   orange in the light one, by the same ±0.22 the shader's uColorBalance moves
+   (LightPillarGL), scaled to gradient stops. Read off <html>, not the pinned
+   .theme-dark subtree, so it follows the reader's choice like the shader. */
+.pillar-follow-theme {
+  --pillar-color-shift: 8.8%;
+}
+html[data-theme="light"] .pillar-follow-theme {
+  --pillar-color-shift: -8.8%;
+}
 
 /* Every colour on the page comes out of a custom property, so flipping the
    theme repaints the whole document at once. The blanket transition that makes

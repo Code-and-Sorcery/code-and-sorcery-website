@@ -78,7 +78,7 @@ export function LegalToc({
                     : "border-transparent text-fg-faint hover:border-interactive-border hover:text-fg-dim",
                 )}
               >
-                <span className="font-mono text-[10px] tabular-nums opacity-60">
+                <span className="font-mono text-[10px] tabular-nums">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span>{section.heading}</span>

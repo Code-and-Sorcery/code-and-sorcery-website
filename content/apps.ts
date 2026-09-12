@@ -41,7 +41,7 @@ export const apps: AppEntry[] = [
     license: "MIT",
     tech: ["TypeScript", "VS Code API", "esbuild"],
     accent: "199 89% 64%",
-    icon: "/images/env-checker-icon.png",
+    icon: "/images/env-checker-icon.webp",
     links: [
       {
         label: "Visual Studio Marketplace",
@@ -66,8 +66,8 @@ export const apps: AppEntry[] = [
     surface: "iOS · Android",
     tech: ["React Native", "Expo", "SQLite"],
     accent: "184 39% 34%",
-    icon: "/images/primz-icon.png",
-    mark: "/images/primz-mark.png",
+    icon: "/images/primz-icon.webp",
+    mark: "/images/primz-mark.webp",
     iconBackground: "#ffffff",
     links: [],
   },

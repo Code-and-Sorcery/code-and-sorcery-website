@@ -1,5 +1,6 @@
 import type { Dictionary } from "@/content/dictionaries";
 import type { Locale } from "@/content/i18n";
+import { headerLabels } from "@/content/labels";
 
 import { ArcaneBackdrop } from "./ArcaneBackdrop";
 import { ScrollReset } from "./ScrollReset";
@@ -31,7 +32,7 @@ export function PageShell({
         {dict.nav.skipToContent}
       </a>
 
-      <SiteHeader dict={dict} locale={locale} />
+      <SiteHeader labels={headerLabels(dict)} locale={locale} />
 
       <main id="content" className="flex-1">
         {children}

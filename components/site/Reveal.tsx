@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -13,6 +13,11 @@ import { cn } from "@/lib/utils";
  * short `delay` so a row sweeps in reading order: fired all at once they land
  * in the same frame but finish at different points on screen, which reads as
  * random rather than deliberate. See stagger.ts for the rhythm.
+ *
+ * Renders visible, and only hides what is below the fold once it has mounted.
+ * Shipping the hidden state in the HTML meant a slow connection showed a blank
+ * page until hydration — and the largest paint waited on the JavaScript with
+ * it. Anything on screen at mount stays exactly as the first paint left it.
  */
 export function Reveal({
   children,
@@ -26,18 +31,25 @@ export function Reveal({
   as?: "div" | "section" | "li" | "article";
 }) {
   const ref = useRef<HTMLElement | null>(null);
-  const [shown, setShown] = useState(false);
 
+  // The hidden state lives on the element, not in React: it is only ever
+  // applied after mount, and toggling a class is cheaper than a re-render for
+  // every card on the page. The rule itself is .reveal-pending in globals.css.
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
+
+    // Already in view: leave it. Hiding it now would blank content the reader
+    // has been looking at since the first paint.
+    if (node.getBoundingClientRect().top < window.innerHeight) return;
+    node.classList.add("reveal-pending");
 
     // Readers who asked for less motion still get the reveal, minus the
     // transition — globals.css zeroes the duration for them.
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
-          setShown(true);
+          node.classList.remove("reveal-pending");
           observer.disconnect();
         }
       },
@@ -51,11 +63,9 @@ export function Reveal({
   return (
     <Tag
       ref={ref as React.Ref<never>}
-      data-reveal=""
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
       className={cn(
         "transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none",
-        shown ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0",
         className,
       )}
     >

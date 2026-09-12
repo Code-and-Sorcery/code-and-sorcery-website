@@ -5,15 +5,21 @@ import { SITE_URL } from "@/content/i18n";
 
 import "./globals.css";
 
+/**
+ * Google Fonts' latin-subset woff2 cuts of Geist (OFL, licence alongside):
+ * 29 + 23 kB against the 66 + 68 kB of the full woff builds, and both sit on
+ * the critical path of every page. The site's copy stays inside the subset —
+ * accents, œ, dashes, € included; anything outside it falls back to the OS.
+ */
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "./fonts/Geist-latin.woff2",
   variable: "--font-geist-sans",
   weight: "100 900",
   display: "swap",
 });
 
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: "./fonts/GeistMono-latin.woff2",
   variable: "--font-geist-mono",
   weight: "100 900",
   display: "swap",
@@ -82,11 +88,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${notoRunic.variable} antialiased`}
       >
         <script dangerouslySetInnerHTML={{ __html: restoreTheme }} />
-
-        {/* Scroll reveals are JS driven; without it, show everything outright. */}
-        <noscript>
-          <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
-        </noscript>
         {children}
       </body>
     </html>

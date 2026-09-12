@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import type { Dictionary } from "@/content/dictionaries";
 import { localizePath, type Locale } from "@/content/i18n";
+import type { HeaderLabels } from "@/content/labels";
 import { cn } from "@/lib/utils";
 
 import { LocaleSwitch } from "./LocaleSwitch";
@@ -13,11 +13,12 @@ import { SocialLinks } from "./SocialLinks";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function SiteHeader({
-  dict,
+  labels,
   locale,
   floating = false,
 }: {
-  dict: Dictionary;
+  /** Only what is rendered — see content/labels.ts for why. */
+  labels: HeaderLabels;
   locale: Locale;
   /** Splash mode: sits over the shader without a background or border. */
   floating?: boolean;
@@ -25,9 +26,9 @@ export function SiteHeader({
   const pathname = usePathname() ?? "/";
 
   const nav = [
-    { href: localizePath("/apps", locale), label: dict.nav.apps },
-    { href: localizePath("/studio", locale), label: dict.nav.studio },
-    { href: localizePath("/legal", locale), label: dict.nav.legal },
+    { href: localizePath("/apps", locale), label: labels.apps },
+    { href: localizePath("/studio", locale), label: labels.studio },
+    { href: localizePath("/legal", locale), label: labels.legal },
   ];
 
   return (
@@ -41,8 +42,11 @@ export function SiteHeader({
     >
       <div className="container flex h-16 items-center justify-between gap-3 sm:h-20 sm:gap-4">
         <div className="flex min-w-0 items-center gap-3 sm:gap-8">
+          {/* Named explicitly: below md the wordmark is hidden and the mark's
+              alt is empty, which left the link with no name on phones. */}
           <Link
             href={localizePath("/", locale)}
+            aria-label="Code and Sorcery"
             className="group inline-flex items-center gap-2.5"
           >
             <Logo className="h-7 w-7 opacity-90 transition-opacity group-hover:opacity-100" />
@@ -53,7 +57,7 @@ export function SiteHeader({
             </span>
           </Link>
 
-          <nav aria-label={dict.nav.menu} className="min-w-0">
+          <nav aria-label={labels.menu} className="min-w-0">
             <ul className="flex items-center gap-0.5 sm:gap-1">
               {nav.map((item) => {
                 const active =
@@ -86,10 +90,10 @@ export function SiteHeader({
           <SocialLinks className="hidden sm:flex" />
           <LocaleSwitch
             code={locale.toUpperCase()}
-            label={dict.switchTo}
-            ariaLabel={dict.switchAria}
+            label={labels.switchTo}
+            ariaLabel={labels.switchAria}
           />
-          <ThemeToggle label={dict.nav.theme} />
+          <ThemeToggle label={labels.theme} />
         </div>
       </div>
     </header>

@@ -1,6 +1,7 @@
 import { SplashPage } from "@/components/pages/SplashPage";
 import { getDictionary } from "@/content/dictionaries";
 import { pageMetadata } from "@/content/i18n";
+import { splashCopy } from "@/content/labels";
 
 const locale = "en" as const;
 const dict = getDictionary(locale);
@@ -14,5 +15,5 @@ export const metadata = pageMetadata({
 });
 
 export default function Page() {
-  return <SplashPage locale={locale} />;
+  return <SplashPage locale={locale} copy={splashCopy(dict)} />;
 }

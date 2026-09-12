@@ -18,7 +18,7 @@ export function StatusPill({
         "inline-flex items-center gap-2 rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em]",
         live
           ? "border-success/30 bg-success/10 text-success"
-          : "border-ember/30 bg-ember/10 text-ember",
+          : "border-ember/30 bg-ember/10 text-interactive",
         className,
       )}
     >

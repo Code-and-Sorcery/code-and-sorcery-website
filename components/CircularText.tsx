@@ -7,7 +7,6 @@ import {
   useState,
   useSyncExternalStore,
 } from "react";
-import { motion, useAnimation, useMotionValue } from "motion/react";
 import "./CircularText.css";
 
 type OnHover = "slowDown" | "speedUp" | "pause" | "goBonkers";
@@ -61,6 +60,7 @@ function isRune(glyph: string): boolean {
 
 interface CircularTextProps {
   text: string;
+  /** Seconds per full turn. */
   spinDuration?: number;
   onHover?: OnHover;
   className?: string;
@@ -69,27 +69,24 @@ interface CircularTextProps {
   runic?: boolean;
 }
 
-const getRotationTransition = (
-  duration: number,
-  from: number,
-  loop = true,
-) => ({
-  from,
-  to: from + 360,
-  ease: "linear" as const,
-  duration,
-  type: "tween" as const,
-  repeat: loop ? Infinity : 0,
-});
-
-const getTransition = (duration: number, from: number) => ({
-  rotate: getRotationTransition(duration, from),
-  scale: {
-    type: "spring" as const,
-    damping: 20,
-    stiffness: 300,
-  },
-});
+/**
+ * Seconds per turn while the pointer is over the ring. The spin is one
+ * requestAnimationFrame loop writing a transform — the whole animation library
+ * this once leaned on weighed 190 kB, all of it on the entrance's critical
+ * path, for a linear rotation and one speed change.
+ */
+function hoverDuration(mode: OnHover, base: number): number {
+  switch (mode) {
+    case "slowDown":
+      return base * 2;
+    case "speedUp":
+      return base / 4;
+    case "pause":
+      return Infinity;
+    case "goBonkers":
+      return base / 20;
+  }
+}
 
 export default function CircularText({
   text,
@@ -100,8 +97,11 @@ export default function CircularText({
   runic = false,
 }: CircularTextProps) {
   const letters = useMemo(() => Array.from(text), [text]);
-  const controls = useAnimation();
-  const rotation = useMotionValue(0);
+  const ring = useRef<HTMLDivElement>(null);
+  // Degrees, and seconds per turn: both read by the loop, neither rendered.
+  const angle = useRef(0);
+  const duration = useRef(spinDuration);
+  const [bonkers, setBonkers] = useState(false);
 
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
@@ -118,13 +118,31 @@ export default function CircularText({
   const everRunic = useRef(false);
 
   useEffect(() => {
-    const start = rotation.get();
-    controls.start({
-      rotate: start + 360,
-      scale: 1,
-      transition: getTransition(spinDuration, start),
-    });
-  }, [spinDuration, text, onHover, controls, rotation]);
+    duration.current = spinDuration;
+  }, [spinDuration]);
+
+  // Readers who asked for less motion get a still ring: at 120 s a turn it is
+  // gentle, but it is motion with no purpose beyond itself.
+  useEffect(() => {
+    const node = ring.current;
+    if (!node || reducedMotion) return;
+
+    let frame = 0;
+    let last = performance.now();
+
+    const tick = (now: number) => {
+      const seconds = duration.current;
+      if (Number.isFinite(seconds) && seconds > 0) {
+        angle.current = (angle.current + ((now - last) / 1000) * (360 / seconds)) % 360;
+        node.style.transform = `rotate(${angle.current}deg)`;
+      }
+      last = now;
+      frame = requestAnimationFrame(tick);
+    };
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [reducedMotion]);
 
   useEffect(() => {
     if (reducedMotion) return;
@@ -171,56 +189,22 @@ export default function CircularText({
   }, [letters, runic, reducedMotion]);
 
   const handleHoverStart = () => {
-    const start = rotation.get();
-    if (!onHover) return;
-
-    let transitionConfig;
-    let scaleVal = 1;
-
-    switch (onHover) {
-      case "slowDown":
-        transitionConfig = getTransition(spinDuration * 2, start);
-        break;
-      case "speedUp":
-        transitionConfig = getTransition(spinDuration / 4, start);
-        break;
-      case "pause":
-        transitionConfig = {
-          rotate: { type: "spring" as const, damping: 20, stiffness: 300 },
-          scale: { type: "spring" as const, damping: 20, stiffness: 300 },
-        };
-        break;
-      case "goBonkers":
-        transitionConfig = getTransition(spinDuration / 20, start);
-        scaleVal = 0.8;
-        break;
-      default:
-        transitionConfig = getTransition(spinDuration, start);
-    }
-
-    controls.start({
-      rotate: start + 360,
-      scale: scaleVal,
-      transition: transitionConfig,
-    });
+    duration.current = hoverDuration(onHover, spinDuration);
+    if (onHover === "goBonkers") setBonkers(true);
   };
 
   const handleHoverEnd = () => {
-    const start = rotation.get();
-    controls.start({
-      rotate: start + 360,
-      scale: 1,
-      transition: getTransition(spinDuration, start),
-    });
+    duration.current = spinDuration;
+    setBonkers(false);
   };
 
   const shown = glyphs ?? letters;
 
   return (
-    <motion.div
+    <div
+      ref={ring}
       className={`circular-text ${className}`}
-      style={{ width: size, height: size, rotate: rotation }}
-      animate={controls}
+      style={{ width: size, height: size, scale: bonkers ? "0.8" : undefined }}
       onMouseEnter={handleHoverStart}
       onMouseLeave={handleHoverEnd}
     >
@@ -241,6 +225,6 @@ export default function CircularText({
           </span>
         );
       })}
-    </motion.div>
+    </div>
   );
 }

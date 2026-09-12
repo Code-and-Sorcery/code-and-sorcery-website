@@ -74,16 +74,13 @@ export function ThemeToggle({ label }: { label: string }) {
       onClick={toggle}
       aria-label={label}
       title={label}
-      className="group inline-flex h-9 w-9 items-center justify-center rounded-full border border-edge bg-panel text-fg-dim backdrop-blur-sm transition-colors hover:border-edge-strong hover:text-interactive md:w-auto md:gap-2 md:px-3"
+      data-key="T"
+      className="kbd-hint inline-flex h-9 w-9 items-center justify-center rounded-full border border-edge bg-panel text-fg-dim backdrop-blur-sm transition-colors hover:border-edge-strong hover:text-interactive md:w-auto md:gap-2 md:px-3"
     >
       <span className="grid place-items-center">
         <SunIcon className="theme-icon theme-icon--sun h-4 w-4" />
         <MoonIcon className="theme-icon theme-icon--moon h-4 w-4" />
       </span>
-      {/* Too cramped to earn its place until there is room beside the nav. */}
-      <kbd className="kbd hidden font-mono tracking-normal md:inline-grid">
-        T
-      </kbd>
     </button>
   );
 }

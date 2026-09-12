@@ -72,7 +72,7 @@ export function LegalDoc({
                 className="scroll-mt-28 space-y-4"
               >
                 <h2 className="flex gap-3 text-lg font-semibold text-fg">
-                  <span className="mt-0.5 font-mono text-xs tabular-nums text-ember/70">
+                  <span className="mt-0.5 font-mono text-xs tabular-nums text-interactive">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span>{section.heading}</span>

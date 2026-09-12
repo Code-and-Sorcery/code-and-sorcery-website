@@ -30,7 +30,7 @@ export function AppCard({
           <div className="flex items-center gap-3">
             <AppIcon app={app} className="h-11 w-11 rounded-xl" compact />
             <div>
-              <h3 className="text-lg font-semibold">{app.name}</h3>
+              <h2 className="text-lg font-semibold">{app.name}</h2>
               <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-fg-faint">
                 {app.surface}
               </p>

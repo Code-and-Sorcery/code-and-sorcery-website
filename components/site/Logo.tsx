@@ -16,7 +16,7 @@ export function Logo({
 }) {
   return (
     <Image
-      src="/images/code-and-sorcery-mark.png"
+      src="/images/code-and-sorcery-mark.webp"
       alt=""
       width={128}
       height={128}

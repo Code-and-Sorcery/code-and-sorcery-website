@@ -9,8 +9,8 @@ import GlareHover from "@/components/GlareHover";
 import LightPillar from "@/components/LightPillar";
 import { LinkButton } from "@/components/site/LinkButton";
 import { SiteHeader } from "@/components/site/SiteHeader";
-import { getDictionary } from "@/content/dictionaries";
 import { CONTACT_EMAIL, localizePath, type Locale } from "@/content/i18n";
+import type { SplashCopy } from "@/content/labels";
 import { syncThemeColor } from "@/lib/theme";
 
 /**
@@ -20,8 +20,14 @@ import { syncThemeColor } from "@/lib/theme";
  * Both themes share the dark canvas. The selected theme shifts the shader
  * towards orange or blue and controls the interaction accents.
  */
-export function SplashPage({ locale }: { locale: Locale }) {
-  const dict = getDictionary(locale);
+export function SplashPage({
+  locale,
+  copy,
+}: {
+  locale: Locale;
+  /** Picked on the server — see content/labels.ts for why. */
+  copy: SplashCopy;
+}) {
   const [runic, setRunic] = useState(false);
 
   useEffect(() => {
@@ -55,7 +61,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
         pillarHeight={0.75}
       />
 
-      <SiteHeader dict={dict} locale={locale} floating />
+      <SiteHeader labels={copy.header} locale={locale} floating />
 
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8 px-6 pb-24 pt-24 sm:gap-10">
         {/* Faded in by CSS rather than by the image's load event: the asset is
@@ -114,9 +120,9 @@ export function SplashPage({ locale }: { locale: Locale }) {
           className="max-w-md space-y-4 text-center"
           style={{ textShadow: "0 1px 24px hsl(var(--ink) / 0.8)" }}
         >
-          <p className="eyebrow text-fg-dim">{dict.splash.tagline}</p>
+          <p className="eyebrow text-fg-dim">{copy.tagline}</p>
           <p className="text-balance text-[15px] leading-relaxed text-fg/90 sm:text-base">
-            {dict.splash.subtitle}
+            {copy.subtitle}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
             <LinkButton
@@ -124,7 +130,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
               variant="outline"
               className="border-edge bg-panel-strong text-fg hover:border-edge-strong hover:text-white"
             >
-              {dict.splash.enter}
+              {copy.enter}
             </LinkButton>
             <LinkButton
               href={`mailto:${CONTACT_EMAIL}`}
@@ -133,7 +139,7 @@ export function SplashPage({ locale }: { locale: Locale }) {
               leadingIcon={<MailIcon className="h-4 w-4" />}
               className="border-edge text-fg/90 hover:border-edge-strong hover:text-fg [html[data-theme=light]_&]:hover:text-white"
             >
-              {dict.splash.contact}
+              {copy.contact}
             </LinkButton>
           </div>
         </div>
@@ -141,10 +147,10 @@ export function SplashPage({ locale }: { locale: Locale }) {
 
       <div className="absolute inset-x-0 bottom-7 z-10 flex justify-center">
         <p
-          className="px-6 text-center font-mono text-[9px] uppercase tracking-[0.14em] text-fg/45 sm:text-[10px] sm:tracking-[0.22em]"
+          className="px-6 text-center font-mono text-xs uppercase tracking-[0.14em] text-fg/45 sm:tracking-[0.22em]"
           style={{ textShadow: "0 1px 16px hsl(var(--ink) / 0.85)" }}
         >
-          {dict.footer.rights}
+          {copy.rights}
         </p>
       </div>
     </div>

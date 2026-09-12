@@ -44,7 +44,7 @@ export function PrimzPage({ locale }: { locale: Locale }) {
         }
         aside={
           <AppShowcase
-            icon="/images/primz-icon.png"
+            icon="/images/primz-icon.webp"
             iconAlt="Primz"
             iconBackground={app.iconBackground}
             accent={app.accent}
@@ -94,7 +94,7 @@ export function PrimzPage({ locale }: { locale: Locale }) {
       <section className="container pb-16">
         <Reveal>
           <div className="surface flex items-start gap-4 rounded-lg border-ember/20 bg-ember/[0.04] p-6">
-            <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full border border-ember/25 bg-ember/10 text-ember">
+            <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full border border-ember/25 bg-ember/10 text-interactive">
               <LockIcon className="h-4 w-4" />
             </span>
             <div>
@@ -113,7 +113,7 @@ export function PrimzPage({ locale }: { locale: Locale }) {
           {copy.pillars.map((pillar, index) => (
             <Reveal as="li" key={pillar.title} delay={stagger(index)}>
               <SpellCard className="h-full p-7">
-                <span className="font-mono text-xs text-ember/70">
+                <span className="font-mono text-xs text-interactive">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <h3 className="mt-4 text-lg font-semibold">{pillar.title}</h3>

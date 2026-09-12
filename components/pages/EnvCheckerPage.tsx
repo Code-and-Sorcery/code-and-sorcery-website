@@ -67,7 +67,7 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
                   {dict.common.platform}
                 </dt>
                 <dd className="mt-3 flex items-center gap-3 text-sm font-medium text-fg-dim">
-                  <TerminalIcon className="h-5 w-5 shrink-0 text-arcane" />
+                  <TerminalIcon className="h-5 w-5 shrink-0 text-interactive" />
                   {copy.requirements}
                 </dd>
               </div>
@@ -104,7 +104,7 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
           <figure className="surface overflow-hidden rounded-lg p-2 shadow-lift">
             <div className="overflow-hidden rounded-md border border-line bg-ink-sunken">
               <Image
-                src="/images/env-checker-preview.png"
+                src="/images/env-checker-preview.webp"
                 alt={copy.screenshotCaption}
                 width={1280}
                 height={720}
@@ -130,7 +130,7 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
         <div className="surface overflow-hidden rounded-lg [html[data-theme=light]_&]:bg-white [html[data-theme=light]_&]:bg-none [html[data-theme=light]_&]:[--ink-sunken:22_65%_92%]">
           <div className="flex items-center justify-between gap-4 border-b border-line bg-ink-sunken/70 px-5 py-4">
             <span className="flex items-center gap-3 text-sm font-medium text-fg-dim">
-              <TerminalIcon className="h-4 w-4 text-ember" />
+              <TerminalIcon className="h-4 w-4 text-interactive" />
               {copy.commandsPalette}
             </span>
             <kbd className="kbd font-mono">F1</kbd>
@@ -146,7 +146,7 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
                 <div className="flex min-w-0 items-start gap-3 rounded-md border border-line bg-ink-sunken/80 px-4 py-3">
                   <span
                     aria-hidden="true"
-                    className="font-mono text-sm font-semibold leading-6 text-ember"
+                    className="font-mono text-sm font-semibold leading-6 text-interactive"
                   >
                     &gt;
                   </span>
@@ -176,7 +176,7 @@ export function EnvCheckerPage({ locale }: { locale: Locale }) {
                   <dl className="space-y-4">
                     <div>
                       <dt className="mb-1.5 text-xs text-fg-faint">{copy.settingKeyLabel}</dt>
-                      <dd><code className="break-all font-mono text-sm text-ember">{setting.name}</code></dd>
+                      <dd><code className="break-all font-mono text-sm text-interactive">{setting.name}</code></dd>
                     </div>
                     <div>
                       <dt className="mb-1.5 text-xs text-fg-faint">{copy.settingTypeLabel}</dt>
