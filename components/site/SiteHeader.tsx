@@ -32,11 +32,13 @@ export function SiteHeader({
   ];
 
   return (
+    /* site-header lifts it out of the page's route transition: it keeps its
+       place while the page underneath fades and moves — see globals.css. */
     <header
       className={cn(
-        "z-50 w-full transition-colors duration-500",
+        "site-header z-50 w-full transition-colors duration-500",
         floating
-          ? "absolute inset-x-0 top-0 border-transparent"
+          ? "absolute inset-x-0 top-0 border-b border-transparent"
           : "sticky top-0 border-b border-line bg-ink/80 backdrop-blur-xl",
       )}
     >

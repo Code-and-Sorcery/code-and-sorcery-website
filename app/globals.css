@@ -460,6 +460,18 @@ html[data-theme="light"] .invert-on-light {
    Route transitions — see components/site/ViewTransitions.tsx
    --------------------------------------------------------------------------- */
 
+/* The header is snapshotted on its own, which takes it out of the page's
+   fade and movement: the browser pairs the old and new header by name, and
+   as both sit in the same place nothing moves. A short cross-fade covers
+   what does change between pages — the active item, the theme switch. */
+.site-header {
+  view-transition-name: site-header;
+}
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  animation-duration: 0.2s;
+}
+
 /* Pages cross-fade by default. Leaving the entrance, the old page recedes as
    the new one rises into place; coming back, the reverse. The direction is
    stamped on <html> for the length of the transition. */
