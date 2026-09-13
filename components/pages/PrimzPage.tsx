@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 import { ArrowRightIcon, LockIcon } from "@/components/Icons";
 import { AppIcon } from "@/components/site/AppIcon";
@@ -10,6 +9,7 @@ import { stagger } from "@/components/site/stagger";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { SpellCard } from "@/components/site/SpellCard";
 import { StatusPill } from "@/components/site/StatusPill";
+import { TransitionLink } from "@/components/site/ViewTransitions";
 import { getApp } from "@/content/apps";
 import { getDictionary } from "@/content/dictionaries";
 import { localizePath, type Locale } from "@/content/i18n";
@@ -136,13 +136,13 @@ export function PrimzPage({ locale }: { locale: Locale }) {
         <ul className="grid gap-4 sm:grid-cols-2">
           {documents.map((document) => (
             <SpellCard as="li" key={document.path} className="link-card group">
-              <Link
+              <TransitionLink
                 href={localizePath(document.path, locale)}
                 className="flex items-center justify-between gap-4 p-6 transition-colors hover:text-interactive focus-visible:text-interactive"
               >
                 <span className="text-sm font-medium">{document.title}</span>
                 <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </TransitionLink>
             </SpellCard>
           ))}
         </ul>

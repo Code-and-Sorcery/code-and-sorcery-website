@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 import { ArrowRightIcon } from "@/components/Icons";
 import { getApp, type AppSlug } from "@/content/apps";
@@ -10,6 +9,7 @@ import { LegalToc } from "./LegalToc";
 import { ReadingProgress } from "./ReadingProgress";
 import { RichText } from "./RichText";
 import { RuneDivider } from "./RuneDivider";
+import { TransitionLink } from "./ViewTransitions";
 
 export function LegalDoc({
   doc,
@@ -96,13 +96,13 @@ export function LegalDoc({
             ))}
 
             <div className="border-t border-line pt-8">
-              <Link
+              <TransitionLink
                 href={localizePath(sibling.path, locale)}
                 className="group inline-flex items-center gap-2 text-sm text-fg-dim transition-colors hover:text-interactive"
               >
                 {sibling.title}
                 <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </TransitionLink>
             </div>
           </article>
         </div>

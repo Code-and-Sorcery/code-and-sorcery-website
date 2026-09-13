@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 
+import { ViewTransitions } from "@/components/site/ViewTransitions";
 import { SITE_URL } from "@/content/i18n";
 
 import "./globals.css";
@@ -88,7 +89,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${notoRunic.variable} antialiased`}
       >
         <script dangerouslySetInnerHTML={{ __html: restoreTheme }} />
-        {children}
+        <ViewTransitions>{children}</ViewTransitions>
       </body>
     </html>
   );

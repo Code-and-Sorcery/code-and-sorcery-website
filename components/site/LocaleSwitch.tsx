@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useCallback } from "react";
 
 import { LanguagesIcon } from "@/components/Icons";
 import { swapLocaleInPath } from "@/content/i18n";
 import { useShortcut } from "@/lib/useShortcut";
+
+import { TransitionLink, useNavigate } from "./ViewTransitions";
 
 export function LocaleSwitch({
   code,
@@ -19,16 +20,16 @@ export function LocaleSwitch({
   ariaLabel: string;
 }) {
   const pathname = usePathname() ?? "/";
-  const router = useRouter();
+  const navigate = useNavigate();
   const { href, target } = swapLocaleInPath(pathname);
 
   useShortcut(
     "l",
-    useCallback(() => router.push(href, { scroll: false }), [router, href]),
+    useCallback(() => navigate(href, { scroll: false }), [navigate, href]),
   );
 
   return (
-    <Link
+    <TransitionLink
       href={href}
       scroll={false}
       hrefLang={target}
@@ -41,6 +42,6 @@ export function LocaleSwitch({
     >
       <LanguagesIcon className="h-3.5 w-3.5" />
       {code}
-    </Link>
+    </TransitionLink>
   );
 }

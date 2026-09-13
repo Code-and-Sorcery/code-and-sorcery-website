@@ -1,8 +1,8 @@
-import Link from "next/link";
 
 import { ArrowLeftIcon } from "@/components/Icons";
 
 import { Reveal } from "./Reveal";
+import { TransitionLink } from "./ViewTransitions";
 
 export function PageHero({
   eyebrow,
@@ -36,13 +36,13 @@ export function PageHero({
         <div>
           <Reveal>
             {back ? (
-              <Link
+              <TransitionLink
                 href={back.href}
                 className="group mb-6 inline-flex items-center gap-2 text-sm text-fg-faint transition-colors hover:text-interactive"
               >
                 <ArrowLeftIcon className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
                 {back.label}
-              </Link>
+              </TransitionLink>
             ) : null}
             <p className="eyebrow">{eyebrow}</p>
             <div className="mt-5 flex items-center gap-4 sm:gap-5">

@@ -1,7 +1,8 @@
-import Link from "next/link";
 
 import { ArrowRightIcon, ArrowUpRightIcon } from "@/components/Icons";
 import { cn } from "@/lib/utils";
+
+import { TransitionLink } from "./ViewTransitions";
 
 const variants = {
   primary:
@@ -62,8 +63,8 @@ export function LinkButton({
   }
 
   return (
-    <Link href={href} className={classes}>
+    <TransitionLink href={href} className={classes}>
       {label}
-    </Link>
+    </TransitionLink>
   );
 }

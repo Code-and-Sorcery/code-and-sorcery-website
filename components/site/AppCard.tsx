@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 import { ArrowRightIcon } from "@/components/Icons";
 import type { AppEntry } from "@/content/apps";
@@ -8,6 +7,7 @@ import { localizePath, type Locale } from "@/content/i18n";
 import { AppIcon } from "./AppIcon";
 import { SpellCard } from "./SpellCard";
 import { StatusPill } from "./StatusPill";
+import { TransitionLink } from "./ViewTransitions";
 
 export function AppCard({
   app,
@@ -22,7 +22,7 @@ export function AppCard({
 }) {
   return (
     <SpellCard as="li" className="app-card group">
-      <Link
+      <TransitionLink
         href={localizePath(app.path, locale)}
         className="flex h-full flex-col gap-6 p-7 sm:p-8"
       >
@@ -63,7 +63,7 @@ export function AppCard({
             <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </span>
         </div>
-      </Link>
+      </TransitionLink>
     </SpellCard>
   );
 }

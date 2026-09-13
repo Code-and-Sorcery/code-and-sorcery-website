@@ -1,5 +1,6 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
+
+import { TransitionLink } from "./ViewTransitions";
 
 /**
  * French typography: no colon, semicolon, question or exclamation mark left
@@ -46,9 +47,9 @@ export function RichText({ text }: { text: string }): ReactNode {
             {label}
           </a>
         ) : (
-          <Link key={key++} href={href}>
+          <TransitionLink key={key++} href={href}>
             {label}
-          </Link>
+          </TransitionLink>
         ),
       );
     }

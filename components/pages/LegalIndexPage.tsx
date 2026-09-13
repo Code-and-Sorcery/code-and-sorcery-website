@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 import { ArrowRightIcon, ArrowUpRightIcon } from "@/components/Icons";
 import { AppIcon } from "@/components/site/AppIcon";
@@ -8,6 +7,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { stagger } from "@/components/site/stagger";
 import { RichText } from "@/components/site/RichText";
 import { SpellCard } from "@/components/site/SpellCard";
+import { TransitionLink } from "@/components/site/ViewTransitions";
 import { apps } from "@/content/apps";
 import { getDictionary, type LegalIndexEntry } from "@/content/dictionaries";
 import { localizePath, type Locale } from "@/content/i18n";
@@ -97,12 +97,12 @@ export function LegalIndexPage({ locale }: { locale: Locale }) {
                         )}
                       >
                         {entry.path ? (
-                          <Link
+                          <TransitionLink
                             href={localizePath(entry.path, locale)}
                             className={CARD}
                           >
                             {body}
-                          </Link>
+                          </TransitionLink>
                         ) : entry.href ? (
                           <a
                             href={entry.href}

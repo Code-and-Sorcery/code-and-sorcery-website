@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 import { MailIcon } from "@/components/Icons";
 import { apps } from "@/content/apps";
@@ -11,6 +10,7 @@ import {
 } from "@/content/i18n";
 
 import { Logo } from "./Logo";
+import { TransitionLink } from "./ViewTransitions";
 
 export function SiteFooter({
   dict,
@@ -63,13 +63,13 @@ export function SiteFooter({
       <div className="container py-14">
         <div className="grid gap-12 md:grid-cols-[1.4fr_repeat(4,minmax(0,1fr))]">
           <div className="space-y-4">
-            <Link
+            <TransitionLink
               href={localizePath("/", locale)}
               className="inline-flex items-center gap-2.5"
             >
               <Logo className="h-7 w-7" />
               <span className="text-sm font-semibold">Code and Sorcery</span>
-            </Link>
+            </TransitionLink>
             <p className="max-w-xs text-sm leading-relaxed text-fg-faint">
               {dict.footer.tagline}
             </p>
@@ -88,12 +88,12 @@ export function SiteFooter({
               <ul className="space-y-2.5">
                 {column.links.map((link) => (
                   <li key={link.href + link.label}>
-                    <Link
+                    <TransitionLink
                       href={link.href}
                       className="text-sm text-fg-faint transition-colors hover:text-interactive"
                     >
                       {link.label}
-                    </Link>
+                    </TransitionLink>
                   </li>
                 ))}
               </ul>

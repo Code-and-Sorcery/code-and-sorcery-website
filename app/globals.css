@@ -462,6 +462,62 @@ html[data-theme="light"] .invert-on-light {
   filter: invert(1);
 }
 
+/* ---------------------------------------------------------------------------
+   Route transitions — see components/site/ViewTransitions.tsx
+   --------------------------------------------------------------------------- */
+
+/* Pages cross-fade by default. Leaving the entrance, the old page recedes as
+   the new one rises into place; coming back, the reverse. The direction is
+   stamped on <html> for the length of the transition. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+html[data-navigation="from-entrance"]::view-transition-old(root) {
+  animation-name: route-fade-out, route-recede;
+}
+html[data-navigation="from-entrance"]::view-transition-new(root) {
+  animation-name: route-fade-in, route-rise;
+}
+html[data-navigation="to-entrance"]::view-transition-old(root) {
+  animation-name: route-fade-out, route-sink;
+}
+html[data-navigation="to-entrance"]::view-transition-new(root) {
+  animation-name: route-fade-in, route-approach;
+}
+
+@keyframes route-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes route-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes route-recede {
+  to {
+    transform: scale(1.03);
+  }
+}
+@keyframes route-rise {
+  from {
+    transform: translateY(14px);
+  }
+}
+@keyframes route-sink {
+  to {
+    transform: translateY(14px);
+  }
+}
+@keyframes route-approach {
+  from {
+    transform: scale(1.03);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

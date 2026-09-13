@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { localizePath, type Locale } from "@/content/i18n";
@@ -11,6 +10,7 @@ import { LocaleSwitch } from "./LocaleSwitch";
 import { Logo } from "./Logo";
 import { SocialLinks } from "./SocialLinks";
 import { ThemeToggle } from "./ThemeToggle";
+import { TransitionLink } from "./ViewTransitions";
 
 export function SiteHeader({
   labels,
@@ -44,7 +44,7 @@ export function SiteHeader({
         <div className="flex min-w-0 items-center gap-3 sm:gap-8">
           {/* Named explicitly: below md the wordmark is hidden and the mark's
               alt is empty, which left the link with no name on phones. */}
-          <Link
+          <TransitionLink
             href={localizePath("/", locale)}
             aria-label="Code and Sorcery"
             className="group inline-flex items-center gap-2.5"
@@ -55,7 +55,7 @@ export function SiteHeader({
             <span className="hidden whitespace-nowrap text-sm font-semibold tracking-tight md:inline">
               Code and Sorcery
             </span>
-          </Link>
+          </TransitionLink>
 
           <nav aria-label={labels.menu} className="min-w-0">
             <ul className="flex items-center gap-0.5 sm:gap-1">
@@ -65,7 +65,7 @@ export function SiteHeader({
                   pathname.startsWith(`${item.href}/`);
                 return (
                   <li key={item.href}>
-                    <Link
+                    <TransitionLink
                       href={item.href}
                       aria-current={active ? "page" : undefined}
                       className={cn(
@@ -76,7 +76,7 @@ export function SiteHeader({
                       )}
                     >
                       {item.label}
-                    </Link>
+                    </TransitionLink>
                   </li>
                 );
               })}
