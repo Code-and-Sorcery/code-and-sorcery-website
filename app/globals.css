@@ -143,6 +143,17 @@
   html {
     @apply bg-ink;
     -webkit-tap-highlight-color: transparent;
+
+    /* Thin, unobtrusive scrollbar so the ink field stays uninterrupted, and
+       the same layout whether or not there is one. The standard properties
+       leave overlay scrollbars (macOS, phones) as overlays, taking no room;
+       where the platform draws a classic bar, the gutter is reserved on every
+       page so the entrance and a scrolling page line up. The old
+       ::-webkit-scrollbar rules forced a classic 10px bar everywhere, which is
+       exactly what shifted the pages that scroll. */
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--line-strong)) hsl(var(--ink-sunken));
+    scrollbar-gutter: stable;
   }
 
   /* Deliberately no background. Giving html one stops body's from propagating,
@@ -170,23 +181,6 @@
   h3 {
     @apply tracking-display;
     text-wrap: balance;
-  }
-
-  /* Thin, unobtrusive scrollbar so the ink field stays uninterrupted. */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--ink-sunken));
-  }
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--line-strong));
-    border: 3px solid hsl(var(--ink-sunken));
-    border-radius: 999px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--fg-faint));
   }
 }
 
