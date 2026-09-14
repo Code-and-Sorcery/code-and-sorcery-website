@@ -45,8 +45,8 @@
     /* The splash shader's field: the same two colours as they read once the
        shader has dimmed them over the black plane — deeper and redder, deeper
        and bluer. Used by the still stand-in for the shader. */
-    --field-ember: 16 96% 50%;
-    --field-arcane: 204 64% 42%;
+    --field-ember: 16 96% 31%;
+    --field-arcane: 204 64% 25%;
 
     /* Blue ink and light at rest; the logo's orange marks interaction. */
     --pillar-upper: var(--glow-arcane) / 0.46;
