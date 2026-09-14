@@ -66,7 +66,6 @@ const LightPillar = ({
   useEffect(() => {
     const updateBalance = () => {
       const light = followTheme && currentTheme() === "light";
-      // The CSS stand-in shifts by the same amount — see .pillar-follow-theme.
       colorBalanceRef.current = followTheme ? (light ? -0.22 : 0.22) : 0;
     };
     updateBalance();

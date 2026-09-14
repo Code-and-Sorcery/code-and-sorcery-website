@@ -42,6 +42,12 @@
     --glow-ember: 24 100% 62%;
     --glow-arcane: 198 45% 57%;
 
+    /* The splash shader's field: the same two colours as they read once the
+       shader has dimmed them over the black plane — deeper and redder, deeper
+       and bluer. Used by the still stand-in for the shader. */
+    --field-ember: 16 96% 50%;
+    --field-arcane: 204 64% 42%;
+
     /* Blue ink and light at rest; the logo's orange marks interaction. */
     --pillar-upper: var(--glow-arcane) / 0.46;
     --pillar-lower: var(--glow-arcane) / 0.24;
@@ -405,15 +411,30 @@
    Theme switching
    --------------------------------------------------------------------------- */
 
-/* The CSS stand-in for the splash shader leans blue in the dark theme and
-   orange in the light one, by the same ±0.22 the shader's uColorBalance moves
-   (LightPillarGL), scaled to gradient stops. Read off <html>, not the pinned
-   .theme-dark subtree, so it follows the reader's choice like the shader. */
-.pillar-follow-theme {
-  --pillar-color-shift: 8.8%;
+/* What the entrance shows before the shader has a frame, and for good on the
+   devices that never get one: the shader's field reduced to its two halves,
+   orange down to the left and blue up to the right, split on the pillar's
+   own diagonal with a soft blend between them. The geometry is lifted
+   straight out of the shader: the pillar leans 45°, and its hue ramp is
+   measured in half viewport heights from the centre — the crossover sits
+   0.58 of one along the diagonal, and the two hues meet over 0.47 either
+   side of it. The unit is the shorter side rather than the height so that a
+   phone, which only ever sees this field, keeps the same composition
+   instead of having the crossover pushed off its bottom corner. The angle
+   never changes; the theme only slides the split along it, so blue takes
+   most of the frame in the dark theme and orange in the light one. Keyed
+   off <html> rather than the pinned .theme-dark subtree it sits in, which
+   is why it cannot just read the ambient tokens. */
+.pillar-stand-in {
+  --split: -29svmin;
+  background: linear-gradient(
+    45deg,
+    hsl(var(--field-ember) / 0.36) calc(50% + var(--split) - 23.7svmin),
+    hsl(var(--field-arcane) / 0.42) calc(50% + var(--split) + 23.7svmin)
+  );
 }
-html[data-theme="light"] .pillar-follow-theme {
-  --pillar-color-shift: -8.8%;
+html[data-theme="light"] .pillar-stand-in {
+  --split: 29svmin;
 }
 
 /* Every colour on the page comes out of a custom property, so flipping the

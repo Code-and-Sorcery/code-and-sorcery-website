@@ -19,15 +19,6 @@ import type { LightPillarProps } from "./LightPillarGL";
  */
 const LightPillarGL = dynamic(() => import("./LightPillarGL"), { ssr: false });
 
-/** Static stand-in for the shader: same diagonal, no GPU. */
-function fallbackGradient(
-  topColor: string,
-  bottomColor: string,
-  rotation: number,
-) {
-  return `linear-gradient(${135 + rotation}deg, transparent 34%, ${topColor}2e calc(47% + var(--pillar-color-shift, 0%)), ${bottomColor}2e calc(57% + var(--pillar-color-shift, 0%)), transparent 70%)`;
-}
-
 /**
  * None of this changes for the life of the document, so it is decided once
  * and read through a store: the server answers no, the client answers for
@@ -56,45 +47,43 @@ function wantsShader(): boolean {
 const noopSubscribe = () => () => {};
 
 export default function LightPillar({
-  topColor = "#5227FF",
-  bottomColor = "#FF9FFC",
-  pillarRotation = 0,
-  followTheme = false,
   className = "",
   ...rest
 }: LightPillarProps) {
   const shader = useSyncExternalStore(noopSubscribe, wantsShader, () => false);
   const [ready, setReady] = useState(false);
+  const [standIn, setStandIn] = useState(true);
 
   return (
     <>
       {shader ? (
         <LightPillarGL
           {...rest}
-          topColor={topColor}
-          bottomColor={bottomColor}
-          pillarRotation={pillarRotation}
-          followTheme={followTheme}
-          className={className}
+          className={cn(
+            className,
+            "transition-opacity duration-1000 ease-out",
+            ready ? "opacity-100" : "opacity-0",
+          )}
           onReady={() => setReady(true)}
         />
       ) : null}
 
-      {/* Stays up until the shader has a frame on screen, so the swap never
-          shows a bare frame — and stays for good where it never does. */}
-      {ready ? null : (
+      {/* A still field in the theme's own light (see .pillar-stand-in). It
+          holds until the shader has a frame on screen, then the two cross-fade
+          and it goes — and it stays for good where the shader never comes. */}
+      {standIn ? (
         <div
           aria-hidden="true"
           className={cn(
-            "absolute inset-0",
-            followTheme && "pillar-follow-theme",
+            "pillar-stand-in absolute inset-0 transition-opacity duration-1000 ease-out",
+            ready && "opacity-0",
             className,
           )}
-          style={{
-            background: fallbackGradient(topColor, bottomColor, pillarRotation),
+          onTransitionEnd={() => {
+            if (ready) setStandIn(false);
           }}
         />
-      )}
+      ) : null}
     </>
   );
 }
