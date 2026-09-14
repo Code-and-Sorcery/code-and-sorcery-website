@@ -22,6 +22,7 @@ export interface LightPillarProps {
   noiseIntensity?: number;
   mixBlendMode?: string;
   pillarRotation?: number;
+  /** "low" halves the resolution, shortens the march and caps at 30 fps. */
   quality?: "low" | "medium";
   /** Expand the top (blue) field in dark mode and the bottom (orange) in light. */
   followTheme?: boolean;
@@ -93,17 +94,12 @@ const LightPillar = ({
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
     cameraRef.current = camera;
 
-    const isMobile =
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent,
-      );
-    let effectiveQuality = quality;
-    if (isMobile && quality !== "low") effectiveQuality = "low";
-
+    // "low" is the touch profile: LightPillar.tsx picks it for coarse
+    // pointers, so no user-agent sniffing is needed here.
     const qualitySettings = {
       low: {
         iterations: 24,
-        waveIterations: 1,
+        waveIterations: 2,
         pixelRatio: 0.5,
         precision: "mediump",
         stepMultiplier: 1.5,
@@ -117,8 +113,7 @@ const LightPillar = ({
       },
     };
 
-    const settings =
-      qualitySettings[effectiveQuality] || qualitySettings.medium;
+    const settings = qualitySettings[quality] || qualitySettings.medium;
 
     let renderer: THREE.WebGLRenderer;
     try {
@@ -182,7 +177,11 @@ const LightPillar = ({
       const int WAVE_ITER = ${settings.waveIterations};
 
       void main() {
-        vec2 uv = (vUv * 2.0 - 1.0) * vec2(uResolution.x / uResolution.y, 1.0);
+        // Normalised on the shorter side, so a phone shows the same pillar as
+        // a landscape screen cropped to its width instead of a slice through
+        // the middle of it, and keeps the colour split (which is measured in
+        // these units) where the still stand-in draws it.
+        vec2 uv = (vUv * 2.0 - 1.0) * uResolution / min(uResolution.x, uResolution.y);
         uv = vec2(uPillarRotCos * uv.x - uPillarRotSin * uv.y, uPillarRotSin * uv.x + uPillarRotCos * uv.y);
 
         vec3 ro = vec3(0.0, 0.0, -10.0);
@@ -310,7 +309,7 @@ const LightPillar = ({
     }
 
     let lastTime = performance.now();
-    const targetFPS = effectiveQuality === "low" ? 30 : 60;
+    const targetFPS = quality === "low" ? 30 : 60;
     const frameTime = 1000 / targetFPS;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
