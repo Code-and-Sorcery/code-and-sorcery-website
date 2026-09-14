@@ -1,16 +1,20 @@
-/*
+/**
  * The entrance's light pillar: one full-screen quad and a raymarched fragment
- * program on WebGL 2, with nothing in between. It lives outside the React
- * bundle on purpose — a classic script this small arrives and runs long
- * before the runtime and the page chunks have, so the shader can be on
- * screen right after the first paint instead of a beat after hydration.
+ * program on WebGL 2, with nothing in between.
  *
- * components/LightPillar.tsx renders the host element this runs in, with the
- * shader's parameters as JSON in data-pillar, and calls window.__pillar to
- * start and stop it across client-side navigations. On the first page load
- * the script finds the server-rendered host on its own.
+ * It is written as a single self-contained function because it runs twice
+ * over. LightPillar.tsx inlines its text into the HTML — through
+ * Function.prototype.toString() — right after the element it draws into, so
+ * the first page load has the shader up before the React runtime has even
+ * arrived; and it calls the function itself on a client-side navigation to
+ * the entrance, where no inline script runs. The body may therefore not reach
+ * for anything outside itself: no imports, no module-level values.
+ *
+ * The host carries the shader's parameters as JSON in data-pillar. The
+ * runtime marks it data-ready on its first frame, which is what the
+ * stylesheet cross-fades the still stand-in out on.
  */
-(() => {
+export function pillarRuntime(): void {
   if (window.__pillar) return;
 
   const QUALITY = {
@@ -18,6 +22,7 @@
     low: { iterations: 24, waveIterations: 2, pixelRatio: 0.5, stepMultiplier: 1.5, fps: 30 },
     medium: { iterations: 40, waveIterations: 2, pixelRatio: 0.65, stepMultiplier: 1.2, fps: 60 },
   };
+  type Settings = (typeof QUALITY)["medium"];
 
   const DEFAULTS = {
     topColor: "#5227FF",
@@ -30,7 +35,9 @@
     noiseIntensity: 0.5,
     pillarRotation: 0,
     followTheme: false,
+    quality: undefined as keyof typeof QUALITY | undefined,
   };
+  type Params = typeof DEFAULTS;
 
   // GLSL ES 3.00 for tanh(); its #version line has to open the source.
   const VERTEX_SHADER = `#version 300 es
@@ -42,7 +49,7 @@
     }
   `;
 
-  const fragmentShader = (settings) => `#version 300 es
+  const fragmentShader = (settings: Settings) => `#version 300 es
     precision mediump float;
 
     uniform float uTime;
@@ -144,22 +151,25 @@
     "uRot",
     "uPillarRot",
     "uWave",
-  ];
+  ] as const;
+  type Uniforms = Record<(typeof UNIFORMS)[number], WebGLUniformLocation | null>;
 
   // The brand colours are sRGB; the shader multiplies them raw, and it was
   // tuned on their linear values, which are darker and more saturated than
   // the encoded ones.
-  const rgb = (hex) => {
+  const rgb = (hex: string): [number, number, number] => {
     const n = parseInt(hex.slice(1), 16);
-    const linear = (c) => (c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+    const linear = (c: number) => (c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
     return [linear(((n >> 16) & 255) / 255), linear(((n >> 8) & 255) / 255), linear((n & 255) / 255)];
   };
-  const rotation = (angle) => [Math.cos(angle), Math.sin(angle)];
+  const rotation = (angle: number): [number, number] => [Math.cos(angle), Math.sin(angle)];
 
-  const compile = (gl, type, source) => {
+  const compile = (gl: WebGL2RenderingContext, type: number, source: string) => {
     const shader = gl.createShader(type);
-    gl.shaderSource(shader, source);
-    gl.compileShader(shader);
+    if (shader) {
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+    }
     return shader;
   };
 
@@ -174,9 +184,9 @@
   };
 
   /** host -> teardown for that host's context and loop. */
-  const running = new Map();
+  const running = new Map<HTMLElement, () => void>();
 
-  const boot = (host, props, settings) => {
+  const boot = (host: HTMLElement, props: Params, settings: Settings): (() => void) => {
     const canvas = document.createElement("canvas");
     canvas.style.cssText = "display:block;width:100%;height:100%";
     // A software rasteriser would march this field on the CPU at a few frames
@@ -198,14 +208,15 @@
     // thread on it, so the shader costs the page nothing until the first
     // draw.
     const parallel = gl.getExtension("KHR_parallel_shader_compile");
-    let program = null;
-    let uniforms = null;
+    let program: WebGLProgram | null = null;
+    let uniforms: Uniforms | null = null;
 
     const build = () => {
       const vs = compile(gl, gl.VERTEX_SHADER, VERTEX_SHADER);
       const fs = compile(gl, gl.FRAGMENT_SHADER, fragmentShader(settings));
       program = gl.createProgram();
       uniforms = null;
+      if (!vs || !fs || !program) return;
       gl.attachShader(program, vs);
       gl.attachShader(program, fs);
       gl.linkProgram(program);
@@ -228,7 +239,8 @@
     };
 
     // Once linked: bind the quad and set every uniform that never changes.
-    const link = () => {
+    const link = (): Uniforms | null => {
+      if (!program) return null;
       if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
         console.error("pillar shader:", gl.getProgramInfoLog(program));
         return null;
@@ -238,7 +250,7 @@
       gl.enableVertexAttribArray(position);
       gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
 
-      const u = {};
+      const u = {} as Uniforms;
       for (const name of UNIFORMS) u[name] = gl.getUniformLocation(program, name);
       gl.uniform3fv(u.uTopColor, rgb(props.topColor));
       gl.uniform3fv(u.uBottomColor, rgb(props.bottomColor));
@@ -259,10 +271,9 @@
 
     // Expand the top (blue) field in dark mode and the bottom (orange) in
     // light, following the restored preference and every later change.
-    let target = 0;
     const balanceFor = () =>
       props.followTheme ? (document.documentElement.dataset.theme === "light" ? -0.22 : 0.22) : 0;
-    target = balanceFor();
+    let target = balanceFor();
     const theme = new MutationObserver(() => {
       target = balanceFor();
     });
@@ -279,7 +290,7 @@
     let painted = false;
     let lost = false;
 
-    const frame = (now) => {
+    const frame = (now: number) => {
       raf = requestAnimationFrame(frame);
       if (lost || !program) return;
       let u = uniforms;
@@ -313,7 +324,7 @@
       }
     };
 
-    const onLost = (event) => {
+    const onLost = (event: Event) => {
       event.preventDefault();
       lost = true;
     };
@@ -341,20 +352,20 @@
     };
   };
 
-  const start = (host) => {
+  const start = (host: HTMLElement) => {
     if (running.has(host)) return;
     const profile = tier();
     if (profile === "none") return;
-    const props = Object.assign({}, DEFAULTS, JSON.parse(host.dataset.pillar || "{}"));
+    const props: Params = Object.assign({}, DEFAULTS, JSON.parse(host.dataset.pillar || "{}"));
     const settings = QUALITY[props.quality || (profile === "light" ? "low" : "medium")];
 
     // Not before the first frame is on screen: taking a context and linking
     // a program ahead of it would hold the first paint back, and the still
     // field is there precisely so nothing has to wait for the shader.
-    let teardown = null;
+    let teardown: (() => void) | null = null;
     let task = 0;
     const paint = requestAnimationFrame(() => {
-      task = setTimeout(() => {
+      task = window.setTimeout(() => {
         teardown = boot(host, props, settings);
       }, 0);
     });
@@ -365,7 +376,7 @@
     });
   };
 
-  const stop = (host) => {
+  const stop = (host: HTMLElement) => {
     const teardown = running.get(host);
     if (!teardown) return;
     running.delete(host);
@@ -374,11 +385,20 @@
 
   window.__pillar = { start, stop };
 
-  // The first page load: the host is already in the HTML, or about to be.
-  const scan = () => document.querySelectorAll(".pillar-host").forEach(start);
+  // The first page load: inlined right after the host, so it is already
+  // there; the DOMContentLoaded pass covers any other placement.
+  const scan = () => document.querySelectorAll<HTMLElement>(".pillar-host").forEach(start);
+  scan();
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", scan, { once: true });
-  } else {
-    scan();
   }
-})();
+}
+
+declare global {
+  interface Window {
+    __pillar?: {
+      start(host: HTMLElement): void;
+      stop(host: HTMLElement): void;
+    };
+  }
+}

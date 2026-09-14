@@ -2,19 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { pillarRuntime } from "@/lib/pillar";
 import { cn } from "@/lib/utils";
 
 /**
- * The entrance's shader background. The shader itself is public/pillar.js, a
- * classic script kept outside the React bundle so that it can be fetched
- * and running before the runtime and the page chunks have even arrived —
- * on a slow connection that is the difference between the field moving
- * right after the first paint and a second or two later. This component
- * renders the element it draws into, hands it its parameters through
- * data-pillar, and starts and stops it across client-side navigations.
+ * The entrance's shader background. The shader itself is lib/pillar.ts, and
+ * its text is inlined into the HTML right after the element it draws into,
+ * so that on the first page load it is fetched with the document and runs
+ * before the React runtime and the page chunks have even arrived — on a slow
+ * connection that is the difference between the field moving right after the
+ * first paint and a second or two later. This component renders the host,
+ * hands it its parameters through data-pillar, and starts and stops the
+ * shader across client-side navigations, where no inline script runs.
  *
  * Under it sits a still field in the same two colours (see .pillar-stand-in).
- * The script marks the host data-ready on its first frame, the stylesheet
+ * The runtime marks the host data-ready on its first frame, the stylesheet
  * cross-fades the two on that, and the stand-in is dropped once it has
  * faded — or stays for good where the shader never comes: reduced motion,
  * no WebGL, a software rasteriser.
@@ -40,19 +42,11 @@ export interface LightPillarProps {
   followTheme?: boolean;
 }
 
-declare global {
-  interface Window {
-    __pillar?: {
-      start(host: HTMLElement): void;
-      stop(host: HTMLElement): void;
-    };
-  }
-}
-
-/* One object for the life of the module: React re-applies innerHTML whenever
-   the prop is a new reference, and that would wipe the canvas on the very
-   re-render that drops the stand-in. */
+/* Both objects live for the life of the module: React re-applies innerHTML
+   whenever the prop is a new reference, and on the host that would wipe the
+   canvas on the very re-render that drops the stand-in. */
 const OWNED_BY_SCRIPT = { __html: "" };
+const INLINE_RUNTIME = { __html: `(${pillarRuntime.toString()})()` };
 
 export default function LightPillar({
   className = "",
@@ -63,12 +57,13 @@ export default function LightPillar({
   const [standIn, setStandIn] = useState(true);
   const pillar = JSON.stringify(params);
 
-  // On the first page load the script has usually found the host before this
-  // runs and start() is a no-op; on a client-side navigation it is this call
-  // that brings the shader up. Either way the cleanup releases the context.
+  // On the first page load the inline copy has long found the host and both
+  // calls are no-ops; on a client-side navigation they are what bring the
+  // shader up. Either way the cleanup releases the context.
   useEffect(() => {
     const host = hostRef.current;
     if (!host) return;
+    pillarRuntime();
     window.__pillar?.start(host);
     return () => window.__pillar?.stop(host);
   }, [pillar]);
@@ -99,12 +94,7 @@ export default function LightPillar({
 
   return (
     <>
-      {/* Ahead of the runtime's own chunks in the fetch queue, which are all
-          async and therefore low priority: this one is what puts the field
-          on screen first. */}
-      <script async src="/pillar.js" fetchPriority="high" />
-
-      {/* The script owns this element's children, so React is told not to
+      {/* The runtime owns this element's children, so React is told not to
           look inside it: the canvas is there before hydration. */}
       <div
         ref={hostRef}
@@ -114,6 +104,12 @@ export default function LightPillar({
         suppressHydrationWarning
         dangerouslySetInnerHTML={OWNED_BY_SCRIPT}
       />
+
+      {/* Runs as the parser reaches it, with the host already in the DOM.
+          React never executes scripts it renders itself, which is what the
+          effect above is for. Its text is the server bundle's compilation
+          of the function, the client's differs, hence the suppression. */}
+      <script suppressHydrationWarning dangerouslySetInnerHTML={INLINE_RUNTIME} />
 
       {standIn ? (
         <div
