@@ -432,9 +432,23 @@
     hsl(var(--field-ember) / 0.36) calc(50% + var(--split) - 23.7svmin),
     hsl(var(--field-arcane) / 0.42) calc(50% + var(--split) + 23.7svmin)
   );
+  transition: opacity 1s ease-out;
 }
 html[data-theme="light"] .pillar-stand-in {
   --split: 29svmin;
+}
+
+/* public/pillar.js marks its host data-ready on the shader's first frame,
+   and the two cross-fade on that. */
+.pillar-host {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+.pillar-host[data-ready] {
+  opacity: 1;
+}
+.pillar-host[data-ready] ~ .pillar-stand-in {
+  opacity: 0;
 }
 
 /* Every colour on the page comes out of a custom property, so flipping the
