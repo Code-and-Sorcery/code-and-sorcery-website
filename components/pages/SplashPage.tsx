@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 import { MailIcon } from "@/components/Icons";
@@ -11,7 +11,6 @@ import { LinkButton } from "@/components/site/LinkButton";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { CONTACT_EMAIL, localizePath, type Locale } from "@/content/i18n";
 import type { SplashCopy } from "@/content/labels";
-import { syncThemeColor } from "@/lib/theme";
 
 /**
  * The entrance. Kept deliberately scroll-free: one shader, one mark, and the
@@ -29,15 +28,6 @@ export function SplashPage({
   copy: SplashCopy;
 }) {
   const [runic, setRunic] = useState(false);
-
-  useEffect(() => {
-    document.documentElement.dataset.chrome = "dark";
-    syncThemeColor();
-    return () => {
-      delete document.documentElement.dataset.chrome;
-      syncThemeColor();
-    };
-  }, []);
 
   return (
     <div

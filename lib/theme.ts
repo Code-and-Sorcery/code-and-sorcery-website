@@ -8,9 +8,13 @@ export function currentTheme(): Theme {
   return document.documentElement.dataset.theme === "light" ? "light" : "dark";
 }
 
-/** Match the page canvas, including the splash's shared dark background. */
+/**
+ * Match the browser chrome to the theme. The entrance keeps its dark canvas
+ * in both themes, but its chrome follows the theme like every other page's
+ * — a light-theme reader expects the white bar there too.
+ */
 export function syncThemeColor() {
-  const theme = document.documentElement.dataset.chrome === "dark" ? "dark" : currentTheme();
+  const theme = currentTheme();
   document
     .querySelector('meta[name="theme-color"]')
     ?.setAttribute("content", THEME_COLOR[theme]);
