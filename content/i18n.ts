@@ -10,6 +10,16 @@ export type Locale = (typeof locales)[number];
  */
 export const defaultLocale: Locale = "en";
 
+/**
+ * The app documents of the legal section, by dictionary key. They sit under
+ * the app's own prefix rather than /legal, so whoever needs the section as a
+ * whole — the footer's column, the header's active state — lists them here.
+ */
+export const LEGAL_DOCS = [
+  { key: "primzPrivacy", path: "/primz/privacy" },
+  { key: "primzTerms", path: "/primz/terms" },
+] as const;
+
 export const SITE_URL = "https://codeandsorcery.fr";
 export const CONTACT_EMAIL = "contact@codeandsorcery.fr";
 

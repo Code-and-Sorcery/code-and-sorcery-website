@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-import { localizePath, type Locale } from "@/content/i18n";
+import { LEGAL_DOCS, localizePath, type Locale } from "@/content/i18n";
 import type { HeaderLabels } from "@/content/labels";
 import { cn } from "@/lib/utils";
 
@@ -25,11 +25,27 @@ export function SiteHeader({
 }) {
   const pathname = usePathname() ?? "/";
 
+  // Each entry lights up for its own route and everything under it. The
+  // legal documents live under their app's prefix, so that section names
+  // them one by one.
   const nav = [
-    { href: localizePath("/apps", locale), label: labels.apps },
-    { href: localizePath("/studio", locale), label: labels.studio },
-    { href: localizePath("/legal", locale), label: labels.legal },
-  ];
+    { route: "/apps", label: labels.apps, covers: ["/apps"] },
+    { route: "/studio", label: labels.studio, covers: ["/studio"] },
+    {
+      route: "/legal",
+      label: labels.legal,
+      covers: ["/legal", ...LEGAL_DOCS.map((doc) => doc.path)],
+    },
+  ].map((item) => {
+    const paths = item.covers.map((route) => localizePath(route, locale));
+    return {
+      href: localizePath(item.route, locale),
+      label: item.label,
+      active: paths.some(
+        (path) => pathname === path || pathname.startsWith(`${path}/`),
+      ),
+    };
+  });
 
   return (
     /* site-header lifts it out of the page's route transition: it keeps its
@@ -61,27 +77,22 @@ export function SiteHeader({
 
           <nav aria-label={labels.menu} className="min-w-0">
             <ul className="flex items-center gap-0.5 sm:gap-1">
-              {nav.map((item) => {
-                const active =
-                  pathname === item.href ||
-                  pathname.startsWith(`${item.href}/`);
-                return (
-                  <li key={item.href}>
-                    <TransitionLink
-                      href={item.href}
-                      aria-current={active ? "page" : undefined}
-                      className={cn(
-                        "inline-block whitespace-nowrap rounded-full px-2.5 py-1.5 text-[13px] transition-colors sm:px-3 sm:text-sm",
-                        active
-                          ? "bg-active-panel text-interactive"
-                          : "text-fg-dim hover:text-interactive",
-                      )}
-                    >
-                      {item.label}
-                    </TransitionLink>
-                  </li>
-                );
-              })}
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <TransitionLink
+                    href={item.href}
+                    aria-current={item.active ? "page" : undefined}
+                    className={cn(
+                      "inline-block whitespace-nowrap rounded-full px-2.5 py-1.5 text-[13px] transition-colors sm:px-3 sm:text-sm",
+                      item.active
+                        ? "bg-active-panel text-interactive"
+                        : "text-fg-dim hover:text-interactive",
+                    )}
+                  >
+                    {item.label}
+                  </TransitionLink>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>

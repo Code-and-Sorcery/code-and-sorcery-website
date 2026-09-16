@@ -4,6 +4,7 @@ import { apps } from "@/content/apps";
 import type { Dictionary } from "@/content/dictionaries";
 import {
   CONTACT_EMAIL,
+  LEGAL_DOCS,
   localizePath,
   SOCIALS,
   type Locale,
@@ -39,14 +40,10 @@ export function SiteFooter({
       title: dict.footer.legalTitle,
       links: [
         { label: dict.nav.legal, href: localizePath("/legal", locale) },
-        {
-          label: dict.legal.primzPrivacy.title,
-          href: localizePath("/primz/privacy", locale),
-        },
-        {
-          label: dict.legal.primzTerms.title,
-          href: localizePath("/primz/terms", locale),
-        },
+        ...LEGAL_DOCS.map((doc) => ({
+          label: dict.legal[doc.key].title,
+          href: localizePath(doc.path, locale),
+        })),
       ],
     },
   ];
