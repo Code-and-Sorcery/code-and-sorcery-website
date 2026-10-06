@@ -32,7 +32,7 @@ export function AppIcon({
       <span
         className={cn(
           "h-[82%] w-[82%] overflow-hidden",
-          app.slug === "env-checker" && "rounded-[18%]",
+          app.iconRounded && "rounded-[18%]",
         )}
       >
         <Image

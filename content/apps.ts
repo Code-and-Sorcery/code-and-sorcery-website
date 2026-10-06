@@ -5,12 +5,12 @@
 
 export type AppStatus = "live" | "building";
 
-export type AppSlug = "env-checker" | "primz";
+export type AppSlug = "env-checker" | "primz" | "lance";
 
 export type AppEntry = {
   slug: AppSlug;
-  /** Route under /apps. */
-  path: string;
+  /** Route under /apps — set once the app has a page of its own. */
+  path?: string;
   name: string;
   status: AppStatus;
   /** Mono metadata rendered as `key · key · key` on the card. */
@@ -23,6 +23,8 @@ export type AppEntry = {
   icon: string;
   /** Compact glyph for small tiles, where a logotype turns to mush. */
   mark?: string;
+  /** Artwork that fills its square, and is rounded to sit on the tile. */
+  iconRounded?: boolean;
   /** Tile colour behind the icon — set when the artwork has a transparent
    *  background and is too dark to read on ink. */
   iconBackground?: string;
@@ -42,6 +44,7 @@ export const apps: AppEntry[] = [
     tech: ["TypeScript", "VS Code API", "esbuild"],
     accent: "199 89% 64%",
     icon: "/images/env-checker-icon.webp",
+    iconRounded: true,
     links: [
       {
         label: "Visual Studio Marketplace",
@@ -69,6 +72,17 @@ export const apps: AppEntry[] = [
     icon: "/images/primz-icon.webp",
     mark: "/images/primz-mark.webp",
     iconBackground: "#ffffff",
+    links: [],
+  },
+  {
+    slug: "lance",
+    name: "lancé.",
+    status: "building",
+    surface: "iOS · Android",
+    tech: ["React Native", "Bullet", "Filament"],
+    accent: "27 70% 70%",
+    icon: "/images/lance-icon.webp",
+    iconRounded: true,
     links: [],
   },
 ];

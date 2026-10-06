@@ -588,10 +588,15 @@ export const fr: Dictionary = {
         summary:
           "Un journal privé pour les enfants qui vous sont proches, premières fois, souvenirs, photos, audio et notes courtes, gardés sur le téléphone et nulle part ailleurs.",
       },
+      lance: {
+        tagline: "Vos dés, à vous de jouer.",
+        summary:
+          "Un plateau de dés avec une vraie physique : D4 à D100 lancés d’une secousse, d’un glissement ou d’un toucher, lancers composés avec bonus, avantage et dés gardés, favoris et historique conservés sur le téléphone. Aucun compte, aucune publicité.",
+      },
     },
     forgeTitle: "Encore sur l’enclume",
     forgeBody:
-      "D’autres projets sont en cours de martelage et ne sont pas encore publics. Ils arriveront ici quand ils seront prêts, pas avant.",
+      "En cours de martelage, pas encore publiées. Chacune rejoindra le catalogue quand elle sera prête, pas avant.",
   },
 
   envChecker: {

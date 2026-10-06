@@ -31,10 +31,13 @@ export function SiteFooter({
     },
     {
       title: dict.footer.appsTitle,
-      links: apps.map((app) => ({
-        label: app.name,
-        href: localizePath(app.path, locale),
-      })),
+      /* Only the apps with a page of their own: the ones still on the anvil
+         are listed on /apps and have nowhere else to go. */
+      links: apps.flatMap((app) =>
+        app.path
+          ? [{ label: app.name, href: localizePath(app.path, locale) }]
+          : [],
+      ),
     },
     {
       title: dict.footer.legalTitle,

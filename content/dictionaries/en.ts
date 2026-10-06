@@ -583,10 +583,15 @@ export const en = {
         summary:
           "A private journal for the children you care about, firsts, memories, photos, audio and small notes, kept on the phone and nowhere else.",
       },
+      lance: {
+        tagline: "Your dice. Your next game.",
+        summary:
+          "A dice tray with real physics: D4 to D100 thrown with a shake, a swipe or a tap, rolls composed with a bonus, advantage and held dice, favourites and history kept on the phone. No account, no ads.",
+      },
     },
     forgeTitle: "Still on the anvil",
     forgeBody:
-      "Other projects are being hammered on and are not public yet. They land here when they are ready, not before.",
+      "Hammered on, not public yet. Each one moves up into the catalogue when it is ready, not before.",
   },
 
   envChecker: {

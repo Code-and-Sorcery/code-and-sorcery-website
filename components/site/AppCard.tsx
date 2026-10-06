@@ -20,12 +20,13 @@ export function AppCard({
   locale: Locale;
   copy: { tagline: string; summary: string };
 }) {
-  return (
-    <SpellCard as="li" className="app-card group">
-      <TransitionLink
-        href={localizePath(app.path, locale)}
-        className="flex h-full flex-col gap-6 p-7 sm:p-8"
-      >
+  /* An app with nothing to read yet keeps the same card, minus the link:
+     the forge section is where those live, and the section says as much. */
+  const href = app.path ? localizePath(app.path, locale) : null;
+  const panel = "flex h-full flex-col gap-6 p-7 sm:p-8";
+
+  const content = (
+    <>
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
             <AppIcon app={app} className="h-11 w-11 rounded-xl" compact />
@@ -58,12 +59,25 @@ export function AppCard({
             ))}
           </ul>
 
-          <span className="inline-flex items-center gap-2 text-sm text-fg-dim transition-colors group-hover:text-interactive">
-            {dict.common.readMore}
-            <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </span>
+          {href ? (
+            <span className="inline-flex items-center gap-2 text-sm text-fg-dim transition-colors group-hover:text-interactive">
+              {dict.common.readMore}
+              <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </span>
+          ) : null}
         </div>
-      </TransitionLink>
+    </>
+  );
+
+  return (
+    <SpellCard as="li" className="app-card group">
+      {href ? (
+        <TransitionLink href={href} className={panel}>
+          {content}
+        </TransitionLink>
+      ) : (
+        <div className={panel}>{content}</div>
+      )}
     </SpellCard>
   );
 }
