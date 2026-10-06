@@ -17,8 +17,8 @@ export type HeaderLabels = {
   legal: string;
   menu: string;
   theme: string;
-  switchTo: string;
-  switchAria: string;
+  language: string;
+  switchLanguage: string;
 };
 
 export function headerLabels(dict: Dictionary): HeaderLabels {
@@ -28,8 +28,8 @@ export function headerLabels(dict: Dictionary): HeaderLabels {
     legal: dict.nav.legal,
     menu: dict.nav.menu,
     theme: dict.nav.theme,
-    switchTo: dict.switchTo,
-    switchAria: dict.switchAria,
+    language: dict.localeName,
+    switchLanguage: dict.switchLanguage,
   };
 }
 

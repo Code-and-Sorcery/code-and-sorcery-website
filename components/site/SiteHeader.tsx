@@ -103,8 +103,8 @@ export function SiteHeader({
           <SocialLinks className="hidden sm:flex" />
           <LocaleSwitch
             code={locale.toUpperCase()}
-            label={labels.switchTo}
-            ariaLabel={labels.switchAria}
+            language={labels.language}
+            ariaLabel={labels.switchLanguage}
           />
           <ThemeToggle label={labels.theme} />
         </div>

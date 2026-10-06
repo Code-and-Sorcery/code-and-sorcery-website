@@ -484,8 +484,7 @@ const legalIndexGroups: LegalIndexGroup[] = [
 export const en = {
   htmlLang: "en",
   localeName: "English",
-  switchTo: "Français",
-  switchAria: "Read this page in French",
+  switchLanguage: "Read this page in French",
 
   nav: {
     apps: "Apps",

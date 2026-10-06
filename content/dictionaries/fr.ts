@@ -489,8 +489,7 @@ const legalIndexGroups: LegalIndexGroup[] = [
 export const fr: Dictionary = {
   htmlLang: "fr",
   localeName: "Français",
-  switchTo: "English",
-  switchAria: "Lire cette page en anglais",
+  switchLanguage: "Lire cette page en anglais",
 
   nav: {
     apps: "Apps",
