@@ -334,6 +334,53 @@
   .kbd-hint:hover::after {
     color: hsl(var(--fg));
   }
+
+  /* Pressing the shortcut plays the badge like the key it stands for: it
+     dips, lights up and comes back. Clicking the control is its own
+     feedback; the key would otherwise give none. Set by useShortcut. */
+  .kbd-hint[data-pressed]::after {
+    animation: kbd-press 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @keyframes kbd-press {
+    0% {
+      transform: translateY(0) scale(1);
+      border-color: hsl(var(--edge-strong));
+      background: hsl(var(--panel-strong));
+      color: hsl(var(--fg-faint));
+    }
+    30% {
+      transform: translateY(2px) scale(0.86);
+      border-bottom-width: 1px;
+      border-color: hsl(var(--interactive-border));
+      background: hsl(var(--interactive) / 0.22);
+      color: hsl(var(--interactive));
+    }
+    100% {
+      transform: translateY(0) scale(1);
+      border-color: hsl(var(--edge-strong));
+      background: hsl(var(--panel-strong));
+      color: hsl(var(--fg-faint));
+    }
+  }
+  /* The same beat without the movement, for readers who asked for less. */
+  @media (prefers-reduced-motion: reduce) {
+    .kbd-hint[data-pressed]::after {
+      animation-name: kbd-flash;
+    }
+  }
+  @keyframes kbd-flash {
+    0%,
+    100% {
+      border-color: hsl(var(--edge-strong));
+      background: hsl(var(--panel-strong));
+      color: hsl(var(--fg-faint));
+    }
+    30% {
+      border-color: hsl(var(--interactive-border));
+      background: hsl(var(--interactive) / 0.22);
+      color: hsl(var(--interactive));
+    }
+  }
   @media (min-width: 768px) {
     .kbd-hint::after {
       display: inline-grid;
@@ -381,12 +428,17 @@
 }
 
 @layer utilities {
-  /* Film grain over the whole viewport — kills banding in the dark gradients. */
+  /* Film grain over the viewport — kills banding in the dark gradients. It
+     sits under the content rather than over it: a full-viewport blended
+     layer above every link had Chrome resolving the cursor against a
+     composited surface on each pointer move, and the hand flickered back to
+     an arrow between frames. The gradients it is there for are behind the
+     content anyway, and the entrance's shader dithers its own output. */
   .grain::after {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: 60;
+    z-index: -1;
     pointer-events: none;
     opacity: 0.045;
     mix-blend-mode: overlay;
