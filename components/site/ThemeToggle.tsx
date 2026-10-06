@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 import { MoonIcon, SunIcon } from "@/components/Icons";
 import {
@@ -38,6 +38,8 @@ function applyTheme(theme: Theme) {
  * and on the client and never has a wrong first frame to correct.
  */
 export function ThemeToggle({ label }: { label: string }) {
+  const button = useRef<HTMLButtonElement>(null);
+
   // Nothing is stored until the reader picks a side; until then the OS
   // preference stays in charge, including when it flips mid-visit.
   useEffect(() => {
@@ -66,10 +68,11 @@ export function ThemeToggle({ label }: { label: string }) {
     }
   }, []);
 
-  useShortcut("t", toggle);
+  useShortcut("t", toggle, button);
 
   return (
     <button
+      ref={button}
       type="button"
       onClick={toggle}
       aria-label={label}
