@@ -31,7 +31,8 @@ content/dictionaries/   all user-facing copy, English and French
 
 English lives at the root of the tree, French under `/fr`. **English stays
 unprefixed on purpose**: `/primz/privacy` and `/primz/terms` are referenced from
-the Primz app and its store listings, so those two paths must never move.
+the Primz app and its store listings, and `/lance/privacy` from Lancé's, so
+those paths must never move.
 
 Copy is data, not JSX: `content/dictionaries/en.ts` defines the shape and
 `fr.ts` is typed against it, so a missing translation is a type error. The long

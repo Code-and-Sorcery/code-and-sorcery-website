@@ -43,8 +43,9 @@ export function SiteFooter({
       title: dict.footer.legalTitle,
       links: [
         { label: dict.nav.legal, href: localizePath("/legal", locale) },
+        // Two apps each have a privacy policy: the app's name tells them apart.
         ...LEGAL_DOCS.map((doc) => ({
-          label: dict.legal[doc.key].title,
+          label: `${dict.legal[doc.key].eyebrow} · ${dict.legal[doc.key].title}`,
           href: localizePath(doc.path, locale),
         })),
       ],

@@ -5,8 +5,8 @@ export type Locale = (typeof locales)[number];
 
 /**
  * English lives at the root of the tree, French under /fr. Keeping English
- * unprefixed preserves the /primz/privacy and /primz/terms URLs that are
- * already referenced from the app stores.
+ * unprefixed preserves the URLs of the app documents (/primz/privacy,
+ * /primz/terms, /lance/privacy), which the app stores reference.
  */
 export const defaultLocale: Locale = "en";
 
@@ -18,6 +18,7 @@ export const defaultLocale: Locale = "en";
 export const LEGAL_DOCS = [
   { key: "primzPrivacy", path: "/primz/privacy" },
   { key: "primzTerms", path: "/primz/terms" },
+  { key: "lancePrivacy", path: "/lance/privacy" },
 ] as const;
 
 export const SITE_URL = "https://codeandsorcery.fr";

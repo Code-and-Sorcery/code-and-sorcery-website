@@ -15,6 +15,7 @@ const routes = [
   "/legal",
   "/primz/privacy",
   "/primz/terms",
+  "/lance/privacy",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
