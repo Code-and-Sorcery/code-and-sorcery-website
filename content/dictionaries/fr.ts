@@ -443,7 +443,7 @@ const primzTerms: LegalDocument = {
 const lancePrivacy: LegalDocument = {
   eyebrow: "Lancé",
   title: "Politique de confidentialité",
-  updated: "18 octobre 2026",
+  updated: "19 octobre 2026",
   lead: "Comment l’application de dés Lancé traite les informations : votre partie reste sur votre téléphone, et seuls des rapports de plantage nous sont envoyés.",
   translationNote:
     "Version française de ce document. La [version anglaise](/lance/privacy) est également disponible.",
@@ -545,6 +545,9 @@ const lancePrivacy: LegalDocument = {
       blocks: [
         {
           p: "À l’ouverture, l’Application demande à son store si une **nouvelle version** est disponible : sur Android via le service de mise à jour intégré de Google Play, sur iOS via la recherche publique de l’App Store, avec l’identifiant de l’Application et le pays de votre App Store. Aucun identifiant vous concernant n’accompagne cette demande.",
+        },
+        {
+          p: "Sur Android, l’Application demande aussi à Google Play, à l’ouverture, votre **tranche d’âge** (par exemple 13 à 15 ans, ou 18 ans et plus) et, pour un compte supervisé, l’accord de vos parents à ses changements importants, comme l’exigent certaines lois, notamment au Texas. Google Play ne les communique que là où une loi le prévoit, et peut d’abord vous demander si vous acceptez de les partager. L’Application les garde en mémoire le temps de la session, sans les enregistrer ni nous les envoyer, et ne s’en sert que pour adapter ce qu’elle propose à votre âge : ni publicité, ni statistiques, ni profil.",
         },
         {
           p: "Les téléchargements, mises à jour, avis et paiements sont gérés par Google ou Apple selon leurs propres règles : [règles de confidentialité de Google](https://policies.google.com/privacy?hl=fr), [politique de confidentialité d’Apple](https://www.apple.com/fr/legal/privacy/). Si vous avez accepté, dans les réglages de votre appareil, de partager des données d’utilisation et de diagnostic avec les développeurs, Google ou Apple peuvent aussi nous fournir des statistiques **agrégées** de plantages et de performances, qui ne vous identifient pas.",

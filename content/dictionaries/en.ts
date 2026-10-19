@@ -438,7 +438,7 @@ const primzTerms: LegalDocument = {
 const lancePrivacy: LegalDocument = {
   eyebrow: "Lancé",
   title: "Privacy Policy",
-  updated: "October 18, 2026",
+  updated: "October 19, 2026",
   lead: "How the Lancé dice app handles information: your game stays on your phone, and only crash reports are ever sent to us.",
   sections: [
     {
@@ -538,6 +538,9 @@ const lancePrivacy: LegalDocument = {
       blocks: [
         {
           p: "When it opens, the App asks its store whether a **newer version** is available: on Android through Google Play’s in-app update service, on iOS through the App Store’s public lookup, with the App’s identifier and the country of your App Store. No identifier of you comes with that request.",
+        },
+        {
+          p: "On Android, at launch, the App also asks Google Play for your **age range** (for example 13 to 15, or 18 and over) and, for a supervised account, whether your parents approved its significant changes, as some laws require, including in Texas. Google Play only provides them where a law calls for it, and may first ask whether you agree to share them. The App keeps them in memory for the session, never saves them or sends them to us, and uses them only to suit what it offers to your age: no advertising, no analytics, no profiling.",
         },
         {
           p: "Downloads, updates, ratings and payments are handled by Google or Apple under their own policies: [Google Privacy Policy](https://policies.google.com/privacy), [Apple Privacy Policy](https://www.apple.com/legal/privacy/). If you have agreed, in your device settings, to share usage and diagnostic data with app developers, Google or Apple may also give us **aggregated** crash and performance statistics, which do not identify you.",
