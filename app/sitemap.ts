@@ -11,6 +11,7 @@ const routes = [
   "/apps",
   "/apps/env-checker",
   "/apps/primz",
+  "/apps/lance",
   "/studio",
   "/legal",
   "/primz/privacy",

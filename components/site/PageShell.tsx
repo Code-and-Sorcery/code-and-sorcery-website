@@ -34,7 +34,10 @@ export function PageShell({
 
       <SiteHeader labels={headerLabels(dict)} locale={locale} />
 
-      <main id="content" className="flex-1">
+      {/* Clipped, not hidden: the glows behind the hero may bleed past the
+          viewport's edge, but must not widen the page, and a clip keeps the
+          sticky table of contents working. */}
+      <main id="content" className="flex-1 overflow-x-clip">
         {children}
       </main>
 

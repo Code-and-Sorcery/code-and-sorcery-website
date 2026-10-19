@@ -836,7 +836,7 @@ export const fr: Dictionary = {
           "Un journal privé pour les enfants qui vous sont proches, premières fois, souvenirs, photos, audio et notes courtes, gardés sur le téléphone et nulle part ailleurs.",
       },
       lance: {
-        tagline: "Vos dés, à vous de jouer.",
+        tagline: "Tous vos dés, dans votre poche.",
         summary:
           "Un plateau de dés avec une vraie physique : D4 à D100 lancés d’une secousse, d’un glissement ou d’un toucher, lancers composés avec bonus, avantage et dés gardés, favoris et historique conservés sur le téléphone. Aucun compte, aucune publicité.",
       },
@@ -970,6 +970,61 @@ export const fr: Dictionary = {
     legalTitle: "Mentions légales",
     legalBody:
       "Les deux documents sont publiés à des adresses stables, référencées depuis l’application et les stores.",
+  },
+
+  lance: {
+    eyebrow: "iOS & Android",
+    lead: "Un lanceur de dés 3D pour le jeu de rôle et les jeux de plateau. Les dés roulent vraiment sur un plateau, du D4 au D100, et vos jets, vos favoris et votre historique restent sur votre téléphone. Sans compte, sans publicité.",
+    statusTitle: "Pas encore sur les stores",
+    statusBody:
+      "Lancé se prépare pour Google Play et l’App Store. Sa politique de confidentialité est déjà publiée ici, pour que les stores pointent vers une adresse stable dès le premier jour.",
+    galleryTitle: "Un aperçu",
+    galleryLabel: "Écrans de Lancé",
+    previous: "Écran précédent",
+    next: "Écran suivant",
+    gallery: [
+      "Tous vos dés, dans votre poche : un D20, un D6 gardé et un D4 sur le plateau, 29 avec un bonus de +3.",
+      "Du D4 au D100, avec bonus et avantage : un lancer composé d’un D4, d’un D6 et d’un D20.",
+      "Les réussites critiques se fêtent : un 20 naturel sur le D20.",
+      "Vos jets habituels à portée de main : attaque à l’épée avec avantage, dégâts de feu, initiative.",
+      "Physique ou Harmonisé, choisissez votre hasard : le mode Harmonisé tire dans deux sacs de valeurs.",
+      "Chaque lancer a son histoire : les lancers d’aujourd’hui et d’hier, avec le mode de chacun.",
+      "Gardez un dé, relancez les autres : les actions d’un D6, garder, relancer ou changer son apparence.",
+      "Clair ou sombre, à votre goût : les réglages d’apparence en thème sombre.",
+    ],
+    pillarsTitle: "L’idée",
+    pillars: [
+      {
+        title: "Des dés qui roulent vraiment",
+        body: "Touchez Lancer, glissez le doigt sur le plateau ou secouez le téléphone. Les dés rebondissent, se cognent et s’arrêtent : la face du dessus donne le résultat.",
+      },
+      {
+        title: "Vos jets, à votre façon",
+        body: "Composez jusqu’à 12 dés du D4 au D100, ajoutez un bonus, lancez le D20 avec avantage ou désavantage, gardez les bons dés et relancez les autres.",
+      },
+      {
+        title: "Rien ne quitte le téléphone",
+        body: "Sans compte ni publicité. Jets, favoris et historique restent sur l’appareil ; la seule chose que l’app nous envoie, c’est un rapport de plantage.",
+      },
+    ],
+    featuresTitle: "Dans l’app",
+    features: [
+      { title: "Du D4 au D100", body: "Sept types de dés, jusqu’à 12 par lancer." },
+      { title: "Bonus & avantage", body: "Modificateurs, avantage et désavantage." },
+      { title: "Garder & relancer", body: "Gardez les bons dés, relancez les autres." },
+      { title: "Favoris", body: "Vos jets habituels, nommés, à un toucher." },
+      { title: "Historique", body: "Chaque lancer, avec le résultat de chaque dé." },
+      { title: "Mode Physique", body: "La face du dessus décide." },
+      { title: "Mode Harmonisé", body: "Des résultats tirés dans deux sacs de valeurs." },
+      { title: "Critiques", body: "Réussites et échecs critiques mis en valeur." },
+      { title: "Clair & sombre", body: "Deux thèmes, ou celui du système." },
+      { title: "Accessibilité", body: "Grands résultats, contraste renforcé, un bouton pour chaque geste." },
+      { title: "Hors ligne", body: "Fonctionne sans réseau." },
+      { title: "Collections", body: "Sets de dés et plateaux, achetés une fois, sans changer le hasard." },
+    ],
+    legalTitle: "Mentions légales",
+    legalBody:
+      "La politique de confidentialité est publiée à une adresse stable, référencée par l’app et les stores.",
   },
 
   legalIndex: {

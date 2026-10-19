@@ -829,7 +829,7 @@ export const en = {
           "A private journal for the children you care about, firsts, memories, photos, audio and small notes, kept on the phone and nowhere else.",
       },
       lance: {
-        tagline: "Your dice. Your next game.",
+        tagline: "All your dice, in your pocket.",
         summary:
           "A dice tray with real physics: D4 to D100 thrown with a shake, a swipe or a tap, rolls composed with a bonus, advantage and held dice, favourites and history kept on the phone. No account, no ads.",
       },
@@ -963,6 +963,61 @@ export const en = {
     legalTitle: "Legal",
     legalBody:
       "Both documents are published at stable URLs referenced from the app and the stores.",
+  },
+
+  lance: {
+    eyebrow: "iOS & Android",
+    lead: "A 3D dice roller for tabletop RPGs and board games. The dice really roll across a tray, from D4 to D100, and your rolls, favorites and history stay on your phone. No account, no ads.",
+    statusTitle: "Not on the stores yet",
+    statusBody:
+      "Lancé is getting ready for Google Play and the App Store. Its privacy policy is already published here, so the stores can point at a stable address from day one.",
+    galleryTitle: "A look inside",
+    galleryLabel: "Screens from Lancé",
+    previous: "Previous screen",
+    next: "Next screen",
+    gallery: [
+      "All your dice, in your pocket: a D20, a held D6 and a D4 on the tray, 29 with a +3 bonus.",
+      "D4 to D100, with bonus and advantage: a roll composed of a D4, a D6 and a D20.",
+      "Critical successes, celebrated: a natural 20 on the D20.",
+      "Your usual rolls, one tap away: sword attack with advantage, fire damage, initiative.",
+      "Physical or Harmonized, choose your luck: the Harmonized mode draws from two bags of values.",
+      "Every roll has a story: today’s and yesterday’s rolls, with the mode of each.",
+      "Hold one die, reroll the others: a D6’s actions, hold, reroll or change its appearance.",
+      "Light or dark, your choice: the appearance settings in the dark theme.",
+    ],
+    pillarsTitle: "The idea",
+    pillars: [
+      {
+        title: "Dice that really roll",
+        body: "Tap Roll, swipe across the tray or shake the phone. The dice bounce, knock into each other and settle, and the face on top is your result.",
+      },
+      {
+        title: "Rolls the way you play",
+        body: "Compose up to 12 dice from D4 to D100, add a bonus, roll the D20 with advantage or disadvantage, hold the good dice and reroll the rest.",
+      },
+      {
+        title: "Nothing leaves the phone",
+        body: "No account and no ads. Rolls, favorites and history stay on the device; the only thing the app ever sends us is a crash report.",
+      },
+    ],
+    featuresTitle: "Inside the app",
+    features: [
+      { title: "D4 to D100", body: "Seven dice types, up to 12 per roll." },
+      { title: "Bonus & advantage", body: "Modifiers, advantage and disadvantage." },
+      { title: "Hold & reroll", body: "Keep the good dice, throw the others." },
+      { title: "Favorites", body: "Your usual rolls, named, one tap away." },
+      { title: "History", body: "Every roll, with each die’s result." },
+      { title: "Physical mode", body: "The face on top decides." },
+      { title: "Harmonized mode", body: "Results drawn from two bags of values." },
+      { title: "Criticals", body: "Critical successes and failures stand out." },
+      { title: "Light & dark", body: "Two themes, or follow the system." },
+      { title: "Accessibility", body: "Larger results, more contrast, a button for every gesture." },
+      { title: "Offline", body: "Plays without a network." },
+      { title: "Collections", body: "Dice sets and trays, bought once, never changing the odds." },
+    ],
+    legalTitle: "Legal",
+    legalBody:
+      "The privacy policy is published at a stable URL referenced from the app and the stores.",
   },
 
   legalIndex: {

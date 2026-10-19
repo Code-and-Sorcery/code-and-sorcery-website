@@ -76,6 +76,7 @@ export const apps: AppEntry[] = [
   },
   {
     slug: "lance",
+    path: "/apps/lance",
     name: "lancé.",
     status: "building",
     surface: "iOS · Android",
