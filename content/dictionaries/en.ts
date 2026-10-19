@@ -439,7 +439,7 @@ const lancePrivacy: LegalDocument = {
   eyebrow: "Lancé",
   title: "Privacy Policy",
   updated: "October 18, 2026",
-  lead: "How the Lancé dice app handles information: your game stays on your phone, and only crash reports and purchase checks ever leave it.",
+  lead: "How the Lancé dice app handles information: your game stays on your phone, and only crash reports are ever sent to us.",
   sections: [
     {
       id: "introduction",
@@ -449,7 +449,7 @@ const lancePrivacy: LegalDocument = {
           p: "This Privacy Policy describes how the mobile application **Lancé** (“the App”) handles information when you use it, on iOS and Android. Lancé is published by **Code and Sorcery**, a SASU registered in France (“we,” “us,” or “our”), which is the controller of the personal data described here.",
         },
         {
-          p: "Lancé is a 3D dice tray: you throw dice with a shake, a swipe or a tap, compose rolls, and keep favorites and a history. It works without an account, and everything you do in a game stays on your device. This policy covers the App and the purchase verification service it relies on.",
+          p: "Lancé is a 3D dice tray: you throw dice with a shake, a swipe or a tap, compose rolls, and keep favorites and a history. It works without an account, and everything you do in a game stays on your device. This policy covers the App.",
         },
       ],
     },
@@ -471,7 +471,7 @@ const lancePrivacy: LegalDocument = {
           ],
         },
         {
-          p: "Apart from the purchase checks described below, none of this is sent to us, and we cannot see it. On Android, the App excludes its data from Google’s automatic backups. On iOS, it may be included in the backups of your iPhone made with iCloud or a computer, according to your Apple settings.",
+          p: "None of this is sent to us, and we cannot see it. On Android, the App excludes its data from Google’s automatic backups. On iOS, it may be included in the backups of your iPhone made with iCloud or a computer, according to your Apple settings.",
         },
       ],
     },
@@ -483,7 +483,7 @@ const lancePrivacy: LegalDocument = {
           p: "Lancé reads your phone’s **motion sensors** (accelerometer and gyroscope) so that a shake throws the dice. Motion is processed in real time on the device, to move the dice, and is never recorded or sent anywhere. You can turn shake to roll off in Settings; the Roll button and the swipe keep working without it.",
         },
         {
-          p: "The App does not ask for access to your location, contacts, photos, camera or microphone. On Android, it only declares network access, for the exchanges described below, and vibration, for haptic feedback, which you can turn off in Settings.",
+          p: "The App does not ask for access to your location, contacts, photos, camera or microphone. On Android, it only declares network access, for the exchanges described below, Google Play’s billing permission, for purchases, and vibration, for haptic feedback, which you can turn off in Settings.",
         },
       ],
     },
@@ -528,34 +528,7 @@ const lancePrivacy: LegalDocument = {
       heading: "Purchases of collections",
       blocks: [
         {
-          p: "Some dice and trays are sold as one-time in-app purchases. **Payment is handled entirely by Google Play or the App Store**: we never receive your card details, and the store does not give us your name or email address.",
-        },
-        {
-          p: "When you buy an item, restore your purchases, or the App checks them again, it sends to our **purchase verification service**:",
-        },
-        {
-          ul: [
-            "the store concerned (Google Play or App Store) and the identifier of the item;",
-            "the **purchase proof** issued by the store (a purchase token on Google Play, a signed transaction on the App Store).",
-          ],
-        },
-        {
-          p: "The service checks that proof with the store, through the Google Play Developer API or the App Store Server API, and receives the notifications the stores send when a purchase is refunded or revoked. It records the proof, **encrypted**, together with the transaction and order identifiers, the item, its status (purchased, pending, refunded, revoked), the time of the check and, when the store provides them, the date, amount, currency, taxes and refunds of the transaction.",
-        },
-        {
-          p: "We use these data to give you the items you paid for, restore them after a reinstall, withdraw an item that has been refunded, confirm the purchase to Google Play as it requires, and show your purchase history in the App. This processing is necessary to **carry out the purchase** you asked for. A purchase proof does not tell us who you are, but it is tied to your store account: keep it to yourself, and do not send it to anyone, support included.",
-        },
-        {
-          p: "We keep purchase records for as long as Lancé sells collections and verifies purchases, so that an item can be checked again, restored, or withdrawn after a refund. When the service is shut down, its records are deleted, unless a legal obligation or a dispute requires us to keep them longer.",
-        },
-      ],
-    },
-    {
-      id: "connection-data",
-      heading: "Connection data",
-      blocks: [
-        {
-          p: "Like any internet service, our purchase verification service receives the **IP address** of the device that contacts it, with the time and the address requested. These connection data are used only to answer the request and to protect the service against abuse, for example by limiting the number of requests, on the basis of our legitimate interest in securing the service. Request contents, purchase proofs and tokens are never written to logs. Technical logs are kept no longer than **12 months**. The service runs on servers rented from a hosting provider, which acts on our instructions as a processor.",
+          p: "Some dice and trays are sold as one-time in-app purchases. **Payment is handled entirely by Google Play or the App Store**, which process your card details and the purchase proof under their own policies. The App checks, confirms and restores your purchases **on your device, directly with the store**; **no purchase information is sent to Code and Sorcery**, which keeps no copy of it. An item refunded or revoked by the store is withdrawn at the next check. The purchase journal shown in the App stays on your device.",
         },
       ],
     },
@@ -591,8 +564,7 @@ const lancePrivacy: LegalDocument = {
           ul: [
             "**Code and Sorcery**, which develops and operates the App;",
             "**Google** and **Apple**, for payments, purchase verification, updates and the services of their stores;",
-            "**Discord**, which carries crash reports to us;",
-            "the **hosting provider** of the purchase verification service, as our processor.",
+            "**Discord**, which carries crash reports to us.",
           ],
         },
         {
@@ -617,8 +589,6 @@ const lancePrivacy: LegalDocument = {
           ul: [
             "**Data on your device**: until you clear them in the App or uninstall it;",
             "**Crash reports**: 12 months at most;",
-            "**Purchase records**: as long as the purchase verification service operates, as described above;",
-            "**Connection logs**: 12 months at most;",
             "**Your messages**: 3 years at most after our last exchange.",
           ],
         },
@@ -635,10 +605,27 @@ const lancePrivacy: LegalDocument = {
           p: "Under the GDPR and French data protection law, you have the right to access, rectify and erase your personal data, to restrict or object to its processing and, where it applies, to data portability. You can also give instructions on what happens to your data after your death. To exercise these rights, write to [contact@codeandsorcery.fr](mailto:contact@codeandsorcery.fr); we answer within one month.",
         },
         {
-          p: "Since Lancé has no account, we usually cannot link data to you on our own. For a request about a purchase, give us the reference shown on the App’s Purchases page or, on Google Play, the order number starting with GPA. Crash reports carry no identifier, so we generally cannot find the ones that concern you. Erasing a purchase record does not remove the item from your store account: if the App checks it again, a new record is created.",
+          p: "Lancé has no account and sends us no purchase data: the only data we hold are crash reports, which carry no identifier, and the emails you send us. Your purchases are managed by Google Play or the App Store: to exercise your rights over them, contact Google or Apple.",
         },
         {
           p: "If you believe your rights are not being respected, you can lodge a complaint with the **CNIL**, the French data protection authority ([cnil.fr](https://www.cnil.fr)), or with the authority of the country where you live.",
+        },
+      ],
+    },
+    {
+      id: "deletion",
+      heading: "Deleting your data",
+      blocks: [
+        {
+          p: "Here is what you can delete, and how:",
+        },
+        {
+          ul: [
+            "**Data on your device** (rolls, favorites, bags, settings, purchase journal) never reaches us: clear History in the App, or uninstall the App to delete all of it.",
+            "**Crash reports** carry no identifier, so we cannot find the ones that concern you. They are deleted automatically no later than 12 months after we receive them.",
+            "**Your emails**: write to [contact@codeandsorcery.fr](mailto:contact@codeandsorcery.fr) with the subject “Lancé – data deletion”. We delete our exchanges and confirm it to you within one month.",
+            "**Your purchases** are kept by Google Play or the App Store, under their own policies: we hold no copy of them.",
+          ],
         },
       ],
     },
@@ -656,7 +643,7 @@ const lancePrivacy: LegalDocument = {
       heading: "Security",
       blocks: [
         {
-          p: "Exchanges between the App and our service are encrypted (HTTPS). Purchase proofs are stored encrypted, the keys that give access to the stores stay on the server and never ship with the App, and local data stay in the App’s private storage on your device. No method of storage or transmission is 100% secure: protect your device with a screen lock and keep its system up to date.",
+          p: "Crash reports are sent over an encrypted connection (HTTPS). Local data stay in the App’s private storage on your device, and purchases are checked with the store through the system’s billing services. No method of storage or transmission is 100% secure: protect your device with a screen lock and keep its system up to date.",
         },
       ],
     },
@@ -706,7 +693,7 @@ const legalIndexGroups: LegalIndexGroup[] = [
         entries: [
           {
             title: "Privacy Policy",
-            body: "What stays on the phone, what a crash or a purchase sends, and to whom.",
+            body: "What stays on the phone, the one thing it sends us, and how to delete it.",
             path: "/lance/privacy",
           },
         ],

@@ -444,7 +444,7 @@ const lancePrivacy: LegalDocument = {
   eyebrow: "Lancé",
   title: "Politique de confidentialité",
   updated: "18 octobre 2026",
-  lead: "Comment l’application de dés Lancé traite les informations : votre partie reste sur votre téléphone, seuls les rapports de plantage et les vérifications d’achat en sortent.",
+  lead: "Comment l’application de dés Lancé traite les informations : votre partie reste sur votre téléphone, et seuls des rapports de plantage nous sont envoyés.",
   translationNote:
     "Version française de ce document. La [version anglaise](/lance/privacy) est également disponible.",
   sections: [
@@ -456,7 +456,7 @@ const lancePrivacy: LegalDocument = {
           p: "La présente politique de confidentialité décrit la manière dont l’application mobile **Lancé** (« l’Application ») traite les informations lorsque vous l’utilisez, sur iOS et Android. Lancé est éditée par **Code and Sorcery**, SASU immatriculée en France (« nous »), responsable des traitements de données personnelles décrits ici.",
         },
         {
-          p: "Lancé est un plateau de dés en 3D : vous lancez les dés d’un geste, d’un glissement ou d’un toucher, composez vos lancers et gardez favoris et historique. Elle fonctionne sans compte, et tout ce que vous faites en partie reste sur votre appareil. Cette politique couvre l’Application et le service de vérification des achats sur lequel elle s’appuie.",
+          p: "Lancé est un plateau de dés en 3D : vous lancez les dés d’un geste, d’un glissement ou d’un toucher, composez vos lancers et gardez favoris et historique. Elle fonctionne sans compte, et tout ce que vous faites en partie reste sur votre appareil. Cette politique couvre l’Application.",
         },
       ],
     },
@@ -478,7 +478,7 @@ const lancePrivacy: LegalDocument = {
           ],
         },
         {
-          p: "En dehors des vérifications d’achat décrites plus bas, rien de tout cela ne nous est envoyé, et nous n’y avons pas accès. Sur Android, l’Application exclut ses données des sauvegardes automatiques de Google. Sur iOS, elles peuvent figurer dans les sauvegardes de votre iPhone réalisées avec iCloud ou un ordinateur, selon vos réglages Apple.",
+          p: "Rien de tout cela ne nous est envoyé, et nous n’y avons pas accès. Sur Android, l’Application exclut ses données des sauvegardes automatiques de Google. Sur iOS, elles peuvent figurer dans les sauvegardes de votre iPhone réalisées avec iCloud ou un ordinateur, selon vos réglages Apple.",
         },
       ],
     },
@@ -490,7 +490,7 @@ const lancePrivacy: LegalDocument = {
           p: "Lancé lit les **capteurs de mouvement** de votre téléphone (accéléromètre et gyroscope) pour qu’une secousse lance les dés. Le mouvement est traité en temps réel sur l’appareil, pour animer les dés, et n’est jamais enregistré ni transmis. Vous pouvez désactiver le lancer en secouant dans Réglages ; le bouton Lancer et le glissement fonctionnent sans lui.",
         },
         {
-          p: "L’Application ne demande accès ni à votre position, ni à vos contacts, photos, appareil photo ou micro. Sur Android, elle déclare uniquement l’accès au réseau, pour les échanges décrits ci-dessous, et la vibration, pour le retour haptique, que vous pouvez couper dans Réglages.",
+          p: "L’Application ne demande accès ni à votre position, ni à vos contacts, photos, appareil photo ou micro. Sur Android, elle déclare uniquement l’accès au réseau, pour les échanges décrits ci-dessous, la permission de facturation de Google Play, pour les achats, et la vibration, pour le retour haptique, que vous pouvez couper dans Réglages.",
         },
       ],
     },
@@ -535,34 +535,7 @@ const lancePrivacy: LegalDocument = {
       heading: "Achats de collections",
       blocks: [
         {
-          p: "Certains dés et plateaux sont vendus sous forme d’achats intégrés définitifs. **Le paiement est entièrement géré par Google Play ou l’App Store** : nous ne recevons jamais vos coordonnées bancaires, et le store ne nous communique ni votre nom ni votre adresse e-mail.",
-        },
-        {
-          p: "Lorsque vous achetez un article, restaurez vos achats, ou que l’Application les vérifie à nouveau, elle envoie à notre **service de vérification des achats** :",
-        },
-        {
-          ul: [
-            "le store concerné (Google Play ou App Store) et l’identifiant de l’article ;",
-            "la **preuve d’achat** émise par le store (un jeton d’achat sur Google Play, une transaction signée sur l’App Store).",
-          ],
-        },
-        {
-          p: "Le service contrôle cette preuve auprès du store, via la Google Play Developer API ou l’App Store Server API, et reçoit les notifications que les stores envoient lorsqu’un achat est remboursé ou révoqué. Il enregistre la preuve, **chiffrée**, ainsi que les identifiants de transaction et de commande, l’article, son état (acheté, en attente, remboursé, révoqué), l’heure de la vérification et, lorsque le store les fournit, la date, le montant, la devise, les taxes et les remboursements de la transaction.",
-        },
-        {
-          p: "Ces données servent à vous attribuer les articles payés, à les restaurer après une réinstallation, à retirer un article remboursé, à confirmer l’achat à Google Play comme il l’exige, et à afficher l’historique de vos achats dans l’Application. Ce traitement est nécessaire à l’**exécution de l’achat** que vous avez demandé. Une preuve d’achat ne nous révèle pas votre identité, mais elle est liée à votre compte du store : gardez-la pour vous et ne l’envoyez à personne, assistance comprise.",
-        },
-        {
-          p: "Nous conservons les enregistrements d’achat tant que Lancé vend des collections et vérifie les achats, afin qu’un article puisse être vérifié à nouveau, restauré, ou retiré après un remboursement. À l’arrêt du service, ses enregistrements sont supprimés, sauf obligation légale ou litige imposant de les conserver plus longtemps.",
-        },
-      ],
-    },
-    {
-      id: "connection-data",
-      heading: "Données de connexion",
-      blocks: [
-        {
-          p: "Comme tout service sur Internet, notre service de vérification des achats reçoit l’**adresse IP** de l’appareil qui le contacte, avec l’heure et l’adresse demandée. Ces données de connexion servent uniquement à répondre et à protéger le service contre les abus, par exemple en limitant le nombre de requêtes, sur la base de notre intérêt légitime à sécuriser le service. Le contenu des requêtes, les preuves d’achat et les jetons ne sont jamais écrits dans les journaux. Les journaux techniques sont conservés au plus **12 mois**. Le service fonctionne sur des serveurs loués à un hébergeur, qui agit sur nos instructions en tant que sous-traitant.",
+          p: "Certains dés et plateaux sont vendus sous forme d’achats intégrés définitifs. **Le paiement est entièrement géré par Google Play ou l’App Store**, qui traitent vos coordonnées bancaires et la preuve d’achat selon leurs propres règles. L’Application vérifie, confirme et restaure vos achats **sur votre appareil, directement auprès du store** ; **aucune information d’achat n’est envoyée à Code and Sorcery**, qui n’en conserve aucune copie. Un article remboursé ou révoqué par le store est retiré à la vérification suivante. Le journal des achats affiché dans l’Application reste sur votre appareil.",
         },
       ],
     },
@@ -598,8 +571,7 @@ const lancePrivacy: LegalDocument = {
           ul: [
             "**Code and Sorcery**, qui développe et exploite l’Application ;",
             "**Google** et **Apple**, pour le paiement, la vérification des achats, les mises à jour et les services de leurs stores ;",
-            "**Discord**, qui nous achemine les rapports de plantage ;",
-            "l’**hébergeur** du service de vérification des achats, en tant que sous-traitant.",
+            "**Discord**, qui nous achemine les rapports de plantage.",
           ],
         },
         {
@@ -624,8 +596,6 @@ const lancePrivacy: LegalDocument = {
           ul: [
             "**Données sur votre appareil** : jusqu’à ce que vous les effaciez dans l’Application ou que vous la désinstalliez ;",
             "**Rapports de plantage** : 12 mois au plus ;",
-            "**Enregistrements d’achat** : tant que le service de vérification des achats fonctionne, comme décrit plus haut ;",
-            "**Journaux de connexion** : 12 mois au plus ;",
             "**Vos messages** : 3 ans au plus après notre dernier échange.",
           ],
         },
@@ -642,10 +612,27 @@ const lancePrivacy: LegalDocument = {
           p: "Conformément au RGPD et à la loi Informatique et Libertés, vous disposez d’un droit d’accès, de rectification et d’effacement de vos données, d’un droit à la limitation et d’opposition à leur traitement et, le cas échéant, d’un droit à la portabilité. Vous pouvez aussi définir des directives relatives au sort de vos données après votre décès. Pour exercer ces droits, écrivez à [contact@codeandsorcery.fr](mailto:contact@codeandsorcery.fr) ; nous répondons dans un délai d’un mois.",
         },
         {
-          p: "Lancé n’ayant pas de compte, nous ne pouvons généralement pas rattacher seuls des données à votre personne. Pour une demande portant sur un achat, indiquez la référence affichée dans la page Achats de l’Application ou, sur Google Play, le numéro de commande commençant par GPA. Les rapports de plantage ne contenant aucun identifiant, nous ne pouvons en général pas retrouver ceux qui vous concernent. Effacer un enregistrement d’achat ne retire pas l’article de votre compte du store : si l’Application le vérifie à nouveau, un nouvel enregistrement est créé.",
+          p: "Lancé n’a pas de compte et ne nous transmet aucune donnée d’achat : les seules données que nous détenons sont les rapports de plantage, qui ne contiennent aucun identifiant, et les e-mails que vous nous envoyez. Vos achats sont gérés par Google Play ou l’App Store : pour exercer vos droits à leur sujet, adressez-vous à Google ou à Apple.",
         },
         {
           p: "Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la **CNIL** ([cnil.fr](https://www.cnil.fr)) ou de l’autorité de protection des données de votre pays de résidence.",
+        },
+      ],
+    },
+    {
+      id: "deletion",
+      heading: "Supprimer vos données",
+      blocks: [
+        {
+          p: "Voici ce que vous pouvez supprimer, et comment :",
+        },
+        {
+          ul: [
+            "**Les données sur votre appareil** (lancers, favoris, sacs, réglages, journal des achats) ne nous parviennent jamais : effacez l’historique dans l’Application, ou désinstallez-la pour tout supprimer.",
+            "**Les rapports de plantage** ne contiennent aucun identifiant : nous ne pouvons pas retrouver ceux qui vous concernent. Ils sont supprimés automatiquement au plus tard 12 mois après leur réception.",
+            "**Vos e-mails** : écrivez à [contact@codeandsorcery.fr](mailto:contact@codeandsorcery.fr) avec l’objet « Lancé – suppression de données ». Nous supprimons nos échanges et vous le confirmons dans le mois qui suit.",
+            "**Vos achats** sont conservés par Google Play ou l’App Store, selon leurs propres règles : nous n’en détenons aucune copie.",
+          ],
         },
       ],
     },
@@ -663,7 +650,7 @@ const lancePrivacy: LegalDocument = {
       heading: "Sécurité",
       blocks: [
         {
-          p: "Les échanges entre l’Application et notre service sont chiffrés (HTTPS). Les preuves d’achat sont stockées chiffrées, les clés d’accès aux stores restent sur le serveur et ne sont jamais intégrées à l’Application, et les données locales restent dans l’espace privé de l’Application sur votre appareil. Aucune méthode de stockage ou de transmission n’est sûre à 100 % : protégez votre appareil par un verrouillage d’écran et maintenez son système à jour.",
+          p: "Les rapports de plantage sont transmis par une connexion chiffrée (HTTPS). Les données locales restent dans l’espace privé de l’Application sur votre appareil, et les achats sont vérifiés auprès du store par les services de facturation du système. Aucune méthode de stockage ou de transmission n’est sûre à 100 % : protégez votre appareil par un verrouillage d’écran et maintenez son système à jour.",
         },
       ],
     },
@@ -713,7 +700,7 @@ const legalIndexGroups: LegalIndexGroup[] = [
         entries: [
           {
             title: "Politique de confidentialité",
-            body: "Ce qui reste sur le téléphone, ce qu’envoient un plantage ou un achat, et à qui.",
+            body: "Ce qui reste sur le téléphone, la seule chose qu’il nous envoie, et comment la supprimer.",
             path: "/lance/privacy",
           },
         ],
